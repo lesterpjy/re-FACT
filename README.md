@@ -60,3 +60,98 @@ Our model achieves the following performance on :
 ## Contributing
 
 >📋  Pick a licence and describe how to contribute to your code repository. 
+
+
+## Docker reproducibility management
+
+Build Multi-arch Docker Image for amd64/arm64
+Enable Buildx:
+`docker buildx create --name mybuilder --use`
+Confirm Buildx is active:
+`docker buildx ls`
+
+Build Multi-Arch image and push to DockerHub
+```
+docker buildx build --platform linux/amd64,linux/arm64 -t lesterpjy10/refact-base-image:latest --push .
+```
+
+### Test environment locally
+
+Create alias
+```
+alias drun="docker run --rm -it -v $(pwd)/data:/local/data \
+			 -v $(pwd)/cache:/local/cache 
+			-v $(pwd)/work:/local/work
+			--gpus all"
+
+alias dtest="docker run --rm -it -v $(pwd)/data:/local/data \
+                         -v $(pwd)/cache:/local/cache \
+                         -v $(pwd)/work:/local/work \
+                         -v $(pwd)/src:/local/src \
+                         -v $(pwd)/scripts:/local/scripts \
+                         -v $(pwd)/configs:/local/configs \
+                         --gpus all"
+```
+Remove `--gpus all` for local without gpu
+
+Test environment:
+`dtest lesterpjy10/refact-base-image python scripts/test_env.py`
+
+### Test environment on Snellius
+
+Edit user name in job file `snellius_env/dockerim2sif.job`
+Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
+
+- Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
+- Check sif file successfully built by inspecting output file `work/build_container_*.out`
+- Run `sbatch snellius_env/test_env.job` to test container environment with `Apptainer run`
+- Check package successfully installed by inspecting the output file under `work` directory.
+
+Sample `test_env.py` output
+
+```
+[scur2818@int6 work]$ cat test_env_9204342.out
+---- Package Versions ----
+Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+PyTorch version: 2.5.0+cu118
+Torchvision version: 0.20.0+cu118
+Torchaudio version: 2.5.0+cu118
+PyTorch Lightning version: 2.4.0
+TensorBoard version: 2.17.1
+Tabulate version: 0.9.0
+TQDM version: 4.66.5
+Pillow (PIL) version: 11.0.0
+Notebook version: 7.3.2
+JupyterLab version: 4.3.4
+Matplotlib version: 3.10.0
+Seaborn version: 0.13.2
+ipywidgets version: 8.1.5
+---- End of Versions ----
+
+CUDA GPU Available: True
+Using GPU: NVIDIA A100-SXM4-40GB
+
+---- Running a tiny sanity-check forward pass with PyTorch ----
+Input shape: torch.Size([2, 10])
+Output shape: torch.Size([2, 5])
+Output: tensor([[-0.0179, -0.1882,  0.0772, -0.1044, -0.3526],
+        [-0.5355,  0.9435, -0.0136, -0.2977,  0.4146]],
+       grad_fn=<AddmmBackward0>)
+
+Environment functional.
+
+JOB STATISTICS
+==============
+Job ID: 9204342
+Cluster: snellius
+User/Group: —-
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:10
+CPU Efficiency: 2.42% of 00:06:54 core-walltime
+Job Wall-clock time: 00:00:23
+Memory Utilized: 2.41 MB
+Memory Efficiency: 0.01% of 31.25 GB
+```
+
