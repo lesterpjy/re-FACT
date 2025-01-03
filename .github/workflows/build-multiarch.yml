@@ -24,11 +24,10 @@ jobs:
 
       - name: Build & push multi-arch image
         run: |
-          # "github.ref_name" is the tag, e.g. "v1.0.0"
-          # We'll tag the image with the exact tag, plus "latest".
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
+            --push \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/refact-base-image:${{ github.ref_name }} \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/refact-base-image:latest \
-            --push \
             .
+
