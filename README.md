@@ -72,7 +72,7 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
 
 ### Example workflow
 
-- Local development workflow
+#### Local development workflow
 
 `src`, `scripts`, and `configs` directories are mounted in real-time from your local machine, changes to your code appear immediately inside the containear.
 
@@ -81,20 +81,20 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
   3. Pull the latest image from Docker Hub: `docker pull lesterpjy10/refact-base-image:latest`
   4. Set test/run alias (Remove `--gpus all` for local without gpu) 
      ```
-alias dtest="docker run --rm -it \
-    -v $(pwd)/data:/local/data \
-    -v $(pwd)/cache:/local/cache \
-    -v $(pwd)/work:/local/work \
-    -v $(pwd)/src:/local/src \
-    -v $(pwd)/scripts:/local/scripts \
-    -v $(pwd)/configs:/local/configs \
-    --gpus all"
+     alias dtest="docker run --rm -it \
+	 -v $(pwd)/data:/local/data \
+	 -v $(pwd)/cache:/local/cache \
+	 -v $(pwd)/work:/local/work \
+	 -v $(pwd)/src:/local/src \
+	 -v $(pwd)/scripts:/local/scripts \
+	 -v $(pwd)/configs:/local/configs \
+	 --gpus all"
 
     ```
   5. Run an interactive test: `dtest lesterpjy10/refact-base-image:latest bash`
   6. Or, for environment sanity check, run `dtest lesterpjy10/refact-base-image python scripts/test_env.py` 
  
-- Committing and tagging for release
+#### Committing and tagging for release
 
   1. Once you are satisfied with local testing, **add-commit-push** to the `image-release` branch (this does not build the image)
   2. To release an image (make sure the branch is on `image-release`):
@@ -109,7 +109,8 @@ alias dtest="docker run --rm -it \
      lesterpjy10/refact-base-image:build-*
      ```
 
-- Pull and test image on Snellius
+### Test and run image on Snellius
+
   1. Edit user name in job file `snellius_env/dockerim2sif.job` Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
   2. Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
   3. Check sif file successfully built by inspecting output file `work/build_container_*.out`
@@ -117,48 +118,48 @@ alias dtest="docker run --rm -it \
   5. Check package successfully installed by inspecting the output file under `work` directory.
   6. `test_env.py` output should look like:
      ```
----- Package Versions ----
-Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
-PyTorch version: 2.5.0+cu118
-Torchvision version: 0.20.0+cu118
-Torchaudio version: 2.5.0+cu118
-PyTorch Lightning version: 2.4.0
-TensorBoard version: 2.17.1
-Tabulate version: 0.9.0
-TQDM version: 4.66.5
-Pillow (PIL) version: 11.0.0
-Notebook version: 7.3.2
-JupyterLab version: 4.3.4
-Matplotlib version: 3.10.0
-Seaborn version: 0.13.2
-ipywidgets version: 8.1.5
----- End of Versions ----
+     ---- Package Versions ----
+     Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+     PyTorch version: 2.5.0+cu118
+     Torchvision version: 0.20.0+cu118
+     Torchaudio version: 2.5.0+cu118
+     PyTorch Lightning version: 2.4.0
+     TensorBoard version: 2.17.1
+     Tabulate version: 0.9.0
+     TQDM version: 4.66.5
+     Pillow (PIL) version: 11.0.0
+     Notebook version: 7.3.2
+     JupyterLab version: 4.3.4
+     Matplotlib version: 3.10.0
+     Seaborn version: 0.13.2
+     ipywidgets version: 8.1.5
+     ---- End of Versions ----
 
-CUDA GPU Available: True
-Using GPU: NVIDIA A100-SXM4-40GB
+     CUDA GPU Available: True
+     Using GPU: NVIDIA A100-SXM4-40GB
 
----- Running a tiny sanity-check forward pass with PyTorch ----
-Input shape: torch.Size([2, 10])
-Output shape: torch.Size([2, 5])
-Output: tensor([[-0.0179, -0.1882,  0.0772, -0.1044, -0.3526],
-        [-0.5355,  0.9435, -0.0136, -0.2977,  0.4146]],
-       grad_fn=<AddmmBackward0>)
+     ---- Running a tiny sanity-check forward pass with PyTorch ----
+     Input shape: torch.Size([2, 10])
+     Output shape: torch.Size([2, 5])
+     Output: tensor([[-0.0179, -0.1882,  0.0772, -0.1044, -0.3526],
+	     [-0.5355,  0.9435, -0.0136, -0.2977,  0.4146]],
+	    grad_fn=<AddmmBackward0>)
 
-Environment functional.
+     Environment functional.
 
-JOB STATISTICS
-==============
-Job ID: 9204342
-Cluster: snellius
-User/Group: —-
-State: COMPLETED (exit code 0)
-Nodes: 1
-Cores per node: 18
-CPU Utilized: 00:00:10
-CPU Efficiency: 2.42% of 00:06:54 core-walltime
-Job Wall-clock time: 00:00:23
-Memory Utilized: 2.41 MB
-Memory Efficiency: 0.01% of 31.25 GB
+     JOB STATISTICS
+     ==============
+     Job ID: 9204342
+     Cluster: snellius
+     User/Group: —-
+     State: COMPLETED (exit code 0)
+     Nodes: 1
+     Cores per node: 18
+     CPU Utilized: 00:00:10
+     CPU Efficiency: 2.42% of 00:06:54 core-walltime
+     Job Wall-clock time: 00:00:23
+     Memory Utilized: 2.41 MB
+     Memory Efficiency: 0.01% of 31.25 GB
      ``` 
 
 
