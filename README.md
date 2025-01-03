@@ -64,13 +64,21 @@ Our model achieves the following performance on :
 
 ## Docker reproducibility management
 
-Build Multi-arch Docker Image for amd64/arm64
+Directories `configs`, `scripts`, `src` are in the Docker image, and should contain all code for readers to reproduce our results: main program contained in `src`, experiment settings contained in `configs`, and `scripts` that run experiments using `config` and `src`.
+
+Locally there should be `cache`, `data`, `work` directories for you to manage your work. These are in `gitignore` and we should never commit them. 
+
+`snellius_env` is for us to keep track of our job files.
+
+#### To build the Multi-arch Docker Image for amd64/arm64
+
 Enable Buildx:
 `docker buildx create --name mybuilder --use`
+
 Confirm Buildx is active:
 `docker buildx ls`
 
-Build Multi-Arch image and push to DockerHub
+Build Multi-Arch image and push to DockerHub (this might take a while, we should add CD/CI to automate this)
 ```
 docker buildx build --platform linux/amd64,linux/arm64 -t lesterpjy10/refact-base-image:latest --push .
 ```
@@ -80,10 +88,7 @@ docker buildx build --platform linux/amd64,linux/arm64 -t lesterpjy10/refact-bas
 Create alias
 ```
 alias drun="docker run --rm -it -v $(pwd)/data:/local/data \
-			 -v $(pwd)/cache:/local/cache 
-			-v $(pwd)/work:/local/work
-			--gpus all"
-
+			 -v $(pwd)/cache:/local/cache -v $(pwd)/work:/local/work --gpus all"
 alias dtest="docker run --rm -it -v $(pwd)/data:/local/data \
                          -v $(pwd)/cache:/local/cache \
                          -v $(pwd)/work:/local/work \
