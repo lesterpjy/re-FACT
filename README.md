@@ -89,7 +89,6 @@ Since `src`, `scripts`, and `configs` directories are mounted in real-time from 
 	 -v $(pwd)/scripts:/local/scripts \
 	 -v $(pwd)/configs:/local/configs \
 	 --gpus all"
-    ```
   5. Run an interactive test: `dtest lesterpjy10/refact-multiarch:latest bash`
   6. Or, for environment sanity check, run `dtest lesterpjy10/refact-multiarch python scripts/test_env.py` 
  
@@ -110,12 +109,13 @@ Since `src`, `scripts`, and `configs` directories are mounted in real-time from 
 
 #### Test and run image on Snellius
 
-  1. Edit user name in job file `snellius_env/dockerim2sif.job` Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
-  2. Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
-  3. Check sif file successfully built by inspecting output file `work/build_container_*.out`
-  4. Run `sbatch snellius_env/test_env.job` to test container environment with `Apptainer run`
-  5. Check package successfully installed by inspecting the output file under `work` directory.
-  6. `test_env.py` output should look like:
+  1. Pull your changes on Snellius
+  2. Edit user name in job file `snellius_env/dockerim2sif.job` Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
+  3. Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
+  4. Check sif file successfully built by inspecting output file `work/build_container_*.out`
+  5. Run `sbatch snellius_env/test_env.job` to test container environment with `Apptainer run`
+  6. Check package successfully installed by inspecting the output file under `work` directory.
+  7. `test_env.py` output should look like:
      ```
      ---- Package Versions ----
      Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
