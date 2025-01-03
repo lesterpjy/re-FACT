@@ -64,7 +64,7 @@ Our model achieves the following performance on :
 
 ## Docker reproducibility management
 
-Directories `configs`, `scripts`, `src` are in the Docker image, and should contain all code for readers to reproduce our results: main program contained in `src`, experiment settings contained in `configs`, and `scripts` that run experiments using `config` and `src`.
+Directories `configs`, `scripts`, `src` are mounted in the Docker image, and should contain all code for readers to reproduce our results: main program contained in `src`, experiment settings contained in `configs`, and `scripts` that run experiments using `config` and `src`.
 
 Locally there should be `cache`, `data`, `work` directories for you to manage your work. These are in `gitignore` and we should never commit them. 
 
@@ -74,11 +74,11 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
 
 #### Local development workflow
 
-`src`, `scripts`, and `configs` directories are mounted in real-time from your local machine, changes to your code appear immediately inside the containear.
+Since `src`, `scripts`, and `configs` directories are mounted in real-time from your local machine, changes to your code appear immediately inside the containear.
 
   1. Modify code or script.
   2. Ensure Docker Desktop is set to Linux container mode on Windows (or simply use Docker on macOS).
-  3. Pull the latest image from Docker Hub: `docker pull lesterpjy10/refact-base-image:latest`
+  3. Pull the latest image from Docker Hub: `docker pull lesterpjy10/refact-multiarch:latest`
   4. Set test/run alias (Remove `--gpus all` for local without gpu) 
      ```
      alias dtest="docker run --rm -it \
@@ -90,8 +90,8 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
 	 -v $(pwd)/configs:/local/configs \
 	 --gpus all"
     ```
-  5. Run an interactive test: `dtest lesterpjy10/refact-base-image:latest bash`
-  6. Or, for environment sanity check, run `dtest lesterpjy10/refact-base-image python scripts/test_env.py` 
+  5. Run an interactive test: `dtest lesterpjy10/refact-multiarch:latest bash`
+  6. Or, for environment sanity check, run `dtest lesterpjy10/refact-multiarch python scripts/test_env.py` 
  
 #### Committing and tagging for release
 
@@ -104,8 +104,8 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
      replace `*` with an unique name. Alternatively, builds could be triggered in the Github action UI for the default branch.
   3. Github Action will spin up, build linux/amd64 + linux/arm64 images, and push them to Docker Hub as:
      ```
-     lesterpjy10/refact-base-image:latest
-     lesterpjy10/refact-base-image:build-*
+     lesterpjy10/refact-multiarch:latest
+     lesterpjy10/refact-multiarch:build-*
      ```
 
 #### Test and run image on Snellius

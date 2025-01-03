@@ -1,41 +1,16 @@
-FROM continuumio/miniconda3
+FROM lesterpjy10/base-image 
 
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+RUN mkdir -pv /local/src /local/configs /local/scripts /local/work /local/cache
 
-ENV TORCH_HOME=/local/cache
-ENV ALLENNLP_CAHCE_ROOT=/local/cache
+COPY requirements.txt /local/
+RUN pip install --no-cache-dir -r /local/requirements.txt
 
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends \
-    zip \
-    gzip \
-    make \
-    automake \
-    gcc \
-    build-essential \
-    g++ \
-    cpp \
-    libc6-dev \
-    unzip \
-    nano \
-    rsync
+COPY src /local/src
+COPY configs /local/configs
+COPY scripts /local/scripts
 
-RUN conda update -q conda
-
-RUN mkdir -pv /local/src
-RUN mkdir -pv /local/configs
-RUN mkdir -pv /local/scripts
+ENV PYTHONPATH=/local/src
+WORKDIR /local/
 
 VOLUME /local/work
 VOLUME /local/cache
-
-WORKDIR /local/
-ADD requirements.txt /local/
-RUN pip install -r requirements.txt
-
-ADD src /local/src
-ADD configs /local/configs
-ADD scripts /local/scripts
-
-ENV PYTHONPATH=/local/src
