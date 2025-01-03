@@ -70,51 +70,53 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
 
 `snellius_env` is for us to keep track of our job files.
 
-#### To build the Multi-arch Docker Image for amd64/arm64
+### Example workflow
 
-Enable Buildx:
-`docker buildx create --name mybuilder --use`
+- Local development workflow
 
-Confirm Buildx is active:
-`docker buildx ls`
+`src`, `scripts`, and `configs` directories are mounted in real-time from your local machine, changes to your code appear immediately inside the containear.
 
-Build Multi-Arch image and push to DockerHub (this might take a while, we should add CD/CI to automate this)
-```
-docker buildx build --platform linux/amd64,linux/arm64 -t lesterpjy10/refact-base-image:latest --push .
-```
+  1. Modify code or script.
+  2. Ensure Docker Desktop is set to Linux container mode on Windows (or simply use Docker on macOS).
+  3. Pull the latest image from Docker Hub: `docker pull lesterpjy10/refact-base-image:latest`
+  4. Set test/run alias (Remove `--gpus all` for local without gpu) 
+     ```
+alias dtest="docker run --rm -it \
+    -v $(pwd)/data:/local/data \
+    -v $(pwd)/cache:/local/cache \
+    -v $(pwd)/work:/local/work \
+    -v $(pwd)/src:/local/src \
+    -v $(pwd)/scripts:/local/scripts \
+    -v $(pwd)/configs:/local/configs \
+    --gpus all"
 
-### Test environment locally
+    ```
+  5. Run an interactive test: `dtest lesterpjy10/refact-base-image:latest bash`
+  6. Or, for environment sanity check, run `dtest lesterpjy10/refact-base-image python scripts/test_env.py` 
+ 
+- Committing and tagging for release
 
-Create alias
-```
-alias drun="docker run --rm -it -v $(pwd)/data:/local/data \
-			 -v $(pwd)/cache:/local/cache -v $(pwd)/work:/local/work --gpus all"
-alias dtest="docker run --rm -it -v $(pwd)/data:/local/data \
-                         -v $(pwd)/cache:/local/cache \
-                         -v $(pwd)/work:/local/work \
-                         -v $(pwd)/src:/local/src \
-                         -v $(pwd)/scripts:/local/scripts \
-                         -v $(pwd)/configs:/local/configs \
-                         --gpus all"
-```
-Remove `--gpus all` for local without gpu
+  1. Once you are satisfied with local testing, **add-commit-push** to the `image-release` branch (this does not build the image)
+  2. To release an image (make sure the branch is on `image-release`):
+     ```
+     git tag build-* 
+     git push origin build-*
+     ```
+     replace `*` with an unique name. Alternatively, builds could be triggered in the Github action UI.
+  3. Github Action will spin up, build linux/amd64 + linux/arm64 images, and push them to Docker Hub as:
+     ```
+     lesterpjy10/refact-base-image:latest
+     lesterpjy10/refact-base-image:build-*
+     ```
 
-Test environment:
-`dtest lesterpjy10/refact-base-image python scripts/test_env.py`
-
-### Test environment on Snellius
-
-Edit user name in job file `snellius_env/dockerim2sif.job`
-Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
-
-- Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
-- Check sif file successfully built by inspecting output file `work/build_container_*.out`
-- Run `sbatch snellius_env/test_env.job` to test container environment with `Apptainer run`
-- Check package successfully installed by inspecting the output file under `work` directory.
-
-Sample `test_env.py` output
-
-```
+- Pull and test image on Snellius
+  1. Edit user name in job file `snellius_env/dockerim2sif.job` Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
+  2. Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
+  3. Check sif file successfully built by inspecting output file `work/build_container_*.out`
+  4. Run `sbatch snellius_env/test_env.job` to test container environment with `Apptainer run`
+  5. Check package successfully installed by inspecting the output file under `work` directory.
+  6. `test_env.py` output should look like:
+     ```
 ---- Package Versions ----
 Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
 PyTorch version: 2.5.0+cu118
@@ -157,5 +159,18 @@ CPU Efficiency: 2.42% of 00:06:54 core-walltime
 Job Wall-clock time: 00:00:23
 Memory Utilized: 2.41 MB
 Memory Efficiency: 0.01% of 31.25 GB
-```
+     ``` 
 
+
+Create alias
+```
+alias drun="docker run --rm -it -v $(pwd)/data:/local/data \
+			 -v $(pwd)/cache:/local/cache -v $(pwd)/work:/local/work --gpus all"
+alias dtest="docker run --rm -it -v $(pwd)/data:/local/data \
+                         -v $(pwd)/cache:/local/cache \
+                         -v $(pwd)/work:/local/work \
+                         -v $(pwd)/src:/local/src \
+                         -v $(pwd)/scripts:/local/scripts \
+                         -v $(pwd)/configs:/local/configs \
+                         --gpus all"
+```
