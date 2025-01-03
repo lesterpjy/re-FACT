@@ -1,4 +1,4 @@
-FROM lesterpjy10/base-image 
+FROM lesterpjy10/base-image
 
 RUN mkdir -pv /local/src /local/configs /local/scripts /local/work /local/cache
 
