@@ -3,6 +3,7 @@ name: Build and Push Multi-Arch Linux Image
 on:
   workflow_dispatch: # for manual trigger on github
   push:
+    branches: [ "image-release" ]
     tags:
       - "v*"  # for triggering with versioning 
       - "build-*"
@@ -14,16 +15,11 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v3
 
-      - name: Install Docker
-        run: |
-          curl -fsSL https://get.docker.com | sudo sh
-
       - name: Set up QEMU and Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | \
-             docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Build & push multi-arch image
         run: |
