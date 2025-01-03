@@ -31,6 +31,6 @@ apptainer run --nv \
   -B $(pwd)/src:/local/src \
   -B $(pwd)/scripts:/local/scripts \
   -B $(pwd)/configs:/local/configs \
-  ./refact-base-image_latest.sif \
+  ./refact-multiarch-latest.sif \
   python /local/scripts/test_env.py
 

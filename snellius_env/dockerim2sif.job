@@ -11,7 +11,7 @@ module load 2023
 export APPTAINER_TMPDIR=$(mktemp -d /tmp/scur2818XXXX)
 
 # Name of the resulting SIF file
-SIF_FILE="refact-base-image_latest.sif"
+SIF_FILE="refact-multiarch-latest.sif"
 
 # Check if the file exists
 if [[ -f "$SIF_FILE" ]]; then
@@ -20,6 +20,6 @@ if [[ -f "$SIF_FILE" ]]; then
 fi
 
 echo "Pulling the Docker image and converting to SIF..."
-apptainer pull "$SIF_FILE" docker://lesterpjy10/refact-base-image:latest
+apptainer pull "$SIF_FILE" docker://lesterpjy10/refact-multiarch:latest
 
 echo "Done! SIF file is saved as '$SIF_FILE'."
