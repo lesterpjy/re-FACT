@@ -26,8 +26,8 @@ jobs:
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
             --push \
-            --cache-from=type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/refact-base-image:cache \
-            --cache-to=type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/refact-base-image:cache,mode=max \
+            --cache-from=type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch:cache \
+            --cache-to=type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch:cache,mode=max \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch:${{ github.ref_name }} \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch:latest \
             .

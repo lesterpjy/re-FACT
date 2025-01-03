@@ -66,7 +66,7 @@ Our model achieves the following performance on :
 
 Directories `configs`, `scripts`, `src` are mounted in the Docker image, and should contain all code for readers to reproduce our results: main program contained in `src`, experiment settings contained in `configs`, and `scripts` that run experiments using `config` and `src`.
 
-Locally there should be `cache`, `data`, `work` directories for you to manage your work. These are in `gitignore` and we should never commit them. 
+Local directories `cache`, `data`, `work` are for managing your work. These are in `gitignore` and are not commited. 
 
 `snellius_env` is for us to keep track of our job files.
 
