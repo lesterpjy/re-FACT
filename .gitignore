@@ -177,3 +177,5 @@ cache/
 
 # apptainer
 *.sif
+
+.DS_Store
