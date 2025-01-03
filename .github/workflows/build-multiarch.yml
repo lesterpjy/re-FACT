@@ -1,0 +1,80 @@
+name: Build and Push Multi-Arch Images
+
+on:
+  push:
+    branches: [ "multi-arch-docker-gitaction" ]
+  pull_request:
+
+jobs:
+  build-linux:
+    # This job runs on Linux to build linux/amd64 + linux/arm64 images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU and Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Log in to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build and push Linux images (amd64, arm64)
+        run: |
+          # Build & push a multi-arch Linux image tag, e.g. ":linux"
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch-image:linux \
+            --push \
+            -f Dockerfile.linux \
+            .
+    # The job produces a multi-arch manifest named ":linux".
+
+  build-windows:
+    # This job runs on Windows to build windows/amd64 images
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Buildx
+        # Note: on windows-latest, we still need buildx, but it runs in Windows Docker mode
+        uses: docker/setup-buildx-action@v3
+        with:
+          install: true
+
+      - name: Log in to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build and push Windows image (windows/amd64)
+        run: |
+          # Build & push a single-arch Windows image tag, e.g. ":windows"
+          docker buildx build \
+            --platform windows/amd64 \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch-image:windows \
+            --push \
+            -f Dockerfile.windows \
+            .
+    # The job produces an image manifest for windows/amd64.
+
+  create-manifest:
+    # This job depends on the two previous jobs
+    needs: [build-linux, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Create and push multi-arch manifest
+        run: |
+          # 1) Create a new "latest" manifest from both tags (linux & windows).
+          docker manifest create ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch-image:latest \
+            --amend ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch-image:linux \
+            --amend ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch-image:windows
+
+          # 2) Push that "latest" manifest to Docker Hub
+          docker manifest push ${{ secrets.DOCKERHUB_USERNAME }}/refact-multiarch-image:latest
+
