@@ -89,27 +89,26 @@ Locally there should be `cache`, `data`, `work` directories for you to manage yo
 	 -v $(pwd)/scripts:/local/scripts \
 	 -v $(pwd)/configs:/local/configs \
 	 --gpus all"
-
     ```
   5. Run an interactive test: `dtest lesterpjy10/refact-base-image:latest bash`
   6. Or, for environment sanity check, run `dtest lesterpjy10/refact-base-image python scripts/test_env.py` 
  
 #### Committing and tagging for release
 
-  1. Once you are satisfied with local testing, **add-commit-push** to the `image-release` branch (this does not build the image)
-  2. To release an image (make sure the branch is on `image-release`):
+  1. Once you are satisfied with local testing, **add-commit-push** to your branch (this does not build the image)
+  2. To release an image:
      ```
      git tag build-* 
      git push origin build-*
      ```
-     replace `*` with an unique name. Alternatively, builds could be triggered in the Github action UI.
+     replace `*` with an unique name. Alternatively, builds could be triggered in the Github action UI for the default branch.
   3. Github Action will spin up, build linux/amd64 + linux/arm64 images, and push them to Docker Hub as:
      ```
      lesterpjy10/refact-base-image:latest
      lesterpjy10/refact-base-image:build-*
      ```
 
-### Test and run image on Snellius
+#### Test and run image on Snellius
 
   1. Edit user name in job file `snellius_env/dockerim2sif.job` Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if your SURF username is `user01`, change to `/tmp/user01XXXX`
   2. Run `sbatch snellius_env/dockerim2sif.job` to pull Docker image from Dockerhub, and convert image to sif file for Apptainer.
