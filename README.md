@@ -115,7 +115,6 @@ Replace `/tmp/scur2818XXXX` for `APPTAINER_TMPDIR` with your own user name, if y
 Sample `test_env.py` output
 
 ```
-[scur2818@int6 work]$ cat test_env_9204342.out
 ---- Package Versions ----
 Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
 PyTorch version: 2.5.0+cu118
