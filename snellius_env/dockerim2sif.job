@@ -23,3 +23,17 @@ echo "Pulling the Docker image and converting to SIF..."
 apptainer pull "$SIF_FILE" docker://lesterpjy10/refact-multiarch:latest
 
 echo "Done! SIF file is saved as '$SIF_FILE'."
+
+# Function to check and create a directory if it doesn't exist
+check_and_create_dir() {
+    if [ ! -d "$1" ]; then
+        echo "Directory '$1' does not exist. Creating it..."
+        mkdir -p "$1"
+    else
+        echo "Directory '$1' already exists."
+    fi
+}
+
+# Check and create 'data' and 'cache' directories
+check_and_create_dir "data"
+check_and_create_dir "cache"
