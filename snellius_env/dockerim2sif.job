@@ -8,7 +8,7 @@ module purge
 module load 2023
 # Possibly: module load Apptainer/<version>
 
-export APPTAINER_TMPDIR=$(mktemp -d /tmp/scur2818XXXX)
+export APPTAINER_TMPDIR=$(mktemp -d /tmp/mmazurykXXXX)
 
 # Name of the resulting SIF file
 SIF_FILE="refact-multiarch-latest.sif"
