@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH -p cbuild
+#SBATCH -t 2:00:00
+#SBATCH --job-name=build_container
+#SBATCH --output=work/build_container_%A.out
+
+module purge
+module load 2023
+# Possibly: module load Apptainer/<version>
+
+export APPTAINER_TMPDIR=$(mktemp -d /tmp/mmazurykXXXX)
+
+# Name of the resulting SIF file
+SIF_FILE="refact-multiarch-latest.sif"
+
+# Check if the file exists
+if [[ -f "$SIF_FILE" ]]; then
+    echo "File '$SIF_FILE' already exists. Removing it..."
+    rm -f "$SIF_FILE"
+fi
+
+echo "Pulling the Docker image and converting to SIF..."
+apptainer pull "$SIF_FILE" docker://lesterpjy10/refact-multiarch:latest
+
+echo "Done! SIF file is saved as '$SIF_FILE'."
+
+# Function to check and create a directory if it doesn't exist
+check_and_create_dir() {
+    if [ ! -d "$1" ]; then
+        echo "Directory '$1' does not exist. Creating it..."
+        mkdir -p "$1"
+    else
+        echo "Directory '$1' already exists."
+    fi
+}
+
+# Check and create 'data' and 'cache' directories
+check_and_create_dir "data"
+check_and_create_dir "cache"
