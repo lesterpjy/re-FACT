@@ -2,10 +2,10 @@
 This module contains the function to project the adversarial embeddings
 to the closest token in the embedding space of chosen vocabulary.
 """
-
 import torch
 import logging
 from src.adv_sample.vocab import FlexibleVocab
+
 logger = logging.getLogger(__name__)
 
 
@@ -20,8 +20,15 @@ def project_embeddings(sample_embeddings: torch.tensor,
     them into their closest token in the embedding space.
 
     Input:
-    - `sample_embeddings`: Tensor of shape (batch_size, seq_len, d_model)
-    
+    - `sample_embeddings`: Tensor of shape (batch_size, seq_length, embedding_dim) containing the embeddings.
+    - `sample_tokens`: Tensor of shape (batch_size, seq_length) containing the tokens.
+    - `vocab`: The vocabulary to use for the adversarial samples.
+    - `mask`: Tensor of shape (batch_size, seq_length) containing the mask.
+    - `method`: The method to use for the projection.
+
+    Output:
+    - `batch_emb`: Tensor of shape (batch_size, seq_length, embedding_dim) containing the projected embeddings.
+    - `batch_tokens`: Tensor of shape (batch_size, seq_length) containing the projected tokens.
 
     """
 

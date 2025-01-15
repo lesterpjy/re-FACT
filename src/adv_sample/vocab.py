@@ -68,7 +68,7 @@ class FlexibleVocab:
             token_count_input = len(input_embeddings)
         
         if token_count_input not in self.vocab:
-            logger.debug("FlexibleVocab: compare_strict(): no matches for token count %d", token_count_input)
+            logger.error("FlexibleVocab: compare_strict(): no matches for token count %d", token_count_input)
 
             return torch.empty((0), device=input_tokens.device), self.vocab_token[token_count_input]  # No matches, return empty tensor
         
@@ -116,7 +116,7 @@ class FlexibleVocab:
             batch_size, token_count_input, _ = input_embeddings.shape
 
         if token_count_input not in self.vocab:
-            logger.debug("FlexibleVocab: compare_strict_batch(): no matches for token count %d", token_count_input)
+            logger.error("FlexibleVocab: compare_strict_batch(): no matches for token count %d", token_count_input)
 
             return torch.empty((batch_size, 0), device=input_tokens.device), self.vocab_token[token_count_input] # No matches, return empty tensor
         
