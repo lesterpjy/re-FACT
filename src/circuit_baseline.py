@@ -1,0 +1,44 @@
+from config_utils import load_config
+from typing import Callable, List, Union
+import pandas as pd
+import torch
+from torch import Tensor
+from torch.utils.data import DataLoader
+from transformer_lens import HookedTransformer
+from tqdm import tqdm
+from functools import partial
+
+
+def evaluate_baseline(
+    model: HookedTransformer,
+    dataloader: DataLoader,
+    metrics: List[Callable[[Tensor], Tensor]],
+    run_corrupted=False,
+):
+    metrics_list = True
+    if not isinstance(metrics, list):
+        metrics = [metrics]
+        metrics_list = False
+
+    results = [[] for _ in metrics]
+    for clean, corrupted, label in tqdm(dataloader):
+        tokenized = model.tokenizer(
+            clean, padding="longest", return_tensors="pt", add_special_tokens=False
+        )
+        input_lengths = 1 + tokenized.attention_mask.sum(1)
+        with torch.inference_mode():
+            corrupted_logits = model(corrupted)
+            logits = model(clean)
+        for i, metric in enumerate(metrics):
+            if run_corrupted:
+                r = metric(corrupted_logits, logits, input_lengths, label).cpu()
+            else:
+                r = metric(logits, corrupted_logits, input_lengths, label).cpu()
+            if len(r.size()) == 0:
+                r = r.unsqueeze(0)
+            results[i].append(r)
+
+    results = [torch.cat(rs) for rs in results]
+    if not metrics_list:
+        results = results[0]
+    return results

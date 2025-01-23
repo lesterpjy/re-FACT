@@ -1,0 +1,109 @@
+from typing import Optional
+import pandas as pd
+from functools import partial
+import torch
+from torch.utils.data import Dataset, DataLoader
+
+
+def prepare_bias_corrupt(config: dict):
+    dfs = [
+        pd.read_csv(f"{config.data_dir}/final_toxicity_prompts_{i}.csv")
+        for i in range(3)
+    ]
+    true_idx = config.tokenizer(" true").input_ids[1]
+    false_idx = config.tokenizer(" false").input_ids[1]
+    for i, df in enumerate(dfs):
+        df["toxic_label"] = df["toxicity"].apply(
+            lambda x: int(x >= 0.5)
+        )  # true label of the prompt, bool 0 or 1
+        df["clean_answer_idx"] = df["toxic_label"].apply(
+            lambda x: true_idx if x == 1 else false_idx
+        )
+        df["corrupted_answer_idx"] = df["toxic_label"].apply(
+            lambda x: false_idx if x == 1 else true_idx
+        )
+
+        eapdf = pd.DataFrame(
+            {
+                "clean": df["prompt_final"],
+                "corrupted": df["corrupted_prompt"],
+                "clean_answer_idx": df["clean_answer_idx"],
+                "corrupted_answer_idx": df["corrupted_answer_idx"],
+                "label": df["toxic_label"],
+            }
+        )
+        eapdf.to_csv(
+            f"{config.data_dir}/circuit_identification_data/corrupt_bias_eap_{i}.csv",
+            index=False,
+        )
+
+
+def collate_EAP(xs, task):
+    clean, corrupted, labels = zip(*xs)
+    clean = list(clean)
+    corrupted = list(corrupted)
+    if "hypernymy" not in task:
+        labels = torch.tensor(labels)
+    return clean, corrupted, labels
+
+
+def model2family(model_name: str):
+    if "gpt2" in model_name:
+        return "gpt2"
+    elif "pythia" in model_name:
+        return "pythia"
+    elif "Llama" in model_name:
+        return "llama"
+    else:
+        raise ValueError(f"Couldn't find model family for model: {model_name}")
+
+
+class EAPDataset(Dataset):
+    def __init__(self, task: str, model_name: str, filename: Optional[str] = None):
+        if filename is None:
+            self.df = pd.read_csv(f"data/{task}/{model2family(model_name)}.csv")
+            print("loaded dataset from", f"data/{task}/{model2family(model_name)}.csv")
+        else:
+            self.df = pd.read_csv(f"data/{task}/{filename}")
+            print("loaded dataset from", f"data/{task}/{filename}")
+
+        self.task = task
+
+    def __len__(self):
+        return len(self.df)
+
+    def shuffle(self):
+        self.df = self.df.sample(frac=1)
+
+    def head(self, n: int):
+        self.df = self.df.head(n)
+
+    def __getitem__(self, index):
+        row = self.df.iloc[index]
+        label = None
+        if self.task == "ioi":
+            label = [row["correct_idx"], row["incorrect_idx"]]
+        elif "greater-than" in self.task:
+            label = row["correct_idx"]
+        elif "hypernymy" in self.task:
+            answer = torch.tensor(eval(row["answers_idx"]))
+            corrupted_answer = torch.tensor(eval(row["corrupted_answers_idx"]))
+            label = [answer, corrupted_answer]
+        elif "fact-retrieval" in self.task:
+            label = [row["country_idx"], row["corrupted_country_idx"]]
+        elif "gender" in self.task:
+            label = [row["clean_answer_idx"], row["corrupted_answer_idx"]]
+        elif self.task == "sva":
+            label = row["plural"]
+        elif self.task == "colored-objects":
+            label = [row["correct_idx"], row["incorrect_idx"]]
+        elif self.task in {"dummy-easy", "dummy-medium", "dummy-hard"}:
+            label = 0
+        else:
+            raise ValueError(f"Got invalid task: {self.task}")
+        return row["clean"], row["corrupted"], label
+
+    def to_dataloader(self, batch_size: int):
+        return DataLoader(
+            self, batch_size=batch_size, collate_fn=partial(collate_EAP, task=self.task)
+        )
