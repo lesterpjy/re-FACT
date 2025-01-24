@@ -20,4 +20,12 @@ numpy==2.2.1
 pandas==2.2.3
 transformer-lens @ git+https://github.com/neelnanda-io/TransformerLens/
 loguru==0.7.3
+transformers==4.48.0ls
+tokenizers==0.21.0
+python-dotenv==1.0.1
+pygraphviz==1.14
+huggingface-hub==0.27.1
+einops==0.8.0
+datasets==3.2.0
+cmapy==0.6.6
 

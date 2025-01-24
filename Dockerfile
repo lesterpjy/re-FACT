@@ -1,5 +1,11 @@
 FROM lesterpjy10/base-image
 
+# Install required system packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    graphviz \
+    graphviz-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir -pv /local/src /local/configs /local/scripts /local/work /local/cache
 
 COPY requirements.txt /local/
