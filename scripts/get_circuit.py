@@ -54,7 +54,10 @@ if "baseline" in config.run:
     baseline_df = pd.DataFrame(data)
 
     # Save the DataFrame to a CSV file
-    baseline_df.to_csv(f"{config.data_dir}/baseline_values.csv", index=False)
+    baseline_df.to_csv(
+        f"{config.data_dir}/circuit_identification_data/{config.task}/baseline_values.csv",
+        index=False,
+    )
     logger.info("Baseline values saved to CSV file.")
 
 # =============================================================================
@@ -104,14 +107,16 @@ if "evaluate" in config.run:
     if "baseline" not in config.run:
         # Read the CSV file to get the baseline values
         try:
-            df_read = pd.read_csv(f"{config.data_dir}/baseline_values.csv")
+            df_read = pd.read_csv(
+                f"{config.data_dir}/circuit_identification_data/{config.task}/baseline_values.csv"
+            )
             baseline = df_read["baseline"][0]
             corrupted_baseline = df_read["corrupted_baseline"][0]
             logger.info(f"Baseline (read from file): {baseline}")
             logger.info(f"Corrupted Baseline (read from file): {corrupted_baseline}")
         except FileNotFoundError:
             logger.error(
-                f"Error: Baseline values not found in {config.data_dir}/baseline_values.csv"
+                f"Error: Baseline values not found in {config.data_dir}/circuit_identification_data/{config.task}/baseline_values.csv"
             )
             raise
     if "graph" not in config.run:

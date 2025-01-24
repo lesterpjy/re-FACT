@@ -35,7 +35,7 @@ def prepare_bias_corrupt(config: Config):
         }
     )
     eapdf.to_csv(
-        f"{config.data_dir}/circuit_identification_data/corrupt_bias_eap_{config.data_split}.csv",
+        f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv",
         index=False,
     )
     logger.info("Bias corruption dataset processed.")
