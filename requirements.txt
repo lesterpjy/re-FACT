@@ -17,7 +17,7 @@ plotly==5.17.0
 einops==0.8.0
 numpy==2.2.1
 pandas==2.2.3
-transformer-lens @ git+https://github.com/neelnanda-io/TransformerLens/
+transformer-lens==2.11.0
 loguru==0.7.3
 tokenizers==0.19.0
 python-dotenv==1.0.1
