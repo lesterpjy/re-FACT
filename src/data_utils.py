@@ -3,10 +3,12 @@ import pandas as pd
 from functools import partial
 import torch
 from torch.utils.data import Dataset, DataLoader
+from loguru import logger
 from .config import Config
 
 
 def prepare_bias_corrupt(config: Config):
+    logger.info("Process bias corruption dataset...")
     df = pd.read_csv(
         f"{config.data_dir}/final_toxicity_prompts_{config.data_split}.csv"
     )
@@ -36,6 +38,7 @@ def prepare_bias_corrupt(config: Config):
         f"{config.data_dir}/circuit_identification_data/corrupt_bias_eap_{config.data_split}.csv",
         index=False,
     )
+    logger.info("Bias corruption dataset processed.")
 
 
 def collate_EAP(xs, task):

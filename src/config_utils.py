@@ -29,6 +29,7 @@ def load_device() -> torch.device:
 
 
 def load_model(config: Config):
+    logger.info("Loading model and tokenizer...")
     load_dotenv()
     HF_TOKEN = os.getenv("HF_TOKEN")
     login(token=HF_TOKEN)
@@ -47,14 +48,17 @@ def load_model(config: Config):
     model.cfg.use_hook_mlp_in = True
     config.model = model
     config.tokenizer = model.tokenizer
+    logger.info("Model and tokenizer loaded.")
 
 
 def load_dataset(config: Config):
+    logger.info("Loading dataset...")
     ds = EAPDataset(config)
     config.dataloader = ds.to_dataloader(config.batch_size)
 
     config.task_metric = get_metric(config.metric_name, config.task, model=config.model)
     config.kl_div = get_metric("kl_divergence", config.task, model=config.model)
+    logger.info("Dataset and metrics loaded.")
 
 
 def load_config(config_path: str, process_data: bool = False) -> Config:
