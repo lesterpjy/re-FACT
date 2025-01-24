@@ -13,6 +13,7 @@ from transformer_lens import HookedTransformer
 
 from .graph import Graph, AttentionNode, LogitNode, InputNode
 from .config_utils import load_config
+from .config import Config
 
 allowed_aggregations = {"sum", "mean", "l2"}
 
@@ -40,7 +41,12 @@ def get_npos_input_lengths(model, inputs):
 
 
 def make_hooks_and_matrices(
-    model: HookedTransformer, graph: Graph, batch_size: int, n_pos: int, scores
+    config: Config,
+    model: HookedTransformer,
+    graph: Graph,
+    batch_size: int,
+    n_pos: int,
+    scores,
 ):
     activation_difference = torch.zeros(
         (batch_size, n_pos, graph.n_forward, model.cfg.d_model),
@@ -181,6 +187,7 @@ def strip_trailing_eos(
 
 
 def get_scores(
+    config: Config,
     model: HookedTransformer,
     graph: Graph,
     dataloader: DataLoader,
@@ -231,7 +238,7 @@ def get_scores(
         logger.debug(f"DEBUG: input_lengths = {input_lengths.tolist()}")
 
         (fwd_hooks_corrupted, fwd_hooks_clean, bwd_hooks), activation_difference = (
-            make_hooks_and_matrices(model, graph, batch_size, n_pos, scores)
+            make_hooks_and_matrices(config, model, graph, batch_size, n_pos, scores)
         )
 
         with model.hooks(fwd_hooks=fwd_hooks_corrupted):
@@ -267,6 +274,7 @@ def get_scores(
 
 
 def get_scores_ig(
+    config: Config,
     model: HookedTransformer,
     graph: Graph,
     dataloader: DataLoader,
@@ -286,7 +294,7 @@ def get_scores_ig(
         n_pos, input_lengths = get_npos_input_lengths(model, clean)
 
         (fwd_hooks_corrupted, fwd_hooks_clean, bwd_hooks), activation_difference = (
-            make_hooks_and_matrices(model, graph, batch_size, n_pos, scores)
+            make_hooks_and_matrices(config, model, graph, batch_size, n_pos, scores)
         )
 
         with torch.inference_mode():
@@ -346,6 +354,7 @@ def get_scores_ig(
 
 
 def attribute(
+    config: Config,
     model: HookedTransformer,
     graph: Graph,
     dataloader: DataLoader,
@@ -360,13 +369,19 @@ def attribute(
         )
 
     if integrated_gradients is None:
-        scores = get_scores(model, graph, dataloader, metric, quiet=quiet)
+        scores = get_scores(config, model, graph, dataloader, metric, quiet=quiet)
     else:
         assert (
             integrated_gradients > 0
         ), f"integrated_gradients gives positive # steps (m), but got {integrated_gradients}"
         scores = get_scores_ig(
-            model, graph, dataloader, metric, steps=integrated_gradients, quiet=quiet
+            config,
+            model,
+            graph,
+            dataloader,
+            metric,
+            steps=integrated_gradients,
+            quiet=quiet,
         )
 
         if aggregation == "mean":

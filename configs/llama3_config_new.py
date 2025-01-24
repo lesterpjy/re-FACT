@@ -10,7 +10,7 @@ CONFIG = {
     "metric_name": "logit_diff",
     "batch_size": 4,
     "from_generated_graphs": False,
-    "run": ["baseline", "graph", "evaluate"],
+    "run": ["graph", "evaluate"],  # ["baseline", "graph", "evaluate"],
 }
 
 

@@ -78,6 +78,7 @@ if "graph" in config.run:
     g1 = Graph.from_model(config.model)
     # Attribute using the model, graph, clean / corrupted data (as lists of lists of strs), your metric, and your labels (batched)
     attribute(
+        config,
         config.model,
         g1,
         config.dataloader,
@@ -97,6 +98,7 @@ if "graph" in config.run:
     g2 = Graph.from_model(config.model)
     # Attribute using the model, graph, clean / corrupted data (as lists of lists of strs), your metric, and your labels (batched)
     attribute(
+        config,
         config.model,
         g2,
         config.dataloader,
