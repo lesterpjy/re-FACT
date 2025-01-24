@@ -1,4 +1,3 @@
-from config_utils import load_config
 from typing import Callable, List, Union
 import pandas as pd
 import torch
@@ -7,6 +6,7 @@ from torch.utils.data import DataLoader
 from transformer_lens import HookedTransformer
 from tqdm import tqdm
 from functools import partial
+from .config_utils import load_config
 
 
 def evaluate_baseline(

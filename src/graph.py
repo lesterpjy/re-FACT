@@ -6,6 +6,7 @@ import json
 import numpy as np
 import torch
 import pygraphviz as pgv
+from loguru import logger
 
 EDGE_TYPE_COLORS = {
     "q": "#FF00FF",  # Purple
@@ -27,6 +28,18 @@ def generate_random_color(colorscheme: str) -> str:
         return "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
 
     return rgb2hex(cmapy.color(colorscheme, np.random.randint(0, 256), rgb_order=True))
+
+
+def load_graph_from_json(file_path):
+    try:
+        # Assuming Graph class has a from_dict method
+        return Graph.from_json(file_path)
+    except FileNotFoundError:
+        logger.error(f"Error: File not found at {file_path}")
+        return None
+    except Exception as e:
+        logger.error(f"Error loading graph from JSON: {e}")
+        return None
 
 
 class Node:

@@ -3,7 +3,7 @@ import pandas as pd
 from functools import partial
 import torch
 from torch.utils.data import Dataset, DataLoader
-from config_utils import Config
+from .config import Config
 
 
 def prepare_bias_corrupt(config: Config):
@@ -66,7 +66,7 @@ class EAPDataset(Dataset):
             )
             print(
                 "loaded dataset from",
-                f"data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
+                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
             )
         else:
             self.df = pd.read_csv(config.datapath)

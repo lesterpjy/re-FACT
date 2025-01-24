@@ -9,6 +9,7 @@ CONFIG = {
     "data_split": 0,
     "metric_name": "logit_diff",
     "batch_size": 2,
+    "run": ["baseline", "evaluate"],  # ["baseline", "graph", "evaluate"],
 }
 
 

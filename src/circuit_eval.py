@@ -11,8 +11,8 @@ from torch import Tensor
 from torch.utils.data import DataLoader
 from transformer_lens import HookedTransformer
 
-from config_utils import Config
-from graph import Graph, Node, InputNode, LogitNode, MLPNode, AttentionNode
+from .config_utils import Config
+from .graph import Graph, Node, InputNode, LogitNode, MLPNode, AttentionNode
 
 # os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 

@@ -1,7 +1,6 @@
 import os
 import sys
 import importlib.util
-from typing import Optional, List, Callable
 from dotenv import load_dotenv
 from loguru import logger
 
@@ -11,55 +10,9 @@ from transformers import AutoTokenizer
 from torch.utils.data import DataLoader
 from huggingface_hub import login
 
-from data_utils import EAPDataset, prepare_bias_corrupt
-from utils import get_metric
-
-
-class Config:
-    def __init__(
-        self,
-        model_name: str,
-        random_seed: int,
-        data_dir: str,
-        work_dir: str,
-        debug: bool,
-        labels: List[str],
-        task: str,
-        data_split: int,
-        metric_name: str,
-        batch_size: int,
-        datapath: Optional[str] = None,
-    ):
-        self.model_name: str = model_name
-        self.random_seed: int = random_seed
-        self.data_dir: str = data_dir
-        self.work_dir: str = work_dir
-        self.debug: bool = debug
-        self.labels: List[str] = labels
-        self.task: str = task
-        self.data_split: int = data_split
-        self.metric_name: str = metric_name
-        self.batch_size: int = batch_size
-        self.datapath: Optional[str] = datapath
-
-        self.device: torch.device = torch.device(
-            "cpu"
-        )  # Default to CPU, will be updated in load_device
-        self.model_name_noslash: Optional[str] = None
-        self.model: Optional[HookedTransformer] = None
-        self.tokenizer: Optional[AutoTokenizer] = None
-        self.dataloader: Optional[DataLoader] = None
-        self.task_metric: Optional[Callable] = None
-
-    def configure_logger(self):
-        if self.debug:
-            logger.remove()  # Remove any default handlers
-            logger.add(sys.stderr, level="DEBUG")  # Enable DEBUG level
-        else:
-            logger.remove()  # Remove any default handlers
-            logger.add(
-                sys.stderr, level="INFO"
-            )  # Disable DEBUG, only show INFO and higher
+from .data_utils import EAPDataset, prepare_bias_corrupt
+from .utils import get_metric
+from .config import Config
 
 
 def load_device() -> torch.device:
@@ -104,7 +57,7 @@ def load_dataset(config: Config):
     config.kl_div = get_metric("kl_divergence", config.task, model=config.model)
 
 
-def load_config(config_path: str) -> Config:
+def load_config(config_path: str, process_data: bool = False) -> Config:
     spec = importlib.util.spec_from_file_location("config", config_path)
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
@@ -126,6 +79,7 @@ def load_config(config_path: str) -> Config:
         data_split=config_dict["data_split"],
         metric_name=config_dict["metric_name"],
         batch_size=config_dict["batch_size"],
+        run=config_dict["run"],
         datapath=config_dict.get("dataset_path", None),
     )
 
@@ -136,7 +90,7 @@ def load_config(config_path: str) -> Config:
     load_model(config_obj)
     config_obj.configure_logger()
 
-    if config_obj.task == "bias":
+    if process_data and config_obj.task == "bias":
         prepare_bias_corrupt(config_obj)
     load_dataset(config_obj)
 

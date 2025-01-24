@@ -11,8 +11,8 @@ from torch import Tensor
 from einops import einsum
 from transformer_lens import HookedTransformer
 
-from graph import Graph, AttentionNode, LogitNode, InputNode
-from config_utils import load_config
+from .graph import Graph, AttentionNode, LogitNode, InputNode
+from .config_utils import load_config
 
 allowed_aggregations = {"sum", "mean", "l2"}
 
