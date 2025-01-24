@@ -1,14 +1,18 @@
 import os
 import sys
-import torch
 import importlib.util
-from loguru import logger
-from transformer_lens import HookedTransformer
+from typing import Optional, List, Callable
 from dotenv import load_dotenv
+from loguru import logger
+
+import torch
+from transformer_lens import HookedTransformer
+from transformers import AutoTokenizer
+from torch.utils.data import DataLoader
 from huggingface_hub import login
-from data_utils import EAPDataset
+
+from data_utils import EAPDataset, prepare_bias_corrupt
 from utils import get_metric
-from typing import Optional, List
 
 
 class Config:
@@ -21,8 +25,10 @@ class Config:
         debug: bool,
         labels: List[str],
         task: str,
-        task_metric: str,
+        data_split: int,
+        metric_name: str,
         batch_size: int,
+        datapath: Optional[str] = None,
     ):
         self.model_name: str = model_name
         self.random_seed: int = random_seed
@@ -31,15 +37,19 @@ class Config:
         self.debug: bool = debug
         self.labels: List[str] = labels
         self.task: str = task
-        self.task_metric: str = task_metric
+        self.data_split: int = data_split
+        self.metric_name: str = metric_name
         self.batch_size: int = batch_size
+        self.datapath: Optional[str] = datapath
+
         self.device: torch.device = torch.device(
             "cpu"
         )  # Default to CPU, will be updated in load_device
         self.model_name_noslash: Optional[str] = None
         self.model: Optional[HookedTransformer] = None
-        self.tokenizer: Optional = None
-        self.dataloader: Optional = None
+        self.tokenizer: Optional[AutoTokenizer] = None
+        self.dataloader: Optional[DataLoader] = None
+        self.task_metric: Optional[Callable] = None
 
     def configure_logger(self):
         if self.debug:
@@ -87,10 +97,10 @@ def load_model(config: Config):
 
 
 def load_dataset(config: Config):
-    ds = EAPDataset(config.task, config.model_name)
+    ds = EAPDataset(config)
     config.dataloader = ds.to_dataloader(config.batch_size)
 
-    config.task_metric = get_metric(config.task_metric, config.task, model=config.model)
+    config.task_metric = get_metric(config.metric_name, config.task, model=config.model)
     config.kl_div = get_metric("kl_divergence", config.task, model=config.model)
 
 
@@ -113,8 +123,10 @@ def load_config(config_path: str) -> Config:
         debug=config_dict["debug"],
         labels=config_dict["labels"],
         task=config_dict["task"],
-        task_metric=config_dict["task_metric"],
+        data_split=config_dict["data_split"],
+        metric_name=config_dict["metric_name"],
         batch_size=config_dict["batch_size"],
+        datapath=config_dict.get("dataset_path", None),
     )
 
     # Dynamically load the device
@@ -123,5 +135,9 @@ def load_config(config_path: str) -> Config:
     # Load the model with the updated config object
     load_model(config_obj)
     config_obj.configure_logger()
+
+    if config_obj.task == "bias":
+        prepare_bias_corrupt(config_obj)
+    load_dataset(config_obj)
 
     return config_obj

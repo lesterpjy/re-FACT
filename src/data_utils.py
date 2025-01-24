@@ -3,39 +3,39 @@ import pandas as pd
 from functools import partial
 import torch
 from torch.utils.data import Dataset, DataLoader
+from config_utils import Config
 
 
-def prepare_bias_corrupt(config: dict):
-    dfs = [
-        pd.read_csv(f"{config.data_dir}/final_toxicity_prompts_{i}.csv")
-        for i in range(3)
-    ]
+def prepare_bias_corrupt(config: Config):
+    df = pd.read_csv(
+        f"{config.data_dir}/final_toxicity_prompts_{config.data_split}.csv"
+    )
     true_idx = config.tokenizer(" true").input_ids[1]
     false_idx = config.tokenizer(" false").input_ids[1]
-    for i, df in enumerate(dfs):
-        df["toxic_label"] = df["toxicity"].apply(
-            lambda x: int(x >= 0.5)
-        )  # true label of the prompt, bool 0 or 1
-        df["clean_answer_idx"] = df["toxic_label"].apply(
-            lambda x: true_idx if x == 1 else false_idx
-        )
-        df["corrupted_answer_idx"] = df["toxic_label"].apply(
-            lambda x: false_idx if x == 1 else true_idx
-        )
 
-        eapdf = pd.DataFrame(
-            {
-                "clean": df["prompt_final"],
-                "corrupted": df["corrupted_prompt"],
-                "clean_answer_idx": df["clean_answer_idx"],
-                "corrupted_answer_idx": df["corrupted_answer_idx"],
-                "label": df["toxic_label"],
-            }
-        )
-        eapdf.to_csv(
-            f"{config.data_dir}/circuit_identification_data/corrupt_bias_eap_{i}.csv",
-            index=False,
-        )
+    df["toxic_label"] = df["toxicity"].apply(
+        lambda x: int(x >= 0.5)
+    )  # true label of the prompt, bool 0 or 1
+    df["clean_answer_idx"] = df["toxic_label"].apply(
+        lambda x: true_idx if x == 1 else false_idx
+    )
+    df["corrupted_answer_idx"] = df["toxic_label"].apply(
+        lambda x: false_idx if x == 1 else true_idx
+    )
+
+    eapdf = pd.DataFrame(
+        {
+            "clean": df["prompt_final"],
+            "corrupted": df["corrupted_prompt"],
+            "clean_answer_idx": df["clean_answer_idx"],
+            "corrupted_answer_idx": df["corrupted_answer_idx"],
+            "label": df["toxic_label"],
+        }
+    )
+    eapdf.to_csv(
+        f"{config.data_dir}/circuit_identification_data/corrupt_bias_eap_{config.data_split}.csv",
+        index=False,
+    )
 
 
 def collate_EAP(xs, task):
@@ -59,15 +59,20 @@ def model2family(model_name: str):
 
 
 class EAPDataset(Dataset):
-    def __init__(self, task: str, model_name: str, filename: Optional[str] = None):
-        if filename is None:
-            self.df = pd.read_csv(f"data/{task}/{model2family(model_name)}.csv")
-            print("loaded dataset from", f"data/{task}/{model2family(model_name)}.csv")
+    def __init__(self, config: Config):
+        if config.datapath is None:
+            self.df = pd.read_csv(
+                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
+            )
+            print(
+                "loaded dataset from",
+                f"data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
+            )
         else:
-            self.df = pd.read_csv(f"data/{task}/{filename}")
-            print("loaded dataset from", f"data/{task}/{filename}")
+            self.df = pd.read_csv(config.datapath)
+            print(f"loaded dataset from, {config.datapath}")
 
-        self.task = task
+        self.task = config.task
 
     def __len__(self):
         return len(self.df)
@@ -91,7 +96,7 @@ class EAPDataset(Dataset):
             label = [answer, corrupted_answer]
         elif "fact-retrieval" in self.task:
             label = [row["country_idx"], row["corrupted_country_idx"]]
-        elif "gender" in self.task:
+        elif "bias" in self.task:
             label = [row["clean_answer_idx"], row["corrupted_answer_idx"]]
         elif self.task == "sva":
             label = row["plural"]

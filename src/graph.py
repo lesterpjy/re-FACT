@@ -3,6 +3,8 @@ from typing import List, Dict, Union, Tuple, Literal, Optional, Set
 from transformer_lens import HookedTransformer, HookedTransformerConfig
 import heapq
 import json
+import numpy as np
+import torch
 import pygraphviz as pgv
 
 EDGE_TYPE_COLORS = {

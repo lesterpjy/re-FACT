@@ -3,6 +3,7 @@ from pathlib import Path
 import numpy as np
 import tqdm
 from functools import partial
+from loguru import logger
 
 from src.config_utils import load_config
 from src.circuit_baseline import evaluate_baseline
@@ -12,7 +13,7 @@ from src.graph import Graph, load_graph_from_json
 
 
 config = load_config("configs/llama3_config.py")
-
+logger.info("Config loaded.")
 
 # run baseline
 # =============================================================================
@@ -45,11 +46,11 @@ baseline_df = pd.DataFrame(data)
 
 # Save the DataFrame to a CSV file
 baseline_df.to_csv(f"{config.data_dir}/baseline_values.csv", index=False)
-
+logger.info("Baseline values saved to CSV file.")
 
 # =============================================================================
 # Instantiate a graph with a model
-print("instantiate graph with model (vanilla)")
+logger.info("instantiate graph with model (vanilla)")
 g1 = Graph.from_model(config.model)
 # Attribute using the model, graph, clean / corrupted data (as lists of lists of strs), your metric, and your labels (batched)
 attribute(
@@ -65,10 +66,10 @@ Path(f"{config.work_dir}/graphs/{config.model_name_noslash}").mkdir(
 g1.to_json(
     f"{config.work_dir}/graphs/{config.model_name_noslash}/{config.task}_vanilla.json"
 )
-
+logger.info("Graph 1 saved to JSON file.")
 
 # Instantiate a graph with a model
-print("instantiate graph with model (ig)")
+logger.info("instantiate graph with model (ig)")
 g2 = Graph.from_model(config.model)
 # Attribute using the model, graph, clean / corrupted data (as lists of lists of strs), your metric, and your labels (batched)
 attribute(
@@ -84,7 +85,7 @@ Path(f"{config.work_dir}/graphs/{config.model_name_noslash}").mkdir(
 g2.to_json(
     f"{config.work_dir}/graphs/{config.model_name_noslash}/{config.task}_task.json"
 )
-
+logger.info("Graph 2 saved to JSON file.")
 
 # # =============================================================================
 # # Replace with the actual paths to your JSON files
@@ -104,7 +105,7 @@ g2.to_json(
 #     print("Failed to load one or both graphs.")
 
 
-print("evaluate graph with metrics")
+logger.info("evaluate graph with metrics")
 gs = [g1, g2]
 n_edges = []
 results = []
@@ -116,7 +117,7 @@ later_steps = list(range(s, e, step))
 steps = first_steps + later_steps
 labels = ["EAP", "EAP-IG"]
 
-print("begin evaluation")
+logger.info("begin evaluation")
 with tqdm(total=len(gs) * len(steps)) as pbar:
     for i in steps:
         n_edge = []
@@ -147,7 +148,7 @@ with tqdm(total=len(gs) * len(steps)) as pbar:
         n_edges.append(n_edge)
         results.append(result)
 
-print("done evaluation")
+logger.info("done evaluation")
 n_edges = np.array(n_edges)
 results = np.array(results)
 
@@ -160,7 +161,7 @@ results = np.array(results)
 # print(f"Corrupted Baseline (read from file): {corrupted_baseline}")
 
 
-print("saving to csv")
+logger.info("saving to csv")
 d = {
     "baseline": [baseline] * len(steps),
     "corrupted_baseline": [corrupted_baseline] * len(steps),
