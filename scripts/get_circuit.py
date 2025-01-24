@@ -16,12 +16,22 @@ from src.circuit_eap import attribute
 from src.circuit_eval import evaluate_graph
 from src.graph import Graph, load_graph_from_json
 import glob
+import argparse
 
+parser = argparse.ArgumentParser(description="Get circuit configuration")
+parser.add_argument(
+    "--config_path",
+    type=str,
+    default="../configs/llama3_config.py",
+    help="Path to the configuration file",
+)
+args = parser.parse_args()
+config_path = args.config_path
 
 start = time.time()
 cwd = os.getcwd()
 logger.info(f"Current working directory: {cwd}")
-config = load_config("configs/llama3_config.py", process_data=True)
+config = load_config(config_path, process_data=True)
 logger.info("Config loaded.")
 
 # run baseline
@@ -156,7 +166,9 @@ if "evaluate" in config.run:
         json_files = glob.glob(
             f"{config.work_dir}/graphs/{config.model_name_noslash}/*.json"
         )
-
+    Path(f"{config.work_dir}/results/pareto/{config.model_name_noslash}/csv").mkdir(
+        exist_ok=True, parents=True
+    )
     with tqdm(total=len(gs) * len(steps)) as pbar:
         for i in steps:
             n_edge = []
@@ -194,7 +206,6 @@ if "evaluate" in config.run:
                     partial(config.task_metric, mean=False, loss=False),
                     quiet=False,
                 )
-                del grapviz_graph
                 n_edge.append(n)
                 result.append(r.mean().item())
                 pbar.update(1)

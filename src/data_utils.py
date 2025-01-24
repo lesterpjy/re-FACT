@@ -10,7 +10,7 @@ from .config import Config
 def prepare_bias_corrupt(config: Config):
     logger.info("Process bias corruption dataset...")
     df = pd.read_csv(
-        f"{config.data_dir}/final_toxicity_prompts_{config.data_split}.csv"
+        f"{config.data_dir}/circuit_identification_data/final_toxicity_prompts_{config.data_split}.csv"
     )
     true_idx = config.tokenizer(" true").input_ids[1]
     false_idx = config.tokenizer(" false").input_ids[1]
@@ -38,7 +38,7 @@ def prepare_bias_corrupt(config: Config):
         f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv",
         index=False,
     )
-    logger.info("Bias corruption dataset processed.")
+    logger.info(f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv")
 
 
 def collate_EAP(xs, task):
@@ -65,11 +65,11 @@ class EAPDataset(Dataset):
     def __init__(self, config: Config):
         if config.datapath is None:
             self.df = pd.read_csv(
-                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
+                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv"
             )
             print(
                 "loaded dataset from",
-                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
+                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv",
             )
         else:
             self.df = pd.read_csv(config.datapath)

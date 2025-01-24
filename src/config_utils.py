@@ -30,9 +30,7 @@ def load_device() -> torch.device:
 
 def load_model(config: Config):
     logger.info("Loading model and tokenizer...")
-    load_dotenv()
-    HF_TOKEN = os.getenv("HF_TOKEN")
-    login(token=HF_TOKEN)
+    login(token="")
     model_name = config.model_name  # Access the model_name directly from the config
     model_name_noslash = model_name.split("/")[-1]
     config.model_name_noslash = model_name_noslash
@@ -87,7 +85,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
         datapath=config_dict.get("dataset_path", None),
         from_generated_graphs=config_dict.get("from_generated_graphs", False),
     )
-
+    logger.info(f"loaded task name: {config_obj.task}")
     # Dynamically load the device
     config_obj.device = load_device()
 
@@ -95,7 +93,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
     load_model(config_obj)
     config_obj.configure_logger()
 
-    if process_data and config_obj.task == "bias":
+    if process_data and "bias" in config_obj.task:
         prepare_bias_corrupt(config_obj)
     load_dataset(config_obj)
 

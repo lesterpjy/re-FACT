@@ -5,12 +5,13 @@ CONFIG = {
     "work_dir": "../work",
     "debug": False,
     "labels": ["EAP", "EAP-IG"],
-    "task": "bias",
+    "task": "toxicity",
     "data_split": 0,
     "metric_name": "logit_diff",
     "batch_size": 2,
     "from_generated_graphs": True,
-    "run": ["evaluate"],  # ["baseline", "graph", "evaluate"],
+    "run": ["graph", "evaluate"],  # ["baseline", "graph", "evaluate"],
+    "datapath": "/home/mmazuryk/reFACT/data/circuit_identification_data/toxicity/llama.csv"
 }
 
 
