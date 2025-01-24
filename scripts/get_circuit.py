@@ -4,7 +4,7 @@ import time
 import pandas as pd
 from pathlib import Path
 import numpy as np
-import tqdm
+from tqdm import tqdm
 from functools import partial
 from loguru import logger
 
@@ -15,6 +15,7 @@ from src.circuit_baseline import evaluate_baseline
 from src.circuit_eap import attribute
 from src.circuit_eval import evaluate_graph
 from src.graph import Graph, load_graph_from_json
+import glob
 
 
 start = time.time()
@@ -148,16 +149,30 @@ if "evaluate" in config.run:
     labels = ["EAP", "EAP-IG"]
 
     logger.info("begin evaluation")
+    logger.info(f"steps: {steps}")
+    logger.info(f"labels: {labels}")
+
+    if config.from_generated_graphs:
+        json_files = glob.glob(
+            f"{config.work_dir}/graphs/{config.model_name_noslash}/*.json"
+        )
+
     with tqdm(total=len(gs) * len(steps)) as pbar:
         for i in steps:
             n_edge = []
             result = []
+            stepstr = f"step{i}"
             for graph, label in zip(gs, labels):
-                try:
-                    pruned_graph_path = f"{config.work_dir}/graphs/{config.model_name_noslash}/{config.task}_{label}_step{i}_pruned.json"
-                    graph = load_graph_from_json(pruned_graph_path)
-                    logger.info(f"Loaded pruned graph from {pruned_graph_path}")
-                except:
+                logger.info(f"evaluating graph with {config.task}, {label}, {i}")
+                if config.from_generated_graphs:
+                    logger.info("Using preloaded graphs")
+                    for json_file in json_files:
+                        if stepstr in json_file and label in json_file:
+                            graph = load_graph_from_json(json_file)
+                            logger.info(f"Loaded graph from {json_file}")
+                            break
+                else:
+                    logger.info("Applying greedy algorithm")
                     graph.apply_greedy(i, absolute=True)
                     graph.prune_dead_nodes(prune_childless=True, prune_parentless=True)
                     logger.info(f"Applied greedy algorithm with {i} edges")
@@ -171,6 +186,7 @@ if "evaluate" in config.run:
                     logger.info(f"Saved graph to JSON and DOT files")
 
                 n = graph.count_included_edges()
+                logger.info(f"Graph has {n} edges")
                 r = evaluate_graph(
                     config,
                     graph,

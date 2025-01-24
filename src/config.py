@@ -21,6 +21,7 @@ class Config:
         metric_name: str,
         batch_size: int,
         run: List[str],
+        from_generated_graphs: bool,
         datapath: Optional[str] = None,
     ):
         self.model_name: str = model_name
@@ -35,6 +36,7 @@ class Config:
         self.batch_size: int = batch_size
         self.run: List[str] = run
         self.datapath: Optional[str] = datapath
+        self.from_generated_graphs: bool = from_generated_graphs
 
         self.device: torch.device = torch.device(
             "cpu"

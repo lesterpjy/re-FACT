@@ -85,6 +85,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
         batch_size=config_dict["batch_size"],
         run=config_dict["run"],
         datapath=config_dict.get("dataset_path", None),
+        from_generated_graphs=config_dict.get("from_generated_graphs", False),
     )
 
     # Dynamically load the device
