@@ -34,11 +34,15 @@ def prepare_bias_corrupt(config: Config):
             "label": df["toxic_label"],
         }
     )
+    if config.tiny_sample:
+        eapdf = eapdf.sample(30)
     eapdf.to_csv(
         f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
         index=False,
     )
-    logger.info(f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv")
+    logger.info(
+        f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
+    )
 
 
 def collate_EAP(xs, task):

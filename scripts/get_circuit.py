@@ -5,6 +5,7 @@ import pandas as pd
 from pathlib import Path
 import numpy as np
 from tqdm import tqdm
+import json
 from functools import partial
 from loguru import logger
 
@@ -182,7 +183,11 @@ if "evaluate" in config.run:
                 if config.from_generated_graphs:
                     logger.info("Using preloaded graphs")
                     for json_file in json_files:
-                        if stepstr in json_file and label in json_file:
+                        if (
+                            stepstr in json_file
+                            and label in json_file
+                            and config.task in json_file
+                        ):
                             graph = load_graph_from_json(json_file)
                             n = graph.count_included_edges()
                             logger.info(f"Loaded graph from {json_file}")
@@ -201,6 +206,7 @@ if "evaluate" in config.run:
                     grapviz_graph.write(
                         f"{config.work_dir}/graphs/{config.model_name_noslash}/{config.task}_{label}_step{i}_{n}edges.dot"
                     )
+                    del grapviz_graph
                     logger.info(f"Saved graph to JSON and DOT files")
 
                 r = evaluate_graph(
@@ -222,7 +228,10 @@ if "evaluate" in config.run:
                 "results": results,
             }
 
-            with open(f"{config.work_dir}/results/pareto/{config.model_name_noslash}/temp_{config.task}.json", 'w') as fp:
+            with open(
+                f"{config.work_dir}/results/pareto/{config.model_name_noslash}/temp_{config.task}.json",
+                "w",
+            ) as fp:
                 json.dump(temp_data, fp)
             logger.info(f"Temporary results saved for step {i}")
 

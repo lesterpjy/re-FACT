@@ -84,6 +84,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
         run=config_dict["run"],
         datapath=config_dict.get("dataset_path", None),
         from_generated_graphs=config_dict.get("from_generated_graphs", False),
+        tiny_sample=config_dict.get("tiny_sample", False),
     )
     logger.info(f"loaded task name: {config_obj.task}")
     logger.info(f"loaded path name: {config_obj.datapath}")
