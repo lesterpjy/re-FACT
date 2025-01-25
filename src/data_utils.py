@@ -1,4 +1,5 @@
 from typing import Optional
+from pathlib import Path
 import pandas as pd
 from functools import partial
 import torch
@@ -36,6 +37,9 @@ def prepare_bias_corrupt(config: Config):
     )
     if config.tiny_sample:
         eapdf = eapdf.sample(30)
+    Path(f"{config.data_dir}/circuit_identification_data/{config.task}").mkdir(
+        exist_ok=True, parents=True
+    )    
     eapdf.to_csv(
         f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
         index=False,

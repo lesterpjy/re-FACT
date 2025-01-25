@@ -94,6 +94,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
     # Load the model with the updated config object
     load_model(config_obj)
     config_obj.configure_logger()
+    # '../data/circuit_identification_data/bias_tiny'
 
     if process_data and "bias" in config_obj.task:
         prepare_bias_corrupt(config_obj)
