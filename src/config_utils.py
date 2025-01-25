@@ -59,7 +59,7 @@ def load_dataset(config: Config):
     logger.info("Dataset and metrics loaded.")
 
 
-def load_config(config_path: str, process_data: bool = False) -> Config:
+def load_config(config_path: str) -> Config:
     spec = importlib.util.spec_from_file_location("config", config_path)
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
@@ -83,8 +83,9 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
         batch_size=config_dict["batch_size"],
         run=config_dict["run"],
         datapath=config_dict.get("dataset_path", None),
+        process_data=config_dict.get("process_data", False),
         from_generated_graphs=config_dict.get("from_generated_graphs", False),
-        tiny_sample=config_dict.get("tiny_sample", False),
+        tiny_sample=config_dict.get("tiny_sample", None),
     )
     logger.info(f"loaded task name: {config_obj.task}")
     logger.info(f"loaded path name: {config_obj.datapath}")
@@ -96,7 +97,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
     config_obj.configure_logger()
     # '../data/circuit_identification_data/bias_tiny'
 
-    if process_data and "bias" in config_obj.task:
+    if config_obj.process_data and "bias" in config_obj.task:
         prepare_bias_corrupt(config_obj)
     load_dataset(config_obj)
 

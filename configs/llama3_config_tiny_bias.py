@@ -10,7 +10,8 @@ CONFIG = {
     "metric_name": "logit_diff",
     "batch_size": 2,
     "from_generated_graphs": False,
-    "tiny_sample": True,
+    "process_data": True,
+    "tiny_sample": 30,
     "run": ["baseline", "graph", "evaluate"],
 }
 

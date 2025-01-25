@@ -35,11 +35,9 @@ def prepare_bias_corrupt(config: Config):
             "label": df["toxic_label"],
         }
     )
-    if config.tiny_sample:
-        eapdf = eapdf.sample(30)
     Path(f"{config.data_dir}/circuit_identification_data/{config.task}").mkdir(
         exist_ok=True, parents=True
-    )    
+    )
     eapdf.to_csv(
         f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
         index=False,
@@ -76,10 +74,13 @@ class EAPDataset(Dataset):
             self.df = pd.read_csv(
                 f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
             )
-            print(
+            logger.info(
                 "loaded dataset from",
                 f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
             )
+            if config.tiny_sample:
+                self.df = self.df.sample(config.tiny_sample)
+                logger.info(f"loaded tiny sample of size {config.tiny_sample}")
         else:
             self.df = pd.read_csv(config.datapath)
             print(f"loaded dataset from, {config.datapath}")

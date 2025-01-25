@@ -32,7 +32,7 @@ config_path = args.config_path
 start = time.time()
 cwd = os.getcwd()
 logger.info(f"Current working directory: {cwd}")
-config = load_config(config_path, process_data=True)
+config = load_config(config_path)
 logger.info("Config loaded.")
 
 # run baseline
