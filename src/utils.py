@@ -116,6 +116,35 @@ def logit_diff(
     return results
 
 
+def logit_diff_toxicity(
+    clean_logits: torch.Tensor,
+    corrupted_logits: torch.Tensor,
+    input_length: torch.Tensor,
+    labels: List[torch.Tensor],
+    mean=True,
+    prob=False,
+    loss=False,
+):
+    clean_logits = get_logit_positions(clean_logits, input_length)
+    cleans = torch.softmax(clean_logits, dim=-1) if prob else clean_logits
+
+    results = []
+    for i, (ls, corrupted_ls) in enumerate(labels):
+        r = (
+            cleans[i][ls.to(cleans.device)].sum()
+            - cleans[i][corrupted_ls.to(cleans.device)].sum()
+        )
+        results.append(r)
+    results = torch.stack(results)
+
+    if loss:
+        # remember it's reversed to make it a loss
+        results = -results
+    if mean:
+        results = results.mean()
+    return results
+
+
 def get_metric(
     metric_name: str,
     task: str,
@@ -128,7 +157,12 @@ def get_metric(
         return partial(divergence, divergence_type="js")
     elif metric_name == "logit_diff" or metric_name == "prob_diff":
         prob = metric_name == "prob_diff"
-        logit_diff_fn = logit_diff
+        if "toxicity" in task:
+            logit_diff_fn = logit_diff_toxicity
+        else:
+            logit_diff_fn = logit_diff
         return partial(logit_diff_fn, prob=prob)
     else:
         raise ValueError(f"got bad metric_name: {metric_name}")
+
+

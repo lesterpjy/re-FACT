@@ -35,17 +35,17 @@ def prepare_bias_corrupt(config: Config):
         }
     )
     eapdf.to_csv(
-        f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv",
+        f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
         index=False,
     )
-    logger.info(f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv")
+    logger.info(f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv")
 
 
 def collate_EAP(xs, task):
     clean, corrupted, labels = zip(*xs)
     clean = list(clean)
     corrupted = list(corrupted)
-    if "hypernymy" not in task:
+    if "toxicity" not in task:
         labels = torch.tensor(labels)
     return clean, corrupted, labels
 
@@ -63,13 +63,14 @@ def model2family(model_name: str):
 
 class EAPDataset(Dataset):
     def __init__(self, config: Config):
+        logger.info(f"data path {config.datapath}")
         if config.datapath is None:
             self.df = pd.read_csv(
-                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv"
+                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
             )
             print(
                 "loaded dataset from",
-                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_bias_eap_{config.data_split}.csv",
+                f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
             )
         else:
             self.df = pd.read_csv(config.datapath)
@@ -93,7 +94,7 @@ class EAPDataset(Dataset):
             label = [row["correct_idx"], row["incorrect_idx"]]
         elif "greater-than" in self.task:
             label = row["correct_idx"]
-        elif "hypernymy" in self.task:
+        elif "toxicity" in self.task:
             answer = torch.tensor(eval(row["answers_idx"]))
             corrupted_answer = torch.tensor(eval(row["corrupted_answers_idx"]))
             label = [answer, corrupted_answer]

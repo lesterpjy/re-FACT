@@ -86,6 +86,7 @@ def load_config(config_path: str, process_data: bool = False) -> Config:
         from_generated_graphs=config_dict.get("from_generated_graphs", False),
     )
     logger.info(f"loaded task name: {config_obj.task}")
+    logger.info(f"loaded path name: {config_obj.datapath}")
     # Dynamically load the device
     config_obj.device = load_device()
 

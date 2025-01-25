@@ -171,6 +171,7 @@ if "evaluate" in config.run:
     Path(f"{config.work_dir}/results/pareto/{config.model_name_noslash}/csv").mkdir(
         exist_ok=True, parents=True
     )
+
     with tqdm(total=len(gs) * len(steps)) as pbar:
         for i in steps:
             n_edge = []
@@ -183,6 +184,7 @@ if "evaluate" in config.run:
                     for json_file in json_files:
                         if stepstr in json_file and label in json_file:
                             graph = load_graph_from_json(json_file)
+                            n = graph.count_included_edges()
                             logger.info(f"Loaded graph from {json_file}")
                             break
                 else:
@@ -190,6 +192,8 @@ if "evaluate" in config.run:
                     graph.apply_greedy(i, absolute=True)
                     graph.prune_dead_nodes(prune_childless=True, prune_parentless=True)
                     logger.info(f"Applied greedy algorithm with {i} edges")
+                    n = graph.count_included_edges()
+                    logger.info(f"Graph has {n} edges")
                     graph.to_json(
                         f"{config.work_dir}/graphs/{config.model_name_noslash}/{config.task}_{label}_step{i}_{n}edges.json"
                     )
@@ -199,8 +203,6 @@ if "evaluate" in config.run:
                     )
                     logger.info(f"Saved graph to JSON and DOT files")
 
-                n = graph.count_included_edges()
-                logger.info(f"Graph has {n} edges")
                 r = evaluate_graph(
                     config,
                     graph,
@@ -213,6 +215,16 @@ if "evaluate" in config.run:
                 pbar.update(1)
             n_edges.append(n_edge)
             results.append(result)
+            # Save a temporary copy of n_edges and results
+            temp_data = {
+                "steps": steps,
+                "n_edges": n_edges,
+                "results": results,
+            }
+
+            with open(f"{config.work_dir}/results/pareto/{config.model_name_noslash}/temp_{config.task}.json", 'w') as fp:
+                json.dump(temp_data, fp)
+            logger.info(f"Temporary results saved for step {i}")
 
     logger.info("done evaluation")
     n_edges = np.array(n_edges)

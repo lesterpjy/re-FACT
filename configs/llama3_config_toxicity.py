@@ -9,9 +9,8 @@ CONFIG = {
     "data_split": 0,
     "metric_name": "logit_diff",
     "batch_size": 2,
-    "from_generated_graphs": True,
+    "from_generated_graphs": False,
     "run": ["graph", "evaluate"],  # ["baseline", "graph", "evaluate"],
-    "datapath": "/home/mmazuryk/reFACT/data/circuit_identification_data/toxicity/llama.csv"
 }
 
 
