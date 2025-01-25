@@ -22,6 +22,7 @@ class Config:
         batch_size: int,
         run: List[str],
         from_generated_graphs: bool,
+        tiny_sample: bool,
         datapath: Optional[str] = None,
     ):
         self.model_name: str = model_name
@@ -37,6 +38,7 @@ class Config:
         self.run: List[str] = run
         self.datapath: Optional[str] = datapath
         self.from_generated_graphs: bool = from_generated_graphs
+        self.tiny_sample: bool = tiny_sample
 
         self.device: torch.device = torch.device(
             "cpu"
