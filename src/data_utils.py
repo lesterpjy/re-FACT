@@ -46,6 +46,51 @@ def prepare_bias_corrupt(config: Config):
     )
 
 
+def prepare_toxicity_corrupt(config: Config):
+    logger.info("Process bias corruption dataset...")
+    df = pd.read_csv(
+        f"{config.data_dir}/circuit_identification_data/final_toxicity_prompts_{config.data_split}.csv"
+    )
+
+    df["correct"] = df["toxicity_group"].apply(lambda x: int(x >= 0.5))
+    df["answers"] = df["correct"].apply(lambda x: [" true"] if x == 1 else [" false"])
+    df["answers_idx"] = df["answers"].apply(
+        lambda x: [config.model.to_tokens(i)[0][1].item() for i in x]
+    )
+    df["corrupted_correct"] = df["corrupted_toxicity"].apply(lambda x: int(x >= 0.5))
+    df["corrupted_answers"] = df["corrupted_correct"].apply(
+        lambda x: [" true"] if x == 1 else [" false"]
+    )
+    df["corrupted_answers_idx"] = df["corrupted_answers"].apply(
+        lambda x: [config.model.to_tokens(i)[0][1].item() for i in x]
+    )
+    df = df[
+        [
+            "prompt_final",
+            "correct",
+            "answers",
+            "answers_idx",
+            "corrupted_sentence_prompt",
+            "corrupted_correct",
+            "corrupted_answers",
+            "corrupted_answers_idx",
+        ]
+    ]
+    df = df.rename(
+        {"prompt_final": "clean", "corrupted_sentence_prompt": "corrupted"}, axis=1
+    )
+    Path(f"{config.data_dir}/circuit_identification_data/{config.task}").mkdir(
+        exist_ok=True, parents=True
+    )
+    df.to_csv(
+        f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
+        index=False,
+    )
+    logger.info(
+        f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
+    )
+
+
 def collate_EAP(xs, task):
     clean, corrupted, labels = zip(*xs)
     clean = list(clean)

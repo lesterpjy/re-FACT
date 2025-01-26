@@ -108,6 +108,8 @@ def load_config(config_path: str) -> Config:
 
     if config_obj.process_data and "bias" in config_obj.task:
         prepare_bias_corrupt(config_obj)
+    if config_obj.process_data and "toxicity" in config_obj.task:
+        prepare_toxicity_corrupt(config_obj)
     load_dataset(config_obj)
 
     return config_obj
