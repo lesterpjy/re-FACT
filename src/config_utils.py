@@ -28,9 +28,18 @@ def load_device() -> torch.device:
     return device
 
 
+def load_token():
+    dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
+    load_dotenv(dotenv_path)
+    token = os.getenv("HF_TOKEN")
+    if not token:
+        raise ValueError("HF_TOKEN not found in .env file")
+    return token
+
+
 def load_model(config: Config):
     logger.info("Loading model and tokenizer...")
-    login(token=)
+    login(token=load_token())
     model_name = config.model_name  # Access the model_name directly from the config
     model_name_noslash = model_name.split("/")[-1]
     config.model_name_noslash = model_name_noslash
