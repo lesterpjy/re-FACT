@@ -29,11 +29,15 @@ def evaluate_baseline(
         )
         input_lengths = 1 + tokenized.attention_mask.sum(1)
         with torch.inference_mode():
-            additional = torch.tensor([128001]*len(corrupted)).unsqueeze(1).to(config.device)
-            corrupted_logits = model(torch.cat((model.to_tokens(corrupted),additional), dim=1))
+            additional = (
+                torch.tensor([25] * len(corrupted)).unsqueeze(1).to(config.device)
+            )
+            corrupted_logits = model(
+                torch.cat((model.to_tokens(corrupted), additional), dim=1)
+            )
             # corrupted_logits = model(corrupted)
-            additional = torch.tensor([128001]*len(clean)).unsqueeze(1).to(config.device)
-            logits = model(torch.cat((model.to_tokens(clean),additional), dim=1))
+            additional = torch.tensor([25] * len(clean)).unsqueeze(1).to(config.device)
+            logits = model(torch.cat((model.to_tokens(clean), additional), dim=1))
             # logits = model(clean)
         for i, metric in enumerate(metrics):
             if run_corrupted:

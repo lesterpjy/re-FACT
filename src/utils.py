@@ -164,5 +164,3 @@ def get_metric(
         return partial(logit_diff_fn, prob=prob)
     else:
         raise ValueError(f"got bad metric_name: {metric_name}")
-
-

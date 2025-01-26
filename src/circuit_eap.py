@@ -245,7 +245,7 @@ def get_scores(
             logger.debug(f"DEBUG corrupted sent: {corrupted}")
             logger.debug(f"DEBUG corrupted tokens: {model.to_tokens(corrupted)}")
             additional = (
-                torch.tensor([128001] * len(corrupted)).unsqueeze(1).to(config.device)
+                torch.tensor([25] * len(corrupted)).unsqueeze(1).to(config.device)
             )
 
             corrupted_logits = model(
@@ -258,9 +258,7 @@ def get_scores(
         with model.hooks(fwd_hooks=fwd_hooks_clean, bwd_hooks=bwd_hooks):
             logger.debug(f"DEBUG clean sent: {clean}")
             logger.debug(f"DEBUG clean tokens: {model.to_tokens(clean)}")
-            additional = (
-                torch.tensor([128001] * len(clean)).unsqueeze(1).to(config.device)
-            )
+            additional = torch.tensor([25] * len(clean)).unsqueeze(1).to(config.device)
 
             logits = model(torch.cat((model.to_tokens(clean), additional), dim=1))
             logger.debug(f"DEBUG clean model output shape: {logits.shape}")
@@ -300,9 +298,7 @@ def get_scores_ig(
         with torch.inference_mode():
             with model.hooks(fwd_hooks=fwd_hooks_corrupted):
                 additional = (
-                    torch.tensor([128001] * len(corrupted))
-                    .unsqueeze(1)
-                    .to(config.device)
+                    torch.tensor([25] * len(corrupted)).unsqueeze(1).to(config.device)
                 )
                 _ = model(torch.cat((model.to_tokens(corrupted), additional), dim=1))
 
@@ -312,7 +308,7 @@ def get_scores_ig(
 
             with model.hooks(fwd_hooks=fwd_hooks_clean):
                 additional = (
-                    torch.tensor([128001] * len(clean)).unsqueeze(1).to(config.device)
+                    torch.tensor([25] * len(clean)).unsqueeze(1).to(config.device)
                 )
 
                 clean_logits = model(

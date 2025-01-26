@@ -11,7 +11,7 @@ CONFIG = {
     "batch_size": 2,
     "from_generated_graphs": False,
     "process_data": True,
-    "tiny_sample": 30,
+    "tiny_sample": 100,
     "run": ["baseline", "graph", "evaluate"],
 }
 

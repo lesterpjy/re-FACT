@@ -25,7 +25,9 @@ def prepare_bias_corrupt(config: Config):
     df["corrupted_answer_idx"] = df["toxic_label"].apply(
         lambda x: false_idx if x == 1 else true_idx
     )
-
+    # testing with removing last character
+    df["prompt_final"] = df["prompt_final"].str[:-1]
+    df["corrupted_prompt"] = df["corrupted_prompt"].str[:-1]
     eapdf = pd.DataFrame(
         {
             "clean": df["prompt_final"],
