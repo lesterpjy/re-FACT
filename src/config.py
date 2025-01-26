@@ -22,8 +22,9 @@ class Config:
         batch_size: int,
         run: List[str],
         from_generated_graphs: bool,
-        tiny_sample: bool,
+        tiny_sample: Optional[int] = None,
         datapath: Optional[str] = None,
+        process_data: Optional[bool] = False,
     ):
         self.model_name: str = model_name
         self.random_seed: int = random_seed
@@ -37,8 +38,9 @@ class Config:
         self.batch_size: int = batch_size
         self.run: List[str] = run
         self.datapath: Optional[str] = datapath
+        self.process_data: Optional[bool] = process_data
         self.from_generated_graphs: bool = from_generated_graphs
-        self.tiny_sample: bool = tiny_sample
+        self.tiny_sample: Optional[int] = tiny_sample
 
         self.device: torch.device = torch.device(
             "cpu"

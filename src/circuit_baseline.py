@@ -7,9 +7,11 @@ from transformer_lens import HookedTransformer
 from tqdm import tqdm
 from functools import partial
 from .config_utils import load_config
+from .config import Config
 
 
 def evaluate_baseline(
+    config: Config,
     model: HookedTransformer,
     dataloader: DataLoader,
     metrics: List[Callable[[Tensor], Tensor]],
@@ -27,8 +29,12 @@ def evaluate_baseline(
         )
         input_lengths = 1 + tokenized.attention_mask.sum(1)
         with torch.inference_mode():
-            corrupted_logits = model(corrupted)
-            logits = model(clean)
+            additional = torch.tensor([128001]*len(corrupted)).unsqueeze(1).to(config.device)
+            corrupted_logits = model(torch.cat((model.to_tokens(corrupted),additional), dim=1))
+            # corrupted_logits = model(corrupted)
+            additional = torch.tensor([128001]*len(clean)).unsqueeze(1).to(config.device)
+            logits = model(torch.cat((model.to_tokens(clean),additional), dim=1))
+            # logits = model(clean)
         for i, metric in enumerate(metrics):
             if run_corrupted:
                 r = metric(corrupted_logits, logits, input_lengths, label).cpu()
