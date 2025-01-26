@@ -5,6 +5,7 @@ from tqdm import tqdm
 from functools import partial
 import pandas as pd
 from typing import Callable, List
+from loguru import logger
 
 import torch
 from torch import Tensor
@@ -99,9 +100,7 @@ def evaluate_graph(
         with torch.inference_mode():
             with model.hooks(corrupted_fwd_hooks):
                 additional = (
-                    torch.tensor([25] * len(corrupted))
-                    .unsqueeze(1)
-                    .to(config.device)
+                    torch.tensor([25] * len(corrupted)).unsqueeze(1).to(config.device)
                 )
                 corrupted_logits = model(
                     torch.cat((model.to_tokens(corrupted), additional), dim=1)
@@ -122,14 +121,12 @@ def evaluate_graph(
                     )
                 else:
                     additional = (
-                        torch.tensor([25] * len(clean))
-                        .unsqueeze(1)
-                        .to(config.device)
+                        torch.tensor([25] * len(clean)).unsqueeze(1).to(config.device)
                     )
                     logits = model(
                         torch.cat((model.to_tokens(clean), additional), dim=1)
                     )
-                    print("DEBUG model output shape:", logits.shape)
+                    logger.debug("DEBUG model output shape:", logits.shape)
 
         for i, metric in enumerate(metrics):
             r = metric(logits, corrupted_logits, input_lengths, label).cpu()
