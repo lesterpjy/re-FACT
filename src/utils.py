@@ -100,7 +100,7 @@ def logit_diff(
         f"good_bad[:, 1].shape: {good_bad[:, 1].shape}, values: {good_bad[:, 1]}"
     )
 
-    results = good_bad[:, 0] - good_bad[:, 1]
+    results = abs(good_bad[:, 0] - good_bad[:, 1])
     logger.debug(f"results.shape: {results.shape}, values: {results}")
 
     if loss:

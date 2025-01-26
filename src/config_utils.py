@@ -39,7 +39,7 @@ def load_token():
 
 def load_model(config: Config):
     logger.info("Loading model and tokenizer...")
-    login(token=load_token())
+    login(token="")
     model_name = config.model_name  # Access the model_name directly from the config
     model_name_noslash = model_name.split("/")[-1]
     config.model_name_noslash = model_name_noslash

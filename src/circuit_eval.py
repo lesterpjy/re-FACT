@@ -99,7 +99,7 @@ def evaluate_graph(
         with torch.inference_mode():
             with model.hooks(corrupted_fwd_hooks):
                 additional = (
-                    torch.tensor([128001] * len(corrupted))
+                    torch.tensor([25] * len(corrupted))
                     .unsqueeze(1)
                     .to(config.device)
                 )
@@ -113,7 +113,7 @@ def evaluate_graph(
                     # if the circuit is totally empty, so is nodes_in_graph
                     # so we just corrupt everything manually like this
                     additional = (
-                        torch.tensor([128001] * len(corrupted))
+                        torch.tensor([25] * len(corrupted))
                         .unsqueeze(1)
                         .to(config.device)
                     )
@@ -122,7 +122,7 @@ def evaluate_graph(
                     )
                 else:
                     additional = (
-                        torch.tensor([128001] * len(clean))
+                        torch.tensor([25] * len(clean))
                         .unsqueeze(1)
                         .to(config.device)
                     )

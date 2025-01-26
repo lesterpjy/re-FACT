@@ -4,10 +4,10 @@
 #SBATCH --gres=gpu:1                  # Number of GPUs to allocate
 #SBATCH --cpus-per-task=9            # Number of CPU cores per task
 #SBATCH --gpus=1                      # This line is sometimes optional/redundant depending on your system
-#SBATCH --job-name=get_circuit       # Job name (customize)
+#SBATCH --job-name=bias_get_circuit       # Job name (customize)
 #SBATCH --ntasks=1                    # Number of tasks
 #SBATCH --time=10:00:00               # Time limit hh:mm:ss
-#SBATCH --output=work/new_get_circuit_%A.out      # Standard output (%A expands to job ID)
+#SBATCH --output=work/new_bias_get_circuit_%A.out      # Standard output (%A expands to job ID)
 
 ### --- MODULE SETUP / ENVIRONMENT ---
 module purge

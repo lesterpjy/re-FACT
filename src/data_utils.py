@@ -25,9 +25,6 @@ def prepare_bias_corrupt(config: Config):
     df["corrupted_answer_idx"] = df["toxic_label"].apply(
         lambda x: false_idx if x == 1 else true_idx
     )
-    # testing with removing last character
-    df["prompt_final"] = df["prompt_final"].str[:-1]
-    df["corrupted_prompt"] = df["corrupted_prompt"].str[:-1]
     eapdf = pd.DataFrame(
         {
             "clean": df["prompt_final"],
@@ -80,6 +77,9 @@ class EAPDataset(Dataset):
                 "loaded dataset from",
                 f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
             )
+            # testing with removing last character
+            self.df["clean"] = self.df["clean"].str[:-1]
+            self.df["corrupted"] = self.df["corrupted"].str[:-1]
             if config.tiny_sample:
                 self.df = self.df.sample(config.tiny_sample)
                 logger.info(f"loaded tiny sample of size {config.tiny_sample}")

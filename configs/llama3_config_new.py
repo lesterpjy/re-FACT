@@ -8,11 +8,10 @@ CONFIG = {
     "task": "bias_new",
     "data_split": 0,
     "metric_name": "logit_diff",
-    "batch_size": 2,
+    "batch_size": 4,
     "from_generated_graphs": False,
     "process_data": True,
-    "tiny_sample": False,
-    "run": ["evaluate"],  # ["baseline", "graph", "evaluate"],
+    "run": ["baseline", "graph", "evaluate"],
 }
 
 
