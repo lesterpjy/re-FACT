@@ -61,6 +61,7 @@ def logit_diff(
     prob=False,
     loss=False,
 ):
+    logger.debug("DEBUG logit_diff:")
     logger.debug(f"clean_logits.shape: {clean_logits.shape}")
     logger.debug(f"corrupted_logits.shape: {corrupted_logits.shape}")
     logger.debug(f"input_length.shape: {input_length.shape}, values: {input_length}")
@@ -100,7 +101,7 @@ def logit_diff(
         f"good_bad[:, 1].shape: {good_bad[:, 1].shape}, values: {good_bad[:, 1]}"
     )
 
-    results = abs(good_bad[:, 0] - good_bad[:, 1])
+    results = good_bad[:, 0] - good_bad[:, 1]
     logger.debug(f"results.shape: {results.shape}, values: {results}")
 
     if loss:

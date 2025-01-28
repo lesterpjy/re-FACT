@@ -1,6 +1,7 @@
 from typing import Callable, List, Union
 import pandas as pd
 import torch
+from loguru import logger
 from torch import Tensor
 from torch.utils.data import DataLoader
 from transformer_lens import HookedTransformer
@@ -23,7 +24,12 @@ def evaluate_baseline(
         metrics_list = False
 
     results = [[] for _ in metrics]
+
     for clean, corrupted, label in tqdm(dataloader):
+        logger.debug(f"Evaluting baseline with run corrupted={run_corrupted}")
+        logger.debug(f"clean: {clean}")
+        logger.debug(f"corrupted: {corrupted}")
+        logger.debug(f"label: {label}")
         tokenized = model.tokenizer(
             clean, padding="longest", return_tensors="pt", add_special_tokens=False
         )
@@ -35,10 +41,10 @@ def evaluate_baseline(
             corrupted_logits = model(
                 torch.cat((model.to_tokens(corrupted), additional), dim=1)
             )
-            # corrupted_logits = model(corrupted)
+            logger.debug(f"corrupted_logits: {corrupted_logits}")
             additional = torch.tensor([25] * len(clean)).unsqueeze(1).to(config.device)
             logits = model(torch.cat((model.to_tokens(clean), additional), dim=1))
-            # logits = model(clean)
+            logger.debug(f"logits: {logits}")
         for i, metric in enumerate(metrics):
             if run_corrupted:
                 r = metric(corrupted_logits, logits, input_lengths, label).cpu()
