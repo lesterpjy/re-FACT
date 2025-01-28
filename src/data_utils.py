@@ -127,11 +127,14 @@ class EAPDataset(Dataset):
             self.df["corrupted"] = self.df["corrupted"].str[:-1]
             if config.tiny_sample:
                 self.df = self.df.sample(config.tiny_sample)
+                self.df.to_csv(f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}_{config.tiny_sample}samples.csv")
+                logger.info(f"saved sampled dataset to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}_{config.tiny_sample}samples.csv")
                 logger.info(f"loaded tiny sample of size {config.tiny_sample}")
         else:
             self.df = pd.read_csv(config.datapath)
             print(f"loaded dataset from, {config.datapath}")
 
+        logger.info(f"Dataset size: {len(self.df)}")
         self.task = config.task
 
     def __len__(self):

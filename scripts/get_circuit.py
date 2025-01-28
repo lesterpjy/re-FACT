@@ -155,12 +155,12 @@ if "evaluate" in config.run:
     gs = [g1, g2]
     n_edges = []
     results = []
-    s = 100
-    e = 1001
-    step = 100
-    first_steps = list(range(30, 100, 10))
+    s = 1000
+    e = 8001
+    step = 1000
+    first_steps = list(range(1000, 1000, 100))
     later_steps = list(range(s, e, step))
-    steps = first_steps + later_steps
+    steps = later_steps
     labels = ["EAP", "EAP-IG"]
 
     logger.info("begin evaluation")

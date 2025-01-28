@@ -10,7 +10,7 @@ from transformers import AutoTokenizer
 from torch.utils.data import DataLoader
 from huggingface_hub import login
 
-from .data_utils import EAPDataset, prepare_bias_corrupt
+from .data_utils import EAPDataset, prepare_bias_corrupt, prepare_toxicity_corrupt
 from .utils import get_metric
 from .config import Config
 
