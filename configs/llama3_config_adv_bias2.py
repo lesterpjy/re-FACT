@@ -5,13 +5,12 @@ CONFIG = {
     "work_dir": "../work",
     "debug": False,
     "labels": ["EAP", "EAP-IG"],
-    "task": "toxicity_tiny",
+    "task": "adv_bias2",
     "data_split": 0,
     "metric_name": "logit_diff",
     "batch_size": 2,
     "from_generated_graphs": False,
     "process_data": False,
-    "tiny_sample": 300,
     "run": ["baseline", "graph", "evaluate"],
 }
 
