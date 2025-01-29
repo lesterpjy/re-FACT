@@ -10,7 +10,12 @@ from transformers import AutoTokenizer
 from torch.utils.data import DataLoader
 from huggingface_hub import login
 
-from .data_utils import EAPDataset, prepare_bias_corrupt, prepare_toxicity_corrupt
+from .data_utils import (
+    EAPDataset,
+    prepare_bias_corrupt,
+    prepare_toxicity_corrupt,
+    prepare_ablate,
+)
 from .utils import get_metric
 from .config import Config
 
@@ -111,9 +116,9 @@ def load_config(config_path: str) -> Config:
         and "ablate" in config_obj.task
     ):
         prepare_ablate(config_obj)
-    if config_obj.process_data and "bias" in config_obj.task:
+    elif config_obj.process_data and "bias" in config_obj.task:
         prepare_bias_corrupt(config_obj)
-    if config_obj.process_data and "toxicity" in config_obj.task:
+    elif config_obj.process_data and "toxicity" in config_obj.task:
         prepare_toxicity_corrupt(config_obj)
 
     load_dataset(config_obj)

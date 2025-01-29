@@ -14,7 +14,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.config_utils import load_config
 from src.circuit_baseline import evaluate_baseline
 from src.circuit_eap import attribute
-from src.circuit_eval import evaluate_graph
+from src.circuit_eval import evaluate_graph, evaluate_save_diff
 from src.graph import Graph, load_graph_from_json
 import glob
 import argparse
@@ -157,7 +157,7 @@ if "evaluate" in config.run:
     results = []
     s = 1000
     e = 10001
-    step = 1000 
+    step = 1000
     first_steps = list(range(500, 1000, 250))
     later_steps = list(range(s, e, step))
     steps = later_steps
@@ -271,6 +271,7 @@ if "evaluate_ablation":
         # work/ablated_bias_EAP-IG_step3000_2357edges.json
         file_path_g1 = f"{config.work_dir}/graphs/{config.model_name_noslash}/ablated_bias_EAP-IG_step3000_2357edges.json"
         ablated_g = load_graph_from_json(file_path_g1)
+        logger.info(f"Loaded ablated graph from {file_path_g1}")
     except FileNotFoundError:
         logger.error(
             f"Error: Graphs not found in {config.work_dir}/graphs/{config.model_name_noslash}"
