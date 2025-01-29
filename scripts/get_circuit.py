@@ -264,3 +264,26 @@ if "evaluate" in config.run:
 end = time.time()
 logger.info(f"Time taken: {end - start} seconds")
 logger.info("done")
+
+if "evaluate_ablation":
+    logger.info("Evaluating ablated graph")
+    try:
+        # work/ablated_bias_EAP-IG_step3000_2357edges.json
+        file_path_g1 = f"{config.work_dir}/graphs/{config.model_name_noslash}/ablated_bias_EAP-IG_step3000_2357edges.json"
+        ablated_g = load_graph_from_json(file_path_g1)
+    except FileNotFoundError:
+        logger.error(
+            f"Error: Graphs not found in {config.work_dir}/graphs/{config.model_name_noslash}"
+        )
+        raise
+    except Exception as e:
+        logger.error(f"Error: {e}")
+        raise
+    logger.info("Ablated graph loaded successfully.")
+    r = evaluate_save_diff(
+        config,
+        graph,
+        config.dataloader,
+        partial(config.task_metric, mean=False, loss=False),
+        quiet=False,
+    )

@@ -46,6 +46,41 @@ def prepare_bias_corrupt(config: Config):
     )
 
 
+def prepare_ablate(config: Config):
+    logger.info("Process bias corruption dataset...")
+    df = pd.read_csv(
+        f"{config.data_dir}/circuit_identification_data/final_toxicity_prompts_{config.data_split}.csv"
+    )
+    true_idx = config.tokenizer(" true").input_ids[1]
+    false_idx = config.tokenizer(" false").input_ids[1]
+
+    df["toxic_label"] = df["toxicity"].apply(
+        lambda x: int(x >= 0.5)
+    )  # true label of the prompt, bool 0 or 1
+    df["clean_answer_idx"] = df["toxic_label"].apply(lambda x: true_idx)
+    df["corrupted_answer_idx"] = df["toxic_label"].apply(lambda x: false_idx)
+    eapdf = pd.DataFrame(
+        {
+            "clean": df["prompt_final"],
+            "corrupted": df["corrupted_prompt"],
+            "clean_answer_idx": df["clean_answer_idx"],
+            "corrupted_answer_idx": df["corrupted_answer_idx"],
+            "label": df["toxic_label"],
+        }
+    )
+
+    Path(f"{config.data_dir}/circuit_identification_data/{config.task}").mkdir(
+        exist_ok=True, parents=True
+    )
+    eapdf.to_csv(
+        f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv",
+        index=False,
+    )
+    logger.info(
+        f"Bias corruption dataset save to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}.csv"
+    )
+
+
 def prepare_toxicity_corrupt(config: Config):
     logger.info("Process bias corruption dataset...")
     df = pd.read_csv(
@@ -127,8 +162,12 @@ class EAPDataset(Dataset):
             self.df["corrupted"] = self.df["corrupted"].str[:-1]
             if config.tiny_sample:
                 self.df = self.df.sample(config.tiny_sample)
-                self.df.to_csv(f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}_{config.tiny_sample}samples.csv")
-                logger.info(f"saved sampled dataset to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}_{config.tiny_sample}samples.csv")
+                self.df.to_csv(
+                    f"{config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}_{config.tiny_sample}samples.csv"
+                )
+                logger.info(
+                    f"saved sampled dataset to {config.data_dir}/circuit_identification_data/{config.task}/corrupt_{config.task}_eap_{config.data_split}_{config.tiny_sample}samples.csv"
+                )
                 logger.info(f"loaded tiny sample of size {config.tiny_sample}")
         else:
             self.df = pd.read_csv(config.datapath)
