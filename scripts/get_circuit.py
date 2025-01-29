@@ -156,9 +156,9 @@ if "evaluate" in config.run:
     n_edges = []
     results = []
     s = 1000
-    e = 8001
-    step = 1000
-    first_steps = list(range(1000, 1000, 100))
+    e = 10001
+    step = 1000 
+    first_steps = list(range(500, 1000, 250))
     later_steps = list(range(s, e, step))
     steps = later_steps
     labels = ["EAP", "EAP-IG"]

@@ -4,10 +4,10 @@
 #SBATCH --gres=gpu:1                  # Number of GPUs to allocate
 #SBATCH --cpus-per-task=9            # Number of CPU cores per task
 #SBATCH --gpus=1                      # This line is sometimes optional/redundant depending on your system
-#SBATCH --job-name=toxicity_get_circuit       # Job name (customize)
+#SBATCH --job-name=adv_bias       # Job name (customize)
 #SBATCH --ntasks=1                    # Number of tasks
 #SBATCH --time=20:00:00               # Time limit hh:mm:ss
-#SBATCH --output=work/tiny_toxicity_get_circuit_%A.out      # Standard output (%A expands to job ID)
+#SBATCH --output=work/adv_bias_%A.out      # Standard output (%A expands to job ID)
 
 ### --- MODULE SETUP / ENVIRONMENT ---
 module purge
@@ -31,5 +31,5 @@ apptainer run --nv \
   -B $(pwd)/scripts:/local/scripts \
   -B $(pwd)/configs:/local/configs \
   ./refact-multiarch-latest.sif \
-  python /local/scripts/get_circuit.py --config_path ../configs/llama3_config_tiny_toxicity.py
+  python /local/scripts/get_circuit.py --config_path ../configs/llama3_config_adv_bias2.py
 

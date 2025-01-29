@@ -3,7 +3,7 @@ CONFIG = {
     "random_seed": 42,
     "data_dir": "../data",
     "work_dir": "../work",
-    "debug": False,
+    "debug": True,
     "labels": ["EAP", "EAP-IG"],
     "task": "adv_bias",
     "data_split": 0,
