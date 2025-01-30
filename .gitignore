@@ -1,3 +1,11 @@
+
+#specific folder
+experiments/bias_abl
+experiments/data
+experiments/outputs
+experiments/outputs_vul
+experiments/saved
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

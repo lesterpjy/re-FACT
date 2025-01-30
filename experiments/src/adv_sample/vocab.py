@@ -7,6 +7,7 @@ so our vocabulary can contain words and phrases of different lengths.
 import torch
 from sentence_transformers.util import normalize_embeddings
 import logging
+
 logger = logging.getLogger(__name__)
 
 class FlexibleVocab:

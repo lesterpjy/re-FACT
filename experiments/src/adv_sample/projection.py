@@ -6,6 +6,7 @@ import torch
 import logging
 from src.adv_sample.vocab import FlexibleVocab
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -14,7 +15,8 @@ def project_embeddings(sample_embeddings: torch.tensor,
                        sample_tokens: torch.tensor, 
                        vocab: FlexibleVocab, 
                        mask: torch.tensor,
-                       compare_function: function) -> torch.tensor:
+                       #compare_function: str
+                      ) -> torch.tensor:
     """
     Given a batch of sample adversarial embeddings, project
     them into their closest token in the embedding space.
@@ -39,8 +41,9 @@ def project_embeddings(sample_embeddings: torch.tensor,
 
     # Iterate over the unique token length of words/phrases we want to switch in the mask
     # excluding 0 - tokens that are not to be switched
-    for i in torch.unique(mask).tolist().remove(0):
-
+    for i in torch.unique(mask).tolist():
+        if i==0:
+            continue
         logger.debug(f"project_embeddings: i: {i}")
         # Get the indices where mask == i
         indices = mask == i
@@ -53,7 +56,7 @@ def project_embeddings(sample_embeddings: torch.tensor,
         selected_embeddings = batch_emb[expanded_indices].view(-1, i, batch_emb.size(-1))
 
         # Apply the perturbation function
-        results, token_list = compare_function(input_embeddings=selected_embeddings)
+        results, token_list = vocab.compare_strict_batch(input_embeddings=selected_embeddings)
 
         idx_closest = results.argmax(dim=-1)
 
@@ -69,6 +72,7 @@ def project_embeddings(sample_embeddings: torch.tensor,
 
         # Update the embeddings in batch_emb
         logger.debug(f"project_embeddings: batch_emb[expanded_indices] shape: {batch_emb[expanded_indices].shape}")
+        
         batch_emb[expanded_indices] = embedding_closest
         batch_tokens[indices] = token_closest.to('cuda')
 

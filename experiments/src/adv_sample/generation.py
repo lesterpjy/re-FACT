@@ -21,12 +21,13 @@ def generate_adversarial_samples(model: torch.nn.Module, #TODO: change typing it
                                 sample_embeddings: torch.tensor, 
                                 vocab: FlexibleVocab, 
                                 mask: torch.tensor,
-                                compare_function: function,
+                                #compare_function: str,
                                 needed_tokens: list,
                                 iterations: int = 10,
                                 lr: float = 1e-1, 
                                 weight_decay: float = 1e-1, 
-                                margin: int = 4):
+                                margin: int = 4,
+                                thresh: float = 0.0):
     """
     Generate adversarial samples for a given model, samples and vocabulary.
 
@@ -38,7 +39,7 @@ def generate_adversarial_samples(model: torch.nn.Module, #TODO: change typing it
     - `vocab`: The vocabulary to use for the adversarial samples.
     - `mask`: Tensor of shape (batch_size, seq_length) containing the mask, it can have values from 0 to n depending on the number of tokens specific phrase will be switched to.
     - `needed_tokens`: The tokens needed to compute the adversarial margin loss, in our example tokens for 'true' and 'false'.
-    - `compare_function`: The function to use to compare the embeddings.
+    # `compare_function`: The function to use to compare the embeddings.
     - `iterations`: The number of iterations to run the optimization.
     - `lr`: The learning rate to use for the optimization.
     - `weight_decay`: The weight decay to use for the optimization.
@@ -64,7 +65,9 @@ def generate_adversarial_samples(model: torch.nn.Module, #TODO: change typing it
     # we also collect the original sample associated to each adversarial sample
     original_samples = []
     losses = []
-
+    losses_2 = []
+    gradients = []
+    
     projected_tokens, projected_embeddings = sample_tokens.clone().detach(), sample_embeddings.clone().detach()
 
     # OPTIMIZE
@@ -82,6 +85,8 @@ def generate_adversarial_samples(model: torch.nn.Module, #TODO: change typing it
             embeddings_with_pos = tmp_embeddings
 
         output_logits = model.forward(embeddings_with_pos, start_at_layer=0)
+        #output_logits = model.forward(projected_tokens)
+
 
         loss = loss_fn(logits_all = output_logits, 
                        tokens_all = projected_tokens, 
@@ -89,41 +94,56 @@ def generate_adversarial_samples(model: torch.nn.Module, #TODO: change typing it
                        needed_tokens = needed_tokens,
                        average = True)
  
-        logger.info(f"generate_adversarial_samples: loss: {loss.item()}")
+        #logger.info(f"generate_adversarial_samples: loss: {loss.item()}")
 
         sample_embeddings.grad, = torch.autograd.grad(loss, [tmp_embeddings])
         # set the gradient of elements outside the mask to zero
+        
+        gradients.append(sample_embeddings.grad)
+        
         sample_embeddings.grad = torch.where(mask_0_1[ ..., None], sample_embeddings.grad, 0.)
         input_optimizer.step()
         input_optimizer.zero_grad()
 
         losses.append(loss.item())
 
-    with torch.no_grad():
-        # Project the embeddings
-        projected_tokens, projected_embeddings = project_embeddings(sample_embeddings = sample_embeddings,
-                                                                    sample_tokens = sample_tokens,
-                                                                    vocab = vocab,
-                                                                    mask = mask,
-                                                                    compare_function = compare_function)
+        with torch.no_grad():
+            # Project the embeddings
+            _, projected_tokens = project_embeddings(sample_embeddings = sample_embeddings,
+                                                                        sample_tokens = sample_tokens,
+                                                                        vocab = vocab,
+                                                                        mask = mask,
+                                                                        #compare_function = compare_function
+                                                                       )
+            
+            projected_embeddings = vocab.embedding_matrix[projected_tokens]
+
+            logger.debug(f"generate_adversarial_samples: projected_embeddings.shape: {projected_embeddings.shape}")
+            logger.debug(f"generate_adversarial_samples: projected_tokens.shape: {projected_tokens.shape}")
+            logger.debug(f"generate_adversarial_samples: projected_tokens: {projected_tokens}")
+
+            # check if there are adversarial samples
+            # Take the logits of the subspace
+            if hasattr(model, 'pos_embed'):
+                # GPT-2 style positional embeddings
+                embeddings_2_with_pos = projected_embeddings + model.pos_embed(projected_tokens)
+            else:
+                # LLaMA-2 style: RoPE is applied internally
+                embeddings_2_with_pos = projected_embeddings
 
         
-        logger.debug(f"generate_adversarial_samples: projected_embeddings.shape: {projected_embeddings.shape}")
-        logger.debug(f"generate_adversarial_samples: projected_tokens.shape: {projected_tokens.shape}")
-        logger.debug(f"generate_adversarial_samples: projected_tokens: {projected_tokens}")
+            
+            output_logits_2 = model.forward(embeddings_2_with_pos.float(), start_at_layer=0)
 
-        # check if there are adversarial samples
-        # Take the logits of the subspace
-        output_logits = model.forward(projected_embeddings + model.pos_embed(projected_tokens), start_at_layer=0)
+            loss_i = loss_fn(logits_all = output_logits_2, 
+                                tokens_all = projected_tokens, 
+                                y = y_sample,
+                                needed_tokens = needed_tokens,
+                                average = False)
 
-        loss_i = loss_fn(logits_all = output_logits, 
-                            tokens_all = projected_tokens, 
-                            y = y_sample,
-                            needed_tokens = needed_tokens,
-                            average = False)
-        
-        adv_samples.append(projected_tokens[loss_i < margin]) # a loss lower than margin implies that the sample is incorrectly classified
-        original_samples.append(sample_tokens[loss_i < margin])
+            adv_samples.append(projected_tokens[loss_i < margin+thresh]) # a loss lower than margin implies that the sample is incorrectly classified (logits difference is equal 0); if our threshold for classifing a sample based on logit difference is different than 0 it should be switched  
+            original_samples.append(sample_tokens[loss_i < margin+thresh])
+            losses_2.append(loss_i[loss_i < margin+thresh])
 
-    return adv_samples, original_samples, losses
+    return adv_samples, original_samples, losses, losses_2, gradients
 
