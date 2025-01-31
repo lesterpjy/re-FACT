@@ -1,6 +1,9 @@
 # Interpreting Model Vulnerabilities Through Circuits: A Reproducibility Study in Fairness 
 based on ["Detecting and ​Understanding Vulnerabilities​ in Language Models via MI"](https://arxiv.org/pdf/2407.19842)
 
+## Results
+
+Part of the results because of the memory restrictions should be downloaded from: https://drive.google.com/drive/folders/1XNXY37UL8ru8oqiF293XJ9L8vMSZhc-B?usp=sharing and uploaded with their original structure inside folder work/
 
 ## Notebooks Locations and Usage
 
