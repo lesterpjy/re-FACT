@@ -199,6 +199,7 @@ class EAPDataset(Dataset):
         elif "fact-retrieval" in self.task:
             label = [row["country_idx"], row["corrupted_country_idx"]]
         elif "bias" in self.task:
+            logger.info(f"task: {self.task}")
             label = [row["clean_answer_idx"], row["corrupted_answer_idx"]]
         elif self.task == "sva":
             label = row["plural"]

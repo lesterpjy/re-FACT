@@ -5,7 +5,7 @@ CONFIG = {
     "work_dir": "../work",
     "debug": False,
     "labels": ["EAP", "EAP-IG"],
-    "task": "full_adv_bias",
+    "task": "adv_bias2",
     "data_split": 0,
     "metric_name": "logit_diff",
     "batch_size": 2,

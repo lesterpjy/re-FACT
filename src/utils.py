@@ -93,14 +93,13 @@ def logit_diff(
         )
         raise
 
-    logger.debug(f"good_bad.shape: {good_bad.shape}, values: {good_bad}")
-    logger.debug(
+    logger.info(f"good_bad.shape: {good_bad.shape}, values: {good_bad}")
+    logger.info(
         f"good_bad[:, 0].shape: {good_bad[:, 0].shape}, values: {good_bad[:, 0]}"
     )
-    logger.debug(
+    logger.info(
         f"good_bad[:, 1].shape: {good_bad[:, 1].shape}, values: {good_bad[:, 1]}"
     )
-
     results = good_bad[:, 0] - good_bad[:, 1]
     logger.debug(f"results.shape: {results.shape}, values: {results}")
 
@@ -162,6 +161,10 @@ def get_metric(
             logit_diff_fn = logit_diff_toxicity
         else:
             logit_diff_fn = logit_diff
+        return partial(logit_diff_fn, prob=prob)
+    elif metric_name == "logit_diff_ablate":
+        prob = False
+        logit_diff_fn = logit_diff
         return partial(logit_diff_fn, prob=prob)
     else:
         raise ValueError(f"got bad metric_name: {metric_name}")

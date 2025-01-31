@@ -171,8 +171,9 @@ cython_debug/
 .pypirc
 
 # local directories
-data/
-work/
+
+/work/*
+!work/visualize_circuits/*
 cache/
 
 # apptainer
