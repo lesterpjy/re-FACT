@@ -2,7 +2,7 @@
 based on ["Detecting and ​Understanding Vulnerabilities​ in Language Models via MI"](https://arxiv.org/pdf/2407.19842)
 
 
-## Notebooks locations and Usage
+## Notebooks Locations and Usage
 
 ### Experiment 1
 
