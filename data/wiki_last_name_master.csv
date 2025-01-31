@@ -1,0 +1,457 @@
+Country,Rank,Index,Name Group,Localized Name,Romanized Name,Count,Percent,space_localized_name,tokenized_name,token_length,Sub_Region
+SV,1.0,1,SV-1,Andersson,Andersson,251621.0,, Andersson,"['<|begin_of_text|>', 'ĠAnders', 'son']",3,Central America
+SV,1.0,1,SV-1,Hernández,Hernández,,, Hernández,"['<|begin_of_text|>', 'ĠHern', 'Ã¡ndez']",3,Central America
+SV,2.0,2,SV-2,Johansson,Johansson,251495.0,, Johansson,"['<|begin_of_text|>', 'ĠJoh', 'ansson']",3,Central America
+SV,2.0,2,SV-2,Martínez,Martínez,,, Martínez,"['<|begin_of_text|>', 'ĠMart', 'ÃŃ', 'nez']",4,Central America
+SV,3.0,3,SV-3,Karlsson,Karlsson,223151.0,, Karlsson,"['<|begin_of_text|>', 'ĠKarl', 'sson']",3,Central America
+SV,3.0,3,SV-3,López,López,,, López,"['<|begin_of_text|>', 'ĠLÃ³pez']",2,Central America
+SV,4.0,4,SV-4,Nilsson,Nilsson,171360.0,, Nilsson,"['<|begin_of_text|>', 'ĠNil', 'sson']",3,Central America
+SV,4.0,4,SV-4,García,García,,, García,"['<|begin_of_text|>', 'ĠGarcÃŃa']",2,Central America
+SV,5.0,5,SV-5,Eriksson,Eriksson,147514.0,, Eriksson,"['<|begin_of_text|>', 'ĠErik', 'sson']",3,Central America
+SV,5.0,5,SV-5,Rodríguez,Rodríguez,,, Rodríguez,"['<|begin_of_text|>', 'ĠRodr', 'ÃŃg', 'uez']",4,Central America
+SV,6.0,6,SV-6,Larsson,Larsson,124686.0,, Larsson,"['<|begin_of_text|>', 'ĠLar', 'sson']",3,Central America
+SV,6.0,6,SV-6,Flores,Flores,,, Flores,"['<|begin_of_text|>', 'ĠFlores']",2,Central America
+SV,7.0,7,SV-7,Olsson,Olsson,114280.0,, Olsson,"['<|begin_of_text|>', 'ĠOl', 'sson']",3,Central America
+SV,7.0,7,SV-7,Pérez,Pérez,,, Pérez,"['<|begin_of_text|>', 'ĠPÃ©', 'rez']",3,Central America
+SV,8.0,8,SV-8,Persson,Persson,107911.0,, Persson,"['<|begin_of_text|>', 'ĠPers', 'son']",3,Central America
+SV,8.0,8,SV-8,Ramírez,Ramírez,,, Ramírez,"['<|begin_of_text|>', 'ĠRam', 'ÃŃ', 'rez']",4,Central America
+SV,9.0,9,SV-9,Svensson,Svensson,101834.0,, Svensson,"['<|begin_of_text|>', 'ĠSvens', 'son']",3,Central America
+SV,9.0,9,SV-9,González,González,,, González,"['<|begin_of_text|>', 'ĠGonz', 'Ã¡lez']",3,Central America
+SV,10.0,10,SV-10,Gustafsson,Gustafsson,97536.0,, Gustafsson,"['<|begin_of_text|>', 'ĠGust', 'af', 'sson']",4,Central America
+SV,10.0,10,SV-10,Rivera,Rivera,,, Rivera,"['<|begin_of_text|>', 'ĠRivera']",2,Central America
+SV,11.0,11,SV-11,Pettersson,Pettersson,96011.0,, Pettersson,"['<|begin_of_text|>', 'ĠPet', 'ters', 'son']",4,Central America
+SV,11.0,11,SV-11,Vásquez,Vásquez,,, Vásquez,"['<|begin_of_text|>', 'ĠV', 'Ã¡s', 'quez']",4,Central America
+SV,12.0,12,SV-12,Jonsson,Jonsson,73869.0,, Jonsson,"['<|begin_of_text|>', 'ĠJon', 'sson']",3,Central America
+SV,12.0,12,SV-12,Cruz,Cruz,,, Cruz,"['<|begin_of_text|>', 'ĠCruz']",2,Central America
+MX,12.0,12,MX-12,Torres,Torres,841966.0,, Torres,"['<|begin_of_text|>', 'ĠTorres']",2,Central America
+SV,13.0,13,SV-13,Jansson,Jansson,50170.0,, Jansson,"['<|begin_of_text|>', 'ĠJ', 'ansson']",3,Central America
+SV,13.0,13,SV-13,Mejía,Mejía,,, Mejía,"['<|begin_of_text|>', 'ĠMej', 'ÃŃa']",3,Central America
+SV,14.0,14,SV-14,Hansson,Hansson,43926.0,, Hansson,"['<|begin_of_text|>', 'ĠHans', 'son']",3,Central America
+SV,14.0,14,SV-14,Rivas,Rivas,,, Rivas,"['<|begin_of_text|>', 'ĠR', 'ivas']",3,Central America
+SV,15.0,15,SV-15,Bengtsson,Bengtsson,34302.0,, Bengtsson,"['<|begin_of_text|>', 'ĠBeng', 't', 'sson']",4,Central America
+SV,15.0,15,SV-15,Sánchez,Sánchez,,, Sánchez,"['<|begin_of_text|>', 'ĠS', 'Ã¡nchez']",3,Central America
+SV,16.0,16,SV-16,Jönsson,Jönsson,32249.0,, Jönsson,"['<|begin_of_text|>', 'ĠJ', 'Ã¶n', 'sson']",4,Central America
+SV,16.0,16,SV-16,Reyes,Reyes,,, Reyes,"['<|begin_of_text|>', 'ĠReyes']",2,Central America
+MX,16.0,16,MX-16,Morales,Morales,771796.0,, Morales,"['<|begin_of_text|>', 'ĠMorales']",2,Central America
+SV,17.0,17,SV-17,Lindberg,Lindberg,27533.0,, Lindberg,"['<|begin_of_text|>', 'ĠLind', 'berg']",3,Central America
+SV,17.0,17,SV-17,Díaz,Díaz,,, Díaz,"['<|begin_of_text|>', 'ĠD', 'ÃŃ', 'az']",4,Central America
+MX,17.0,17,MX-17,Gutiérrez,Gutiérrez,748789.0,, Gutiérrez,"['<|begin_of_text|>', 'ĠG', 'uti', 'Ã©r', 'rez']",5,Central America
+SV,18.0,18,SV-18,Jakobsson,Jakobsson,26793.0,, Jakobsson,"['<|begin_of_text|>', 'ĠJak', 'ob', 'sson']",4,Central America
+CN,1.0,1,CN-1,王,Wáng,101500000.0,, 王,"['<|begin_of_text|>', 'Ġçİĭ']",2,East Asia
+JP,1.0,1,JP-1,佐藤,Satō,1990000.0,0.0157, 佐藤,"['<|begin_of_text|>', 'Ġä½Ĳ', 'èĹ¤']",3,East Asia
+KR,1.0,1,KR-1,김,Kim,,, 김,"['<|begin_of_text|>', 'Ġê¹Ģ']",2,East Asia
+KR,1.0,1,KR-1,金,Gim,,, 金,"['<|begin_of_text|>', 'Ġéĩĳ']",2,East Asia
+CN,2.0,2,CN-2,李,Lǐ,100900000.0,, 李,"['<|begin_of_text|>', 'ĠæĿİ']",2,East Asia
+JP,2.0,2,JP-2,鈴木,Suzuki,1900000.0,0.015, 鈴木,"['<|begin_of_text|>', 'Ġé', 'Ī', '´', 'æľ¨']",5,East Asia
+KR,2.0,2,KR-2,리,Lee,,, 리,"['<|begin_of_text|>', 'Ġë¦¬']",2,East Asia
+KR,2.0,2,KR-2,이,Yi,,, 이,"['<|begin_of_text|>', 'ĠìĿ´']",2,East Asia
+CN,3.0,3,CN-3,张,Zhāng,95400000.0,, 张,"['<|begin_of_text|>', 'Ġå¼ł']",2,East Asia
+CN,3.0,3,CN-3,張,Cheung,95400000.0,, 張,"['<|begin_of_text|>', 'Ġå¼µ']",2,East Asia
+JP,3.0,3,JP-3,高橋,Takahashi,1470000.0,0.0116, 高橋,"['<|begin_of_text|>', 'Ġé«ĺ', 'æ©ĭ']",3,East Asia
+KR,3.0,3,KR-3,박,Park,,, 박,"['<|begin_of_text|>', 'Ġë°ķ']",2,East Asia
+KR,3.0,3,KR-3,朴,Pak,,, 朴,"['<|begin_of_text|>', 'Ġ', 'æľ', '´']",4,East Asia
+CN,4.0,4,CN-4,刘,Liú,72100000.0,, 刘,"['<|begin_of_text|>', 'ĠåĪĺ']",2,East Asia
+CN,4.0,4,CN-4,劉,Lau,72100000.0,, 劉,"['<|begin_of_text|>', 'ĠåĬ', 'ī']",3,East Asia
+JP,4.0,4,JP-4,田中,Tanaka,1340000.0,0.0106, 田中,"['<|begin_of_text|>', 'ĠçĶ°', 'ä¸Ń']",3,East Asia
+KR,4.0,4,KR-4,최,Choi,,, 최,"['<|begin_of_text|>', 'Ġìµľ']",2,East Asia
+KR,4.0,4,KR-4,崔,Choe,,, 崔,"['<|begin_of_text|>', 'Ġå', '´', 'Ķ']",4,East Asia
+CN,5.0,5,CN-5,陈,Chén,63000000.0,, 陈,"['<|begin_of_text|>', 'ĠéĻĪ']",2,East Asia
+CN,5.0,5,CN-5,陳,Chan,63000000.0,, 陳,"['<|begin_of_text|>', 'ĠéĻ³']",2,East Asia
+JP,5.0,5,JP-5,渡辺,Watanabe,1200000.0,0.0095, 渡辺,"['<|begin_of_text|>', 'Ġæ¸', '¡', 'è¾º']",4,East Asia
+KR,5.0,5,KR-5,정,Jeong,,, 정,"['<|begin_of_text|>', 'Ġìłķ']",2,East Asia
+KR,5.0,5,KR-5,鄭,Chung,,, 鄭,"['<|begin_of_text|>', 'ĠéĦ', 'Ń']",3,East Asia
+CN,6.0,6,CN-6,杨,Yáng,46200000.0,, 杨,"['<|begin_of_text|>', 'ĠæĿ', '¨']",3,East Asia
+CN,6.0,6,CN-6,楊,Yeung,46200000.0,, 楊,"['<|begin_of_text|>', 'Ġæ¥', 'Ĭ']",3,East Asia
+JP,6.0,6,JP-6,伊藤,Itō,1150000.0,0.0091, 伊藤,"['<|begin_of_text|>', 'Ġä¼Ĭ', 'èĹ¤']",3,East Asia
+KR,6.0,6,KR-6,강,Kang,,, 강,"['<|begin_of_text|>', 'Ġê°ķ']",2,East Asia
+KR,6.0,6,KR-6,姜,Gang,,, 姜,"['<|begin_of_text|>', 'Ġå§', 'ľ']",3,East Asia
+CN,7.0,7,CN-7,黄,Huáng,33700000.0,, 黄,"['<|begin_of_text|>', 'Ġé»Ħ']",2,East Asia
+CN,7.0,7,CN-7,黃,Wong,33700000.0,, 黃,"['<|begin_of_text|>', 'Ġé»', 'ĥ']",3,East Asia
+JP,7.0,7,JP-7,中村,Nakamura,1080000.0,0.0085, 中村,"['<|begin_of_text|>', 'Ġä¸Ń', 'æĿĳ']",3,East Asia
+KR,7.0,7,KR-7,조,Cho,,, 조,"['<|begin_of_text|>', 'Ġì¡°']",2,East Asia
+CN,8.0,8,CN-8,赵,Zhào,28600000.0,, 赵,"['<|begin_of_text|>', 'Ġèµ', 'µ']",3,East Asia
+CN,8.0,8,CN-8,趙,Chiu,28600000.0,, 趙,"['<|begin_of_text|>', 'Ġè¶', 'Ļ']",3,East Asia
+JP,8.0,8,JP-8,小林,Kobayashi,1060000.0,0.0084, 小林,"['<|begin_of_text|>', 'Ġå°ı', 'æŀĹ']",3,East Asia
+KR,8.0,8,KR-8,윤,Yoon,,, 윤,"['<|begin_of_text|>', 'Ġìľ¤']",2,East Asia
+KR,8.0,8,KR-8,尹,Yun,,, 尹,"['<|begin_of_text|>', 'Ġå°', '¹']",3,East Asia
+CN,9.0,9,CN-9,吴,Wú,27800000.0,, 吴,"['<|begin_of_text|>', 'ĠåĲ', '´']",3,East Asia
+RU,1.0,1,RU-1,Смирно́в,Smirnov,2308740.0,0.0161, Смирно́в,"['<|begin_of_text|>', 'ĠÐ¡', 'Ð¼Ð¸ÑĢ', 'Ð½Ð¾', 'Ìģ', 'Ð²']",6,Eastern Europe
+BY,1.0,1,BY-1,Иванов,Ivanoŭ,7000.0,, Иванов,"['<|begin_of_text|>', 'ĠÐĺÐ²Ð°Ð½Ð¾Ð²']",2,Eastern Europe
+BY,1.0,1,BY-1,Іваноў,,7000.0,, Іваноў,"['<|begin_of_text|>', 'ĠÐĨÐ²Ð°Ð½', 'Ð¾', 'Ñŀ']",4,Eastern Europe
+BG,1.0,1,BG-1,Иванова,Ivanova,277308.0,, Иванова,"['<|begin_of_text|>', 'ĠÐĺ', 'Ð²Ð°Ð½', 'Ð¾Ð²Ð°']",4,Eastern Europe
+CZ,1.0,1,CZ-1,Novák,Novák,69726.0,, Novák,"['<|begin_of_text|>', 'ĠNov', 'Ã¡k']",3,Eastern Europe
+CZ,1.0,1,CZ-1,Nováková,Nováková,69726.0,, Nováková,"['<|begin_of_text|>', 'ĠNovÃ¡', 'kovÃ¡']",3,Eastern Europe
+HU,1.0,1,HU-1,Nagy,Nagy,,, Nagy,"['<|begin_of_text|>', 'ĠNag', 'y']",3,Eastern Europe
+MD,1.0,1,MD-1,Rusu,Rusu,66781.0,, Rusu,"['<|begin_of_text|>', 'ĠRus', 'u']",3,Eastern Europe
+PL,1.0,1,PL-1,Nowak,Nowak,207348.0,, Nowak,"['<|begin_of_text|>', 'ĠNow', 'ak']",3,Eastern Europe
+UA,1.0,1,UA-1,Melnyk,Melnyk,,, Melnyk,"['<|begin_of_text|>', 'ĠMel', 'ny', 'k']",4,Eastern Europe
+RU,2.0,2,RU-2,Ивано́в,Ivanov,1864200.0,0.013, Ивано́в,"['<|begin_of_text|>', 'ĠÐĺ', 'Ð²Ð°Ð½Ð¾', 'Ìģ', 'Ð²']",5,Eastern Europe
+BY,2.0,2,BY-2,Козлов,Kazloŭ,4700.0,, Козлов,"['<|begin_of_text|>', 'ĠÐļ', 'Ð¾Ð·', 'Ð»Ð¾Ð²']",4,Eastern Europe
+BY,2.0,2,BY-2,Казлоў,,4700.0,, Казлоў,"['<|begin_of_text|>', 'ĠÐļÐ°Ð·', 'Ð»Ð¾', 'Ñŀ']",4,Eastern Europe
+BG,2.0,2,BG-2,Георгиев,Georgiev,213511.0,, Георгиев,"['<|begin_of_text|>', 'ĠÐĵÐµ', 'Ð¾ÑĢ', 'Ð³Ð¸', 'ÐµÐ²']",5,Eastern Europe
+BG,2.0,2,BG-2,Георгиева,Georgieva,213511.0,, Георгиева,"['<|begin_of_text|>', 'ĠÐĵÐµ', 'Ð¾ÑĢ', 'Ð³Ð¸', 'ÐµÐ²Ð°']",5,Eastern Europe
+CZ,2.0,2,CZ-2,Svoboda,Svoboda,51861.0,, Svoboda,"['<|begin_of_text|>', 'ĠSv', 'ob', 'oda']",4,Eastern Europe
+CZ,2.0,2,CZ-2,Svobodová,Svobodová,51861.0,, Svobodová,"['<|begin_of_text|>', 'ĠSv', 'ob', 'od', 'ovÃ¡']",5,Eastern Europe
+HU,2.0,2,HU-2,Kovács,Kovács,,, Kovács,"['<|begin_of_text|>', 'ĠKov', 'Ã¡', 'cs']",4,Eastern Europe
+MD,2.0,2,MD-2,Ceban,Ceban,60694.0,, Ceban,"['<|begin_of_text|>', 'ĠC', 'eb', 'an']",4,Eastern Europe
+PL,2.0,2,PL-2,Kowalski,Kowalski,140471.0,, Kowalski,"['<|begin_of_text|>', 'ĠK', 'ow', 'als', 'ki']",5,Eastern Europe
+RO,2.0,2,RO-2,Popescu,Popescu,,, Popescu,"['<|begin_of_text|>', 'ĠPop', 'esc', 'u']",4,Eastern Europe
+RS,2.0,2,RS-2,Петровић,Petrović,,, Петровић,"['<|begin_of_text|>', 'ĠÐŁÐµÑĤ', 'ÑĢÐ¾Ð²', 'Ð¸', 'ÑĽ']",5,Eastern Europe
+SK,2.0,2,SK-2,Kováč,Kováč,29079.0,, Kováč,"['<|begin_of_text|>', 'ĠKov', 'Ã¡Äį']",3,Eastern Europe
+UA,2.0,2,UA-2,Shevchenko,Shevchenko,,, Shevchenko,"['<|begin_of_text|>', 'ĠShe', 'v', 'chen', 'ko']",5,Eastern Europe
+BY,3.0,3,BY-3,Ковалёв,Kavalioŭ,4300.0,, Ковалёв,"['<|begin_of_text|>', 'ĠÐļ', 'Ð¾Ð²Ð°Ð»', 'Ñĳ', 'Ð²']",5,Eastern Europe
+BY,3.0,3,BY-3,Кавалёў,,4300.0,, Кавалёў,"['<|begin_of_text|>', 'ĠÐļ', 'Ð°Ð²', 'Ð°Ð»', 'Ñĳ', 'Ñŀ']",6,Eastern Europe
+BG,3.0,3,BG-3,Димитров,Dimitrov,205774.0,, Димитров,"['<|begin_of_text|>', 'ĠÐĶ', 'Ð¸Ð¼', 'Ð¸ÑĤ', 'ÑĢÐ¾Ð²']",5,Eastern Europe
+BG,3.0,3,BG-3,Димитрова,Dimitrova,205774.0,, Димитрова,"['<|begin_of_text|>', 'ĠÐĶ', 'Ð¸Ð¼', 'Ð¸ÑĤ', 'ÑĢÐ¾Ð²Ð°']",5,Eastern Europe
+CZ,3.0,3,CZ-3,Novotný,Novotný,49648.0,, Novotný,"['<|begin_of_text|>', 'ĠNov', 'ot', 'nÃ½']",4,Eastern Europe
+CZ,3.0,3,CZ-3,Novotná,Novotná,49648.0,, Novotná,"['<|begin_of_text|>', 'ĠNov', 'ot', 'nÃ¡']",4,Eastern Europe
+HU,3.0,3,HU-3,Tóth,Tóth,,, Tóth,"['<|begin_of_text|>', 'ĠT', 'Ã³', 'th']",4,Eastern Europe
+MD,3.0,3,MD-3,Ciobanu,Ciobanu,49784.0,, Ciobanu,"['<|begin_of_text|>', 'ĠCi', 'ob', 'an', 'u']",5,Eastern Europe
+PL,3.0,3,PL-3,Wiśniewski,Wiśniewski,111174.0,, Wiśniewski,"['<|begin_of_text|>', 'ĠWi', 'ÅĽ', 'n', 'iew', 'ski']",6,Eastern Europe
+RO,3.0,3,RO-3,Pop,Pop,,, Pop,"['<|begin_of_text|>', 'ĠPop']",2,Eastern Europe
+RS,3.0,3,RS-3,Николић,Nikolić,,, Николић,"['<|begin_of_text|>', 'ĠÐĿÐ¸Ðº', 'Ð¾Ð»Ð¸', 'ÑĽ']",4,Eastern Europe
+UA,3.0,3,UA-3,Boyko,Boyko,,, Boyko,"['<|begin_of_text|>', 'ĠBoy', 'ko']",3,Eastern Europe
+RU,4.0,4,RU-4,Попо́в,Popov,1132860.0,0.0079, Попо́в,"['<|begin_of_text|>', 'ĠÐŁÐ¾Ð¿', 'Ð¾', 'Ìģ', 'Ð²']",5,Eastern Europe
+BY,4.0,4,BY-4,Козловский,Kazloŭski,3900.0,, Козловский,"['<|begin_of_text|>', 'ĠÐļ', 'Ð¾Ð·', 'Ð»Ð¾Ð²', 'ÑģÐºÐ¸Ð¹']",5,Eastern Europe
+IL,1.0,1,IL-1,כהן,Cohen,180725.0,0.0193, כהן,"['<|begin_of_text|>', 'Ġ×', 'Ľ', '×Ķ', '×', 'Ł']",6,Middle East
+TR,1.0,1,TR-1,Yılmaz,Yılmaz,,, Yılmaz,"['<|begin_of_text|>', 'ĠY', 'Ä±', 'lm', 'az']",5,Middle East
+TR,2.0,2,TR-2,Kaya,Kaya,,, Kaya,"['<|begin_of_text|>', 'ĠK', 'aya']",3,Middle East
+IL,2.0,2,IL-2,לוי,Levi,104876.0,0.0112, לוי,"['<|begin_of_text|>', 'Ġ×ľ', '×ķ', '×Ļ']",4,Middle East
+TR,3.0,3,TR-3,Demir,Demir,,, Demir,"['<|begin_of_text|>', 'ĠDemir']",2,Middle East
+TR,4.0,4,TR-4,Şahin,Şahin,,, Şahin,"['<|begin_of_text|>', 'ĠÅŀah', 'in']",3,Middle East
+IL,4.0,4,IL-4,פרץ,Peretz,29964.0,0.0032, פרץ,"['<|begin_of_text|>', 'Ġ×', '¤', '×¨', '×', '¥']",6,Middle East
+TR,5.0,5,TR-5,Çelik,Çelik,,, Çelik,"['<|begin_of_text|>', 'ĠÃĩ', 'elik']",3,Middle East
+IL,5.0,5,IL-5,ביטון,Biton,28092.0,0.003, ביטון,"['<|begin_of_text|>', 'Ġ×ĳ', '×Ļ×', 'ĺ', '×ķ×', 'Ł']",6,Middle East
+TR,6.0,6,TR-6,Yıldız,Yıldız,,, Yıldız,"['<|begin_of_text|>', 'ĠY', 'Ä±', 'ld', 'Ä±z']",5,Middle East
+IL,6.0,6,IL-6,דהן,Dahan,21537.0,0.0023, דהן,"['<|begin_of_text|>', 'Ġ×', 'ĵ', '×Ķ', '×', 'Ł']",6,Middle East
+TR,7.0,7,TR-7,Yıldırım,Yıldırım,,, Yıldırım,"['<|begin_of_text|>', 'ĠY', 'Ä±', 'ld', 'Ä±r', 'Ä±m']",6,Middle East
+TR,8.0,8,TR-8,Öztürk,Öztürk,,, Öztürk,"['<|begin_of_text|>', 'ĠÃĸ', 'zt', 'Ã¼rk']",4,Middle East
+TR,9.0,9,TR-9,Aydın,Aydın,,, Aydın,"['<|begin_of_text|>', 'ĠAydÄ±n']",2,Middle East
+IL,9.0,9,IL-9,מלכה,Malka,17791.0,0.0019, מלכה,"['<|begin_of_text|>', 'Ġ×ŀ', '×ľ', '×', 'Ľ', '×Ķ']",6,Middle East
+TR,10.0,10,TR-10,Özdemir,Özdemir,,, Özdemir,"['<|begin_of_text|>', 'ĠÃĸz', 'dem', 'ir']",4,Middle East
+TR,11.0,11,TR-11,Arslan,Arslan,,, Arslan,"['<|begin_of_text|>', 'ĠAr', 'sl', 'an']",4,Middle East
+IL,11.0,11,IL-11,כץ,Katz,17791.0,0.0019, כץ,"['<|begin_of_text|>', 'Ġ×', 'Ľ', '×', '¥']",5,Middle East
+TR,12.0,12,TR-12,Doğan,Doğan,,, Doğan,"['<|begin_of_text|>', 'ĠDoÄŁ', 'an']",3,Middle East
+TR,13.0,13,TR-13,Kılıç,Kılıç,,, Kılıç,"['<|begin_of_text|>', 'ĠK', 'Ä±lÄ±Ã§']",3,Middle East
+IL,13.0,13,IL-13,דוד,David,15918.0,0.0017, דוד,"['<|begin_of_text|>', 'Ġ×', 'ĵ', '×ķ×', 'ĵ']",5,Middle East
+TR,14.0,14,TR-14,Aslan,Aslan,,, Aslan,"['<|begin_of_text|>', 'ĠAs', 'lan']",3,Middle East
+IL,14.0,14,IL-14,עמר,Amar,15918.0,0.0017, עמר,"['<|begin_of_text|>', 'Ġ×', '¢', '×ŀ', '×¨']",5,Middle East
+TR,15.0,15,TR-15,Çetin,Çetin,,, Çetin,"['<|begin_of_text|>', 'ĠÃĩ', 'etin']",3,Middle East
+IL,16.0,16,IL-16,חדד,Hadad,14982.0,0.0016, חדד,"['<|begin_of_text|>', 'Ġ×', 'Ĺ', '×ĵ', '×ĵ']",5,Middle East
+TR,16.0,16,TR-16,Kara,Kara,,, Kara,"['<|begin_of_text|>', 'ĠKara']",2,Middle East
+TR,17.0,17,TR-17,Koç,Koç,,, Koç,"['<|begin_of_text|>', 'ĠKo', 'Ã§']",3,Middle East
+IL,17.0,17,IL-17,גבאי,Gabai,14982.0,0.0016, גבאי,"['<|begin_of_text|>', 'Ġ×', 'Ĵ', '×ĳ', '×Ĳ', '×Ļ']",6,Middle East
+TR,18.0,18,TR-18,Kurt,Kurt,,, Kurt,"['<|begin_of_text|>', 'ĠKurt']",2,Middle East
+IL,19.0,19,IL-19,אדרי,Adrei,13109.0,0.0014, אדרי,"['<|begin_of_text|>', 'Ġ×Ĳ', '×ĵ', '×¨', '×Ļ']",5,Middle East
+TR,19.0,19,TR-19,Özkan,Özkan,,, Özkan,"['<|begin_of_text|>', 'ĠÃĸz', 'kan']",3,Middle East
+TR,20.0,20,TR-20,Şimşek,Şimşek,,, Şimşek,"['<|begin_of_text|>', 'ĠÅŀ', 'im', 'ÅŁ', 'ek']",5,Middle East
+IL,20.0,20,IL-20,לוין,Levin,13109.0,0.0014, לוין,"['<|begin_of_text|>', 'Ġ×ľ', '×ķ', '×Ļ×', 'Ł']",5,Middle East
+IL,21.0,21,IL-21,טל,Tal,12173.0,0.0013, טל,"['<|begin_of_text|>', 'Ġ×', 'ĺ', '×ľ']",4,Middle East
+IL,23.0,23,IL-23,חן,Chen,12173.0,0.0013, חן,"['<|begin_of_text|>', 'Ġ×', 'Ĺ', '×', 'Ł']",5,Middle East
+IL,26.0,26,IL-26,משה,Moshe,12173.0,0.0013, משה,"['<|begin_of_text|>', 'Ġ×ŀ', '×©', '×Ķ']",4,Middle East
+IL,28.0,28,IL-28,אוחנה,Ohana,11236.0,0.0012, אוחנה,"['<|begin_of_text|>', 'Ġ×Ĳ', '×ķ×', 'Ĺ', '×ł', '×Ķ']",6,Middle East
+IL,29.0,29,IL-29,סגל,Segal,11236.0,0.0012, סגל,"['<|begin_of_text|>', 'Ġ×', '¡', '×', 'Ĵ', '×ľ']",6,Middle East
+CA,1.0,1,CA-1,Smith,Smith,192145.0,, Smith,"['<|begin_of_text|>', 'ĠSmith']",2,North America
+CR,1.0,1,CR-1,Hernández,Hernández,,, Hernández,"['<|begin_of_text|>', 'ĠHern', 'Ã¡ndez']",3,North America
+CA,2.0,2,CA-2,Brown,Brown,108859.0,, Brown,"['<|begin_of_text|>', 'ĠBrown']",2,North America
+CR,2.0,2,CR-2,Mora,Mora,,, Mora,"['<|begin_of_text|>', 'ĠM', 'ora']",3,North America
+CA,3.0,3,CA-3,Tremblay,Tremblay,106668.0,, Tremblay,"['<|begin_of_text|>', 'ĠTrem', 'bl', 'ay']",4,North America
+CR,3.0,3,CR-3,Rodríguez,Rodríguez,,, Rodríguez,"['<|begin_of_text|>', 'ĠRodr', 'ÃŃg', 'uez']",4,North America
+CU,3.0,3,CU-3,Martinez,Martinez,141259.0,, Martinez,"['<|begin_of_text|>', 'ĠMartinez']",2,North America
+US,3.0,3,US-3,Williams,Williams,1534042.0,, Williams,"['<|begin_of_text|>', 'ĠWilliams']",2,North America
+CA,4.0,4,CA-4,Martin,Martin,91680.0,, Martin,"['<|begin_of_text|>', 'ĠMartin']",2,North America
+CR,4.0,4,CR-4,González,González,,, González,"['<|begin_of_text|>', 'ĠGonz', 'Ã¡lez']",3,North America
+CU,4.0,4,CU-4,García,García,137124.0,, García,"['<|begin_of_text|>', 'ĠGarcÃŃa']",2,North America
+CA,5.0,5,CA-5,Roy,Roy,90417.0,, Roy,"['<|begin_of_text|>', 'ĠRoy']",2,North America
+CR,5.0,5,CR-5,Jiménez,Jiménez,,, Jiménez,"['<|begin_of_text|>', 'ĠJim', 'Ã©', 'nez']",4,North America
+CU,5.0,5,CU-5,Reyes,Reyes,104892.0,, Reyes,"['<|begin_of_text|>', 'ĠReyes']",2,North America
+US,5.0,5,US-5,Jones,Jones,1362755.0,, Jones,"['<|begin_of_text|>', 'ĠJones']",2,North America
+CA,6.0,6,CA-6,Gagnon,Gagnon,85120.0,, Gagnon,"['<|begin_of_text|>', 'ĠG', 'agn', 'on']",4,North America
+CR,6.0,6,CR-6,Morales,Morales,,, Morales,"['<|begin_of_text|>', 'ĠMorales']",2,North America
+US,6.0,6,US-6,Miller,Miller,1127803.0,, Miller,"['<|begin_of_text|>', 'ĠMiller']",2,North America
+CA,7.0,7,CA-7,Lee,Lee,83424.0,, Lee,"['<|begin_of_text|>', 'ĠLee']",2,North America
+CR,7.0,7,CR-7,Sánchez,Sánchez,,, Sánchez,"['<|begin_of_text|>', 'ĠS', 'Ã¡nchez']",3,North America
+CU,7.0,7,CU-7,Díaz,Díaz,95106.0,, Díaz,"['<|begin_of_text|>', 'ĠD', 'ÃŃ', 'az']",4,North America
+US,7.0,7,US-7,Davis,Davis,1072335.0,, Davis,"['<|begin_of_text|>', 'ĠDavis']",2,North America
+CA,8.0,8,CA-8,Wilson,Wilson,82768.0,, Wilson,"['<|begin_of_text|>', 'ĠWilson']",2,North America
+CR,8.0,8,CR-8,Ramírez,Ramírez,,, Ramírez,"['<|begin_of_text|>', 'ĠRam', 'ÃŃ', 'rez']",4,North America
+CU,8.0,8,CU-8,Peña,Peña,94396.0,, Peña,"['<|begin_of_text|>', 'ĠPe', 'Ã±a']",3,North America
+GT,8.0,8,GT-8,De León,De León,134010.0,, De León,"['<|begin_of_text|>', 'ĠDe', 'ĠLe', 'Ã³n']",4,North America
+US,8.0,8,US-8,Garcia,Garcia,858289.0,, Garcia,"['<|begin_of_text|>', 'ĠGarcia']",2,North America
+CA,9.0,9,CA-9,Johnson,Johnson,79492.0,, Johnson,"['<|begin_of_text|>', 'ĠJohnson']",2,North America
+CR,9.0,9,CR-9,Pérez,Pérez,,, Pérez,"['<|begin_of_text|>', 'ĠPÃ©', 'rez']",3,North America
+US,9.0,9,US-9,Rodriguez,Rodriguez,804240.0,, Rodriguez,"['<|begin_of_text|>', 'ĠRodriguez']",2,North America
+CA,10.0,10,CA-10,MacDonald,MacDonald,78766.0,, MacDonald,"['<|begin_of_text|>', 'ĠMacDonald']",2,North America
+CR,10.0,10,CR-10,Calderón,Calderón,,, Calderón,"['<|begin_of_text|>', 'ĠCalder', 'Ã³n']",3,North America
+GT,10.0,10,GT-10,Martínez,Martínez,123186.0,, Martínez,"['<|begin_of_text|>', 'ĠMart', 'ÃŃ', 'nez']",4,North America
+CR,11.0,11,CR-11,Gutiérrez,Gutiérrez,,, Gutiérrez,"['<|begin_of_text|>', 'ĠG', 'uti', 'Ã©r', 'rez']",5,North America
+CR,12.0,12,CR-12,Rojas,Rojas,,, Rojas,"['<|begin_of_text|>', 'ĠRo', 'jas']",3,North America
+CU,12.0,12,CU-12,Rosario,Rosario,89630.0,, Rosario,"['<|begin_of_text|>', 'ĠRos', 'ario']",3,North America
+GT,12.0,12,GT-12,Estrada,Estrada,115252.0,, Estrada,"['<|begin_of_text|>', 'ĠEstr', 'ada']",3,North America
+US,12.0,12,US-12,Anderson,Anderson,762394.0,, Anderson,"['<|begin_of_text|>', 'ĠAnderson']",2,North America
+DK,1.0,1,DK-1,Nielsen,Nielsen,236397.0,, Nielsen,"['<|begin_of_text|>', 'ĠNielsen']",2,Northern Europe
+FO,1.0,1,FO-1,Joensen,Joensen,2372.0,, Joensen,"['<|begin_of_text|>', 'ĠJo', 'ensen']",3,Northern Europe
+EE,1.0,1,EE-1,Ivanov,Ivanov,6789.0,, Ivanov,"['<|begin_of_text|>', 'ĠIvan', 'ov']",3,Northern Europe
+FI,1.0,1,FI-1,Korhonen,Korhonen,23312.0,0.0043, Korhonen,"['<|begin_of_text|>', 'ĠKor', 'h', 'onen']",4,Northern Europe
+IS,1.0,1,IS-1,Blöndal,Blöndal,324.0,, Blöndal,"['<|begin_of_text|>', 'ĠBl', 'Ã¶', 'nd', 'al']",5,Northern Europe
+IE,1.0,1,IE-1,Ó Murchú,Murphy,,, Ó Murchú,"['<|begin_of_text|>', 'ĠÃ', 'ĵ', 'ĠM', 'urch', 'Ãº']",6,Northern Europe
+LT,1.0,1,LT-1,Kazlauskas,Kazlauskas,,, Kazlauskas,"['<|begin_of_text|>', 'ĠKaz', 'la', 'usk', 'as']",5,Northern Europe
+GB,1.0,1,GB-1,Brown,Brown,,, Brown,"['<|begin_of_text|>', 'ĠBrown']",2,Northern Europe
+DK,2.0,2,DK-2,Jensen,Jensen,233713.0,, Jensen,"['<|begin_of_text|>', 'ĠJensen']",2,Northern Europe
+EE,2.0,2,EE-2,Tamm,Tamm,5241.0,, Tamm,"['<|begin_of_text|>', 'ĠT', 'amm']",3,Northern Europe
+FI,2.0,2,FI-2,Virtanen,Virtanen,23020.0,0.0042, Virtanen,"['<|begin_of_text|>', 'ĠVirt', 'an', 'en']",4,Northern Europe
+IS,2.0,2,IS-2,Thorarensen,Thorarensen,293.0,, Thorarensen,"['<|begin_of_text|>', 'ĠThor', 'are', 'ns', 'en']",5,Northern Europe
+IE,2.0,2,IE-2,Ó Ceallaigh,O'Kelly,,, Ó Ceallaigh,"['<|begin_of_text|>', 'ĠÃ', 'ĵ', 'ĠCe', 'alla', 'igh']",6,Northern Europe
+LV,2.0,2,LV-2,Kalniņš,Kalniņš,,, Kalniņš,"['<|begin_of_text|>', 'ĠKal', 'ni', 'Å', 'Ĩ', 'Å¡']",6,Northern Europe
+LT,2.0,2,LT-2,Jankauskas,Jankauskas,,, Jankauskas,"['<|begin_of_text|>', 'ĠJ', 'ank', 'aus', 'kas']",5,Northern Europe
+GB,2.0,2,GB-2,Smith,Smith,,, Smith,"['<|begin_of_text|>', 'ĠSmith']",2,Northern Europe
+DK,3.0,3,DK-3,Hansen,Hansen,197548.0,, Hansen,"['<|begin_of_text|>', 'ĠHansen']",2,Northern Europe
+FO,3.0,3,FO-3,Jacobsen,Jacobsen,2051.0,, Jacobsen,"['<|begin_of_text|>', 'ĠJacobs', 'en']",3,Northern Europe
+EE,3.0,3,EE-3,Saar,Saar,4352.0,, Saar,"['<|begin_of_text|>', 'ĠSa', 'ar']",3,Northern Europe
+FI,3.0,3,FI-3,Mäkinen,Mäkinen,21014.0,0.0038, Mäkinen,"['<|begin_of_text|>', 'ĠM', 'Ã¤', 'kin', 'en']",5,Northern Europe
+LV,3.0,3,LV-3,Ozoliņš,Ozoliņš,,, Ozoliņš,"['<|begin_of_text|>', 'ĠOz', 'oli', 'Å', 'Ĩ', 'Å¡']",6,Northern Europe
+LT,3.0,3,LT-3,Petrauskas,Petrauskas,,, Petrauskas,"['<|begin_of_text|>', 'ĠPetra', 'usk', 'as']",4,Northern Europe
+LT,3.0,3,LT-3,Petrauskienė,Petrauskienė,,, Petrauskienė,"['<|begin_of_text|>', 'ĠPetra', 'usk', 'ien', 'Ä', 'Ĺ']",6,Northern Europe
+GB,3.0,3,GB-3,Patel,Patel,,, Patel,"['<|begin_of_text|>', 'ĠPatel']",2,Northern Europe
+DK,4.0,4,DK-4,Pedersen,Pedersen,150161.0,, Pedersen,"['<|begin_of_text|>', 'ĠPed', 'ersen']",3,Northern Europe
+EE,4.0,4,EE-4,Sepp,Sepp,3624.0,, Sepp,"['<|begin_of_text|>', 'ĠSe', 'pp']",3,Northern Europe
+FI,4.0,4,FI-4,Nieminen,Nieminen,20969.0,0.0038, Nieminen,"['<|begin_of_text|>', 'ĠNi', 'em', 'inen']",4,Northern Europe
+IE,4.0,4,IE-4,Breathnach,Walsh,,, Breathnach,"['<|begin_of_text|>', 'ĠBreath', 'n', 'ach']",4,Northern Europe
+LV,4.0,4,LV-4,Jansons,Jansons,,, Jansons,"['<|begin_of_text|>', 'ĠJ', 'ans', 'ons']",4,Northern Europe
+LT,4.0,4,LT-4,Stankevičius,Stankevičius,,, Stankevičius,"['<|begin_of_text|>', 'ĠStan', 'ke', 'viÄį', 'ius']",5,Northern Europe
+GB,4.0,4,GB-4,Jones,Jones,,, Jones,"['<|begin_of_text|>', 'ĠJones']",2,Northern Europe
+DK,5.0,5,DK-5,Andersen,Andersen,149643.0,, Andersen,"['<|begin_of_text|>', 'ĠAndersen']",2,Northern Europe
+EE,5.0,5,EE-5,Mägi,Mägi,3613.0,, Mägi,"['<|begin_of_text|>', 'ĠM', 'Ã¤', 'gi']",4,Northern Europe
+FI,5.0,5,FI-5,Mäkelä,Mäkelä,19538.0,0.0036, Mäkelä,"['<|begin_of_text|>', 'ĠM', 'Ã¤', 'kel', 'Ã¤']",5,Northern Europe
+IE,5.0,5,IE-5,Mac Gabhann,Smith,,, Mac Gabhann,"['<|begin_of_text|>', 'ĠMac', 'ĠGab', 'h', 'ann']",5,Northern Europe
+LV,5.0,5,LV-5,Ozols,Ozols,,, Ozols,"['<|begin_of_text|>', 'ĠOz', 'ols']",3,Northern Europe
+LT,5.0,5,LT-5,Vasiliauskas,Vasiliauskas,,, Vasiliauskas,"['<|begin_of_text|>', 'ĠVas', 'ilia', 'usk', 'as']",5,Northern Europe
+GB,5.0,5,GB-5,Williams,Williams,,, Williams,"['<|begin_of_text|>', 'ĠWilliams']",2,Northern Europe
+AU,1.0,1,AU-1,Smith,Smith,114997.0,, Smith,"['<|begin_of_text|>', 'ĠSmith']",2,Oceania
+FJ,1.0,1,FJ-1,Kumar,Kumar,,, Kumar,"['<|begin_of_text|>', 'ĠKumar']",2,Oceania
+AU,2.0,2,AU-2,Jones,Jones,55679.0,, Jones,"['<|begin_of_text|>', 'ĠJones']",2,Oceania
+FJ,2.0,2,FJ-2,Prasad,Prasad,,, Prasad,"['<|begin_of_text|>', 'ĠPr', 'asad']",3,Oceania
+AU,3.0,3,AU-3,Williams,Williams,55555.0,, Williams,"['<|begin_of_text|>', 'ĠWilliams']",2,Oceania
+FJ,3.0,3,FJ-3,Chand,Chand,,, Chand,"['<|begin_of_text|>', 'ĠChand']",2,Oceania
+NZ,3.0,3,NZ-3,Kaur,Kaur,,, Kaur,"['<|begin_of_text|>', 'ĠK', 'aur']",3,Oceania
+AU,4.0,4,AU-4,Brown,Brown,54896.0,, Brown,"['<|begin_of_text|>', 'ĠBrown']",2,Oceania
+FJ,4.0,4,FJ-4,Singh,Singh,,, Singh,"['<|begin_of_text|>', 'ĠSingh']",2,Oceania
+AU,5.0,5,AU-5,Wilson,Wilson,46961.0,, Wilson,"['<|begin_of_text|>', 'ĠWilson']",2,Oceania
+FJ,5.0,5,FJ-5,Lal,Lal,,, Lal,"['<|begin_of_text|>', 'ĠLal']",2,Oceania
+NZ,5.0,5,NZ-5,Patel,Patel,,, Patel,"['<|begin_of_text|>', 'ĠPatel']",2,Oceania
+AU,6.0,6,AU-6,Taylor,Taylor,45328.0,, Taylor,"['<|begin_of_text|>', 'ĠTaylor']",2,Oceania
+FJ,6.0,6,FJ-6,Sharma,Sharma,,, Sharma,"['<|begin_of_text|>', 'ĠSharma']",2,Oceania
+AU,7.0,7,AU-7,Johnson,Johnson,33435.0,, Johnson,"['<|begin_of_text|>', 'ĠJohnson']",2,Oceania
+FJ,7.0,7,FJ-7,Narayan,Narayan,,, Narayan,"['<|begin_of_text|>', 'ĠNar', 'ayan']",3,Oceania
+AU,8.0,8,AU-8,White,White,31099.0,, White,"['<|begin_of_text|>', 'ĠWhite']",2,Oceania
+FJ,8.0,8,FJ-8,Khan,Khan,,, Khan,"['<|begin_of_text|>', 'ĠKhan']",2,Oceania
+AU,9.0,9,AU-9,Martin,Martin,31058.0,, Martin,"['<|begin_of_text|>', 'ĠMartin']",2,Oceania
+FJ,9.0,9,FJ-9,Ali,Ali,,, Ali,"['<|begin_of_text|>', 'ĠAli']",2,Oceania
+AU,10.0,10,AU-10,Anderson,Anderson,30910.0,, Anderson,"['<|begin_of_text|>', 'ĠAnderson']",2,Oceania
+FJ,10.0,10,FJ-10,Devi,Devi,,, Devi,"['<|begin_of_text|>', 'ĠDev', 'i']",3,Oceania
+AU,11.0,11,AU-11,Thompson,Thompson,29931.0,, Thompson,"['<|begin_of_text|>', 'ĠThompson']",2,Oceania
+FJ,11.0,11,FJ-11,Ram,Ram,,, Ram,"['<|begin_of_text|>', 'ĠRam']",2,Oceania
+AU,12.0,12,AU-12,Nguyen,Nguyen,29798.0,, Nguyen,"['<|begin_of_text|>', 'ĠNguyen']",2,Oceania
+FJ,12.0,12,FJ-12,Naidu,Naidu,,, Naidu,"['<|begin_of_text|>', 'ĠN', 'aidu']",3,Oceania
+AU,13.0,13,AU-13,Turner,Turner,27276.0,, Turner,"['<|begin_of_text|>', 'ĠTurner']",2,Oceania
+FJ,13.0,13,FJ-13,Chandra,Chandra,,, Chandra,"['<|begin_of_text|>', 'ĠCh', 'andra']",3,Oceania
+AU,14.0,14,AU-14,Walker,Walker,26688.0,, Walker,"['<|begin_of_text|>', 'ĠWalker']",2,Oceania
+FJ,14.0,14,FJ-14,Nand,Nand,,, Nand,"['<|begin_of_text|>', 'ĠN', 'and']",3,Oceania
+AU,15.0,15,AU-15,Harris,Harris,26025.0,, Harris,"['<|begin_of_text|>', 'ĠHarris']",2,Oceania
+FJ,15.0,15,FJ-15,Lata,Lata,,, Lata,"['<|begin_of_text|>', 'ĠL', 'ata']",3,Oceania
+AU,16.0,16,AU-16,Lee,Lee,25612.0,, Lee,"['<|begin_of_text|>', 'ĠLee']",2,Oceania
+FJ,16.0,16,FJ-16,Deo,Deo,,, Deo,"['<|begin_of_text|>', 'ĠDe', 'o']",3,Oceania
+AU,17.0,17,AU-17,Ryan,Ryan,25526.0,, Ryan,"['<|begin_of_text|>', 'ĠRyan']",2,Oceania
+FJ,17.0,17,FJ-17,Reddy,Reddy,,, Reddy,"['<|begin_of_text|>', 'ĠRed', 'dy']",3,Oceania
+AU,18.0,18,AU-18,Robinson,Robinson,25168.0,, Robinson,"['<|begin_of_text|>', 'ĠRobinson']",2,Oceania
+FJ,18.0,18,FJ-18,Prakash,Prakash,,, Prakash,"['<|begin_of_text|>', 'ĠPr', 'akash']",3,Oceania
+AR,1.0,1,AR-1,González,González,568240.0,0.0147, González,"['<|begin_of_text|>', 'ĠGonz', 'Ã¡lez']",3,South America
+PE,1.0,1,PE-1,Quispe,Quispe,145812.0,0.0218, Quispe,"['<|begin_of_text|>', 'ĠQu', 'is', 'pe']",4,South America
+SR,1.0,1,SR-1,Lin,Lin,,, Lin,"['<|begin_of_text|>', 'ĠLin']",2,South America
+AR,2.0,2,AR-2,Rodríguez,Rodríguez,483212.0,0.0125, Rodríguez,"['<|begin_of_text|>', 'ĠRodr', 'ÃŃg', 'uez']",4,South America
+SR,2.0,2,SR-2,Pinas,Pinas,,, Pinas,"['<|begin_of_text|>', 'ĠPin', 'as']",3,South America
+AR,3.0,3,AR-3,Fernández,Fernández,426253.0,0.011, Fernández,"['<|begin_of_text|>', 'ĠFern', 'Ã¡ndez']",3,South America
+BR,3.0,3,BR-3,Sousa,Sousa,9810832.0,0.049, Sousa,"['<|begin_of_text|>', 'ĠSous', 'a']",3,South America
+SR,3.0,3,SR-3,Wong,Wong,,, Wong,"['<|begin_of_text|>', 'ĠWong']",2,South America
+AR,4.0,4,AR-4,García,García,411462.0,0.0107, García,"['<|begin_of_text|>', 'ĠGarcÃŃa']",2,South America
+BR,4.0,4,BR-4,Oliveira,Oliveira,6209493.0,0.031, Oliveira,"['<|begin_of_text|>', 'ĠOliveira']",2,South America
+SR,4.0,4,SR-4,Chin,Chin,,, Chin,"['<|begin_of_text|>', 'ĠChin']",2,South America
+AR,5.0,5,AR-5,López,López,393704.0,0.0102, López,"['<|begin_of_text|>', 'ĠLÃ³pez']",2,South America
+BR,5.0,5,BR-5,Pereira,Pereira,5892937.0,0.029, Pereira,"['<|begin_of_text|>', 'ĠPere', 'ira']",3,South America
+SR,5.0,5,SR-5,Mohan,Mohan,,, Mohan,"['<|begin_of_text|>', 'ĠMoh', 'an']",3,South America
+AR,6.0,6,AR-6,Martínez,Martínez,346271.0,0.009, Martínez,"['<|begin_of_text|>', 'ĠMart', 'ÃŃ', 'nez']",4,South America
+BR,6.0,6,BR-6,Lima,Lima,5007393.0,0.025, Lima,"['<|begin_of_text|>', 'ĠLima']",2,South America
+SR,6.0,6,SR-6,Kalloe,Kalloe,,, Kalloe,"['<|begin_of_text|>', 'ĠKal', 'loe']",3,South America
+AR,7.0,7,AR-7,Pérez,Pérez,336094.0,0.0087, Pérez,"['<|begin_of_text|>', 'ĠPÃ©', 'rez']",3,South America
+BR,7.0,7,BR-7,Carvalho,Carvalho,4630387.0,0.0233, Carvalho,"['<|begin_of_text|>', 'ĠCar', 'val', 'ho']",4,South America
+CL,7.0,7,CL-7,Contreras,Contreras,276887.0,, Contreras,"['<|begin_of_text|>', 'ĠContr', 'eras']",3,South America
+PY,7.0,7,PY-7,Duarte,Duarte,139443.0,0.0208, Duarte,"['<|begin_of_text|>', 'ĠDu', 'arte']",3,South America
+SR,7.0,7,SR-7,Singh,Singh,,, Singh,"['<|begin_of_text|>', 'ĠSingh']",2,South America
+AR,8.0,8,AR-8,Álvarez,Álvarez,294527.0,0.0076, Álvarez,"['<|begin_of_text|>', 'ĠÃģ', 'lv', 'arez']",4,South America
+BR,8.0,8,BR-8,Ferreira,Ferreira,4590010.0,0.0229, Ferreira,"['<|begin_of_text|>', 'ĠFer', 'reira']",3,South America
+SR,8.0,8,SR-8,Lie,Lie,,, Lie,"['<|begin_of_text|>', 'ĠLie']",2,South America
+AR,9.0,9,AR-9,Gómez,Gómez,290821.0,0.0075, Gómez,"['<|begin_of_text|>', 'ĠG', 'Ã³', 'mez']",4,South America
+BR,9.0,9,BR-9,Rodrigues,Rodrigues,4510002.0,0.0227, Rodrigues,"['<|begin_of_text|>', 'ĠRodrig', 'ues']",3,South America
+PE,9.0,9,PE-9,Chávez,Chávez,94660.0,0.0141, Chávez,"['<|begin_of_text|>', 'ĠCh', 'Ã¡', 'vez']",4,South America
+SR,9.0,9,SR-9,van Dijk,van Dijk,,, van Dijk,"['<|begin_of_text|>', 'Ġvan', 'ĠD', 'ijk']",4,South America
+AR,10.0,10,AR-10,Sánchez,Sánchez,271351.0,0.007, Sánchez,"['<|begin_of_text|>', 'ĠS', 'Ã¡nchez']",3,South America
+BR,10.0,10,BR-10,Almeida,Almeida,4393398.0,0.0216, Almeida,"['<|begin_of_text|>', 'ĠAl', 'me', 'ida']",4,South America
+CL,10.0,10,CL-10,Sepúlveda,Sepúlveda,251078.0,, Sepúlveda,"['<|begin_of_text|>', 'ĠSep', 'Ãº', 'l', 'ved', 'a']",6,South America
+SR,10.0,10,SR-10,Tjin,Tjin,,, Tjin,"['<|begin_of_text|>', 'ĠT', 'jin']",3,South America
+AR,11.0,11,AR-11,Díaz,Díaz,256397.0,0.0066, Díaz,"['<|begin_of_text|>', 'ĠD', 'ÃŃ', 'az']",4,South America
+SR,11.0,11,SR-11,Kluivert,Kluivert,,, Kluivert,"['<|begin_of_text|>', 'ĠK', 'lu', 'iv', 'ert']",5,South America
+AR,12.0,12,AR-12,Vásquez,Vásquez,187974.0,0.0049, Vásquez,"['<|begin_of_text|>', 'ĠV', 'Ã¡s', 'quez']",4,South America
+BR,12.0,12,BR-12,Gomes,Gomes,3848000.0,0.0192, Gomes,"['<|begin_of_text|>', 'ĠG', 'omes']",3,South America
+SR,12.0,12,SR-12,Semil,Semil,,, Semil,"['<|begin_of_text|>', 'ĠSem', 'il']",3,South America
+IN,1.0,1,IN-1,देवी,Devi,,, देवी,"['<|begin_of_text|>', 'Ġà¤¦', 'à¥ĩà¤µ', 'à¥Ģ']",4,South Asia
+NP,1.0,1,NP-1,चौधरी,Chaudhary,,, चौधरी,"['<|begin_of_text|>', 'Ġà¤ļ', 'à¥Į', 'à¤§à¤°', 'à¥Ģ']",5,South Asia
+LK,1.0,1,LK-1,Perera,Perera,862080.0,, Perera,"['<|begin_of_text|>', 'ĠPer', 'era']",3,South Asia
+IN,2.0,2,IN-2,कुमार,Kumar,,, कुमार,"['<|begin_of_text|>', 'Ġà¤ķ', 'à¥ģà¤®', 'à¤¾à¤°']",4,South Asia
+NP,2.0,2,NP-2,तामाङ,Tamang,,, तामाङ,"['<|begin_of_text|>', 'Ġà¤¤', 'à¤¾à¤®', 'à¤¾à¤', 'Ļ']",5,South Asia
+LK,2.0,2,LK-2,Fernando,Fernando,520965.0,, Fernando,"['<|begin_of_text|>', 'ĠFernando']",2,South Asia
+IN,3.0,3,IN-3,सिंह,Singh,,, सिंह,"['<|begin_of_text|>', 'Ġà¤¸', 'à¤¿à¤Ĥ', 'à¤¹']",4,South Asia
+NP,3.0,3,NP-3,गुरुङ,Gurung,,, गुरुङ,"['<|begin_of_text|>', 'Ġà¤Ĺ', 'à¥ģà¤°', 'à¥ģà¤', 'Ļ']",5,South Asia
+LK,3.0,3,LK-3,de Silva,de Silva,299772.0,, de Silva,"['<|begin_of_text|>', 'Ġde', 'ĠSilva']",3,South Asia
+IN,4.0,4,IN-4,शर्मा,Sharma,,, शर्मा,"['<|begin_of_text|>', 'Ġà¤¶à¤°', 'à¥įà¤®', 'à¤¾']",4,South Asia
+NP,4.0,4,NP-4,थापा,Thapa,,, थापा,"['<|begin_of_text|>', 'Ġà¤¥', 'à¤¾à¤ª', 'à¤¾']",4,South Asia
+LK,4.0,4,LK-4,Bandara,Bandara,227388.0,, Bandara,"['<|begin_of_text|>', 'ĠBand', 'ara']",3,South Asia
+IN,5.0,5,IN-5,अली,Ali,,, अली,"['<|begin_of_text|>', 'Ġà¤ħà¤²', 'à¥Ģ']",3,South Asia
+NP,5.0,5,NP-5,राणा,Rana,,, राणा,"['<|begin_of_text|>', 'Ġà¤°', 'à¤¾à¤£', 'à¤¾']",4,South Asia
+LK,5.0,5,LK-5,Kumara,Kumara,201695.0,, Kumara,"['<|begin_of_text|>', 'ĠKum', 'ara']",3,South Asia
+IN,6.0,6,IN-6,यादव,Yadav,,, यादव,"['<|begin_of_text|>', 'Ġà¤¯', 'à¤¾à¤¦', 'à¤µ']",4,South Asia
+LK,6.0,6,LK-6,Dissanayake,Dissanayake,172612.0,, Dissanayake,"['<|begin_of_text|>', 'ĠD', 'issan', 'ay', 'ake']",5,South Asia
+IN,7.0,7,IN-7,पटेल,Patel,,, पटेल,"['<|begin_of_text|>', 'Ġà¤ª', 'à¤Ł', 'à¥ĩà¤²']",4,South Asia
+NP,7.0,7,NP-7,मगर,Magar,,, मगर,"['<|begin_of_text|>', 'Ġà¤®', 'à¤Ĺà¤°']",3,South Asia
+LK,7.0,7,LK-7,Mohamed,Mohamed,154874.0,, Mohamed,"['<|begin_of_text|>', 'ĠMohamed']",2,South Asia
+NP,8.0,8,NP-8,राई,Rai,,, राई,"['<|begin_of_text|>', 'Ġà¤°', 'à¤¾à¤Ī']",3,South Asia
+LK,8.0,8,LK-8,Gamage,Gamage,149527.0,, Gamage,"['<|begin_of_text|>', 'ĠG', 'amage']",3,South Asia
+NP,9.0,9,NP-9,श्रेष्ठ,Shrestha,,, श्रेष्ठ,"['<|begin_of_text|>', 'Ġà¤¶', 'à¥įà¤°', 'à¥ĩà¤·', 'à¥įà¤ł']",5,South Asia
+LK,9.0,9,LK-9,Liyanage,Liyanage,143854.0,, Liyanage,"['<|begin_of_text|>', 'ĠLi', 'yan', 'age']",4,South Asia
+NP,10.0,10,NP-10,लामा,Lama,,, लामा,"['<|begin_of_text|>', 'Ġà¤²', 'à¤¾à¤®', 'à¤¾']",4,South Asia
+LK,10.0,10,LK-10,Jayasinghe,Jayasinghe,142224.0,, Jayasinghe,"['<|begin_of_text|>', 'ĠJay', 'asing', 'he']",4,South Asia
+NP,11.0,11,NP-11,क्षेत्री,Chhetri,,, क्षेत्री,"['<|begin_of_text|>', 'Ġà¤ķ', 'à¥įà¤·', 'à¥ĩà¤¤', 'à¥įà¤°', 'à¥Ģ']",6,South Asia
+NP,11.0,11,NP-11,चेट्री,Chetry,,, चेट्री,"['<|begin_of_text|>', 'Ġà¤ļ', 'à¥ĩà¤Ł', 'à¥įà¤°', 'à¥Ģ']",5,South Asia
+LK,11.0,11,LK-11,Ranasinghe,Ranasinghe,139680.0,, Ranasinghe,"['<|begin_of_text|>', 'ĠRan', 'asing', 'he']",4,South Asia
+NP,12.0,12,NP-12,शाह,Shah,,, शाह,"['<|begin_of_text|>', 'Ġà¤¶', 'à¤¾à¤¹']",3,South Asia
+NP,12.0,12,NP-12,साह,Sah ,,, साह,"['<|begin_of_text|>', 'Ġà¤¸', 'à¤¾à¤¹']",3,South Asia
+LK,12.0,12,LK-12,Herath,Herath,123182.0,, Herath,"['<|begin_of_text|>', 'ĠHer', 'ath']",3,South Asia
+LK,13.0,13,LK-13,Weerasinghe,Weerasinghe,122008.0,, Weerasinghe,"['<|begin_of_text|>', 'ĠWe', 'er', 'asing', 'he']",5,South Asia
+LK,14.0,14,LK-14,Peiris,Peiris,115944.0,, Peiris,"['<|begin_of_text|>', 'ĠPe', 'iris']",3,South Asia
+LK,15.0,15,LK-15,Rathnayake,Rathnayake,102902.0,, Rathnayake,"['<|begin_of_text|>', 'ĠRath', 'n', 'ay', 'ake']",5,South Asia
+NP,16.0,16,NP-16,महर्जन,Maharjan,,, महर्जन,"['<|begin_of_text|>', 'Ġà¤®à¤¹', 'à¤°', 'à¥įà¤ľ', 'à¤¨']",5,South Asia
+LK,16.0,16,LK-16,Wickramasinghe,Wickramasinghe,96968.0,, Wickramasinghe,"['<|begin_of_text|>', 'ĠWick', 'ram', 'asing', 'he']",5,South Asia
+NP,17.0,17,NP-17,नेपाली,Nepali ,,, नेपाली,"['<|begin_of_text|>', 'Ġà¤¨', 'à¥ĩà¤ª', 'à¤¾à¤²', 'à¥Ģ']",5,South Asia
+VN,1.0,1,VN-1,阮,Nguyễn,37038600.0,0.38, 阮,"['<|begin_of_text|>', 'Ġéĺ', '®']",3,Southeast Asia
+VN,2.0,2,VN-2,陳,Trần,10721700.0,0.11, 陳,"['<|begin_of_text|>', 'ĠéĻ³']",2,Southeast Asia
+VN,3.0,3,VN-3,黎,Lê,9259650.0,0.095, 黎,"['<|begin_of_text|>', 'Ġé»', 'İ']",3,Southeast Asia
+VN,4.0,4,VN-4,范,Phạm,6920370.0,0.071, 范,"['<|begin_of_text|>', 'ĠèĮ', 'ĥ']",3,Southeast Asia
+VN,5.0,5,VN-5,黃,Huỳnh/Hoàng,4970970.0,0.051, 黃,"['<|begin_of_text|>', 'Ġé»', 'ĥ']",3,Southeast Asia
+KH,6.0,6,KH-6,ខាយ,Khay,,, ខាយ,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'ģ', 'áŀ¶áŀ', 'Ļ']",6,Southeast Asia
+VN,6.0,6,VN-6,潘,Phan,4386150.0,0.045, 潘,"['<|begin_of_text|>', 'Ġæ½', 'ĺ']",3,Southeast Asia
+VN,7.0,7,VN-7,武,Vũ/Võ,3801330.0,0.039, 武,"['<|begin_of_text|>', 'ĠæŃ¦']",2,Southeast Asia
+VN,8.0,8,VN-8,鄧,Đặng,2046870.0,0.021, 鄧,"['<|begin_of_text|>', 'ĠéĦ', '§']",3,Southeast Asia
+VN,9.0,9,VN-9,裴,Bùi,1949400.0,0.02, 裴,"['<|begin_of_text|>', 'Ġè£', '´']",3,Southeast Asia
+VN,10.0,10,VN-10,杜,Đỗ,1364580.0,0.014, 杜,"['<|begin_of_text|>', 'ĠæĿ', 'ľ']",3,Southeast Asia
+VN,11.0,11,VN-11,胡,Hồ,1267110.0,0.013, 胡,"['<|begin_of_text|>', 'Ġèĥ', '¡']",3,Southeast Asia
+KH,12.0,12,KH-12,ឃាង,,,, ឃាង,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'ĥ', 'áŀ¶áŀ', 'Ħ']",6,Southeast Asia
+VN,12.0,12,VN-12,吳,Ngô,1267110.0,0.013, 吳,"['<|begin_of_text|>', 'ĠåĲ', '³']",3,Southeast Asia
+VN,13.0,13,VN-13,楊,Dương,974700.0,0.01, 楊,"['<|begin_of_text|>', 'Ġæ¥', 'Ĭ']",3,Southeast Asia
+VN,14.0,14,VN-14,李,Lý,487350.0,0.005, 李,"['<|begin_of_text|>', 'ĠæĿİ']",2,Southeast Asia
+VN,15.0,15,VN-15,費,Phí,,, 費,"['<|begin_of_text|>', 'Ġè²', '»']",3,Southeast Asia
+VN,16.0,16,VN-16,陶,Đào,,, 陶,"['<|begin_of_text|>', 'ĠéĻ', '¶']",3,Southeast Asia
+KH,17.0,17,KH-17,ចាប,Bird,,, ចាប,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'ħ', 'áŀ¶áŀ', 'Ķ']",6,Southeast Asia
+VN,17.0,17,VN-17,段,Đoàn,,, 段,"['<|begin_of_text|>', 'Ġæ®', 'µ']",3,Southeast Asia
+VN,18.0,18,VN-18,王,Vương,,, 王,"['<|begin_of_text|>', 'Ġçİĭ']",2,Southeast Asia
+VN,19.0,19,VN-19,鄭,Trịnh,,, 鄭,"['<|begin_of_text|>', 'ĠéĦ', 'Ń']",3,Southeast Asia
+KH,20.0,20,KH-20,ឆន,Chhorn,,, ឆន,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'Ĩ', 'áŀ', 'ĵ']",6,Southeast Asia
+VN,20.0,20,VN-20,張,Trương,,, 張,"['<|begin_of_text|>', 'Ġå¼µ']",2,Southeast Asia
+KH,21.0,21,KH-21,ឆាយ,,,, ឆាយ,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'Ĩ', 'áŀ¶áŀ', 'Ļ']",6,Southeast Asia
+VN,21.0,21,VN-21,林,Lâm,,, 林,"['<|begin_of_text|>', 'ĠæŀĹ']",2,Southeast Asia
+KH,22.0,22,KH-22,ជា,Chea,,, ជា,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'ĩ', 'áŀ¶']",5,Southeast Asia
+VN,22.0,22,VN-22,馮,Phùng,,, 馮,"['<|begin_of_text|>', 'Ġé¦', '®']",3,Southeast Asia
+KH,23.0,23,KH-23,ជាម,Cheam,,, ជាម,"['<|begin_of_text|>', 'Ġ', 'áŀ', 'ĩ', 'áŀ¶áŀ', 'ĺ']",6,Southeast Asia
+VN,23.0,23,VN-23,梅,Mai,,, 梅,"['<|begin_of_text|>', 'Ġæ', '¢ħ']",3,Southeast Asia
+VN,24.0,24,VN-24,蘇,Tô,,, 蘇,"['<|begin_of_text|>', 'Ġè', 'ĺ', 'ĩ']",4,Southeast Asia
+VN,25.0,25,VN-25,何,Hà,,, 何,"['<|begin_of_text|>', 'Ġä½ķ']",2,Southeast Asia
+VN,26.0,26,VN-26,謝,Tạ,,, 謝,"['<|begin_of_text|>', 'Ġè', '¬', 'Ŀ']",4,Southeast Asia
+VN,27.0,27,VN-27,申,Thân,,, 申,"['<|begin_of_text|>', 'Ġ', 'çĶ³']",3,Southeast Asia
+VN,28.0,28,VN-28,卓,Trác,,, 卓,"['<|begin_of_text|>', 'Ġåį', 'ĵ']",3,Southeast Asia
+VN,29.0,29,VN-29,宋,Tống,,, 宋,"['<|begin_of_text|>', 'Ġå®', 'ĭ']",3,Southeast Asia
+VN,30.0,30,VN-30,華,Hoa,,, 華,"['<|begin_of_text|>', 'Ġèı', '¯']",3,Southeast Asia
+VN,31.0,31,VN-31,曲,Khúc,,, 曲,"['<|begin_of_text|>', 'ĠæĽ', '²']",3,Southeast Asia
+HR,1.0,1,HR-1,Horvat,Horvat,21618.0,, Horvat,"['<|begin_of_text|>', 'ĠHor', 'vat']",3,Southern Europe
+IT,1.0,1,IT-1,Rossi,Rossi,60.0,, Rossi,"['<|begin_of_text|>', 'ĠRossi']",2,Southern Europe
+MT,1.0,1,MT-1,Borg,Borg,13610.0,0.033, Borg,"['<|begin_of_text|>', 'ĠBorg']",2,Southern Europe
+MK,1.0,1,MK-1,Andov,Andov,,, Andov,"['<|begin_of_text|>', 'ĠAnd', 'ov']",3,Southern Europe
+PT,1.0,1,PT-1,Silva,Silva,975152.0,0.0944, Silva,"['<|begin_of_text|>', 'ĠSilva']",2,Southern Europe
+ES,1.0,1,ES-1,García,García,1378000.0,0.0348, García,"['<|begin_of_text|>', 'ĠGarcÃŃa']",2,Southern Europe
+IT,2.0,2,IT-2,Russo,Russo,43.0,, Russo,"['<|begin_of_text|>', 'ĠRusso']",2,Southern Europe
+MT,2.0,2,MT-2,Camilleri,Camilleri,13090.0,0.031, Camilleri,"['<|begin_of_text|>', 'ĠCam', 'iller', 'i']",4,Southern Europe
+MK,2.0,2,MK-2,Angelov,Angelov,,, Angelov,"['<|begin_of_text|>', 'ĠAngel', 'ov']",3,Southern Europe
+PT,2.0,2,PT-2,Santos,Santos,615668.0,0.0596, Santos,"['<|begin_of_text|>', 'ĠSantos']",2,Southern Europe
+ES,2.0,2,ES-2,Fernández,Fernández,851000.0,0.0215, Fernández,"['<|begin_of_text|>', 'ĠFern', 'Ã¡ndez']",3,Southern Europe
+IT,3.0,3,IT-3,Ferrari,Ferrari,34.0,, Ferrari,"['<|begin_of_text|>', 'ĠFerrari']",2,Southern Europe
+MT,3.0,3,MT-3,Vella,Vella,12192.0,0.029, Vella,"['<|begin_of_text|>', 'ĠV', 'ella']",3,Southern Europe
+ME,3.0,3,ME-3,Vujović,Vujović,,, Vujović,"['<|begin_of_text|>', 'ĠV', 'uj', 'ovi', 'Äĩ']",5,Southern Europe
+MK,3.0,3,MK-3,Bogdanov,Bogdanov,,, Bogdanov,"['<|begin_of_text|>', 'ĠBog', 'dan', 'ov']",4,Southern Europe
+PT,3.0,3,PT-3,Ferreira,Ferreira,542325.0,0.0525, Ferreira,"['<|begin_of_text|>', 'ĠFer', 'reira']",3,Southern Europe
+SI,3.0,3,SI-3,Kovačič,Kovačič,5640.0,, Kovačič,"['<|begin_of_text|>', 'ĠK', 'ova', 'Äį', 'iÄį']",5,Southern Europe
+ES,3.0,3,ES-3,González,González,839000.0,0.0212, González,"['<|begin_of_text|>', 'ĠGonz', 'Ã¡lez']",3,Southern Europe
+IT,4.0,4,IT-4,Esposito,Esposito,32.0,, Esposito,"['<|begin_of_text|>', 'ĠEs', 'posit', 'o']",4,Southern Europe
+XK,4.0,4,XK-4,Morina,Morina,27222.0,, Morina,"['<|begin_of_text|>', 'ĠMor', 'ina']",3,Southern Europe
+MT,4.0,4,MT-4,Farrugia,Farrugia,11953.0,0.029, Farrugia,"['<|begin_of_text|>', 'ĠFarr', 'ug', 'ia']",4,Southern Europe
+ME,4.0,4,ME-4,Radović,Radović,,, Radović,"['<|begin_of_text|>', 'ĠRad', 'ovi', 'Äĩ']",4,Southern Europe
+MK,4.0,4,MK-4,Bozinov,Bozinov,,, Bozinov,"['<|begin_of_text|>', 'ĠBo', 'zin', 'ov']",4,Southern Europe
+PT,4.0,4,PT-4,Pereira,Pereira,504104.0,0.0488, Pereira,"['<|begin_of_text|>', 'ĠPere', 'ira']",3,Southern Europe
+SI,4.0,4,SI-4,Krajnc,Krajnc,5585.0,, Krajnc,"['<|begin_of_text|>', 'ĠKraj', 'nc']",3,Southern Europe
+ES,4.0,4,ES-4,Rodríguez,Rodríguez,804000.0,0.0203, Rodríguez,"['<|begin_of_text|>', 'ĠRodr', 'ÃŃg', 'uez']",4,Southern Europe
+HR,5.0,5,HR-5,Jurić,Jurić,11163.0,, Jurić,"['<|begin_of_text|>', 'ĠJ', 'uri', 'Äĩ']",4,Southern Europe
+IT,5.0,5,IT-5,Bianchi,Bianchi,25.0,, Bianchi,"['<|begin_of_text|>', 'ĠBian', 'chi']",3,Southern Europe
+XK,5.0,5,XK-5,Shala,Shala,25585.0,, Shala,"['<|begin_of_text|>', 'ĠSh', 'ala']",3,Southern Europe
+MT,5.0,5,MT-5,Zammit,Zammit,9769.0,0.023, Zammit,"['<|begin_of_text|>', 'ĠZam', 'mit']",3,Southern Europe
+ME,5.0,5,ME-5,Ivanović,Ivanović,,, Ivanović,"['<|begin_of_text|>', 'ĠIvan', 'ovi', 'Äĩ']",4,Southern Europe
+MK,5.0,5,MK-5,Brankov,Brankov,,, Brankov,"['<|begin_of_text|>', 'ĠBr', 'ank', 'ov']",4,Southern Europe
+PT,5.0,5,PT-5,Oliveira,Oliveira,383243.0,0.0371, Oliveira,"['<|begin_of_text|>', 'ĠOliveira']",2,Southern Europe
+SI,5.0,5,SI-5,Zupančič,Zupančič,5019.0,, Zupančič,"['<|begin_of_text|>', 'ĠZ', 'up', 'an', 'Äį', 'iÄį']",6,Southern Europe
+ES,5.0,5,ES-5,López,López,796000.0,0.0201, López,"['<|begin_of_text|>', 'ĠLÃ³pez']",2,Southern Europe
+HR,6.0,6,HR-6,Novak,Novak,10794.0,, Novak,"['<|begin_of_text|>', 'ĠNov', 'ak']",3,Southern Europe
+IT,6.0,6,IT-6,Romano,Romano,24.0,, Romano,"['<|begin_of_text|>', 'ĠRom', 'ano']",3,Southern Europe
+XK,6.0,6,XK-6,Bytyqi,Bytyqi,18840.0,, Bytyqi,"['<|begin_of_text|>', 'ĠBy', 'ty', 'qi']",4,Southern Europe
+AT,1.0,1,AT-1,Gruber,Gruber,35743.0,0.004, Gruber,"['<|begin_of_text|>', 'ĠGr', 'uber']",3,Western Europe
+BE,1.0,1,BE-1,Peeters,Peeters,31079.0,, Peeters,"['<|begin_of_text|>', 'ĠPe', 'eters']",3,Western Europe
+LU,1.0,1,LU-1,Schmit,Schmit,1929.0,, Schmit,"['<|begin_of_text|>', 'ĠSch', 'mit']",3,Western Europe
+NL,1.0,1,NL-1,De Jong,De Jong,86534.0,0.0053, De Jong,"['<|begin_of_text|>', 'ĠDe', 'ĠJong']",3,Western Europe
+AT,2.0,2,AT-2,Huber,Huber,34686.0,0.0039, Huber,"['<|begin_of_text|>', 'ĠHub', 'er']",3,Western Europe
+BE,2.0,2,BE-2,Janssens,Janssens,28532.0,, Janssens,"['<|begin_of_text|>', 'ĠJ', 'ans', 's', 'ens']",5,Western Europe
+FR,2.0,2,FR-2,Bernard,Bernard,105132.0,, Bernard,"['<|begin_of_text|>', 'ĠBernard']",2,Western Europe
+LU,2.0,2,LU-2,Muller,Muller,1473.0,, Muller,"['<|begin_of_text|>', 'ĠMull', 'er']",3,Western Europe
+NL,2.0,2,NL-2,Jansen,Jansen,75699.0,0.0046, Jansen,"['<|begin_of_text|>', 'ĠJ', 'ansen']",3,Western Europe
+CH,2.0,2,CH-2,Meier,Meier,19150.0,, Meier,"['<|begin_of_text|>', 'ĠMe', 'ier']",3,Western Europe
+AT,3.0,3,AT-3,Bauer,Bauer,30208.0,0.0034, Bauer,"['<|begin_of_text|>', 'ĠBauer']",2,Western Europe
+BE,3.0,3,BE-3,Maes,Maes,24594.0,, Maes,"['<|begin_of_text|>', 'ĠMa', 'es']",3,Western Europe
+NL,3.0,3,NL-3,De Vries,De Vries,73157.0,0.0045, De Vries,"['<|begin_of_text|>', 'ĠDe', 'ĠV', 'ries']",4,Western Europe
+AT,4.0,4,AT-4,Wagner,Wagner,27763.0,0.0031, Wagner,"['<|begin_of_text|>', 'ĠWagner']",2,Western Europe
+BE,4.0,4,BE-4,Jacobs,Jacobs,19077.0,, Jacobs,"['<|begin_of_text|>', 'ĠJacobs']",2,Western Europe
+FR,4.0,4,FR-4,Thomas,Thomas,95387.0,, Thomas,"['<|begin_of_text|>', 'ĠThomas']",2,Western Europe
+NL,4.0,4,NL-4,Van den Berg,Van den Berg,60130.0,0.0037, Van den Berg,"['<|begin_of_text|>', 'ĠVan', 'Ġden', 'ĠBerg']",4,Western Europe
+CH,4.0,4,CH-4,Keller,Keller,13000.0,, Keller,"['<|begin_of_text|>', 'ĠKeller']",2,Western Europe
+AT,5.0,5,AT-5,Müller,Müller,26975.0,0.003, Müller,"['<|begin_of_text|>', 'ĠMÃ¼ller']",2,Western Europe
+BE,5.0,5,BE-5,Mertens,Mertens,17906.0,, Mertens,"['<|begin_of_text|>', 'ĠM', 'ert', 'ens']",4,Western Europe
+FR,5.0,5,FR-5,Robert,Robert,91393.0,, Robert,"['<|begin_of_text|>', 'ĠRobert']",2,Western Europe
+DE,5.0,5,DE-5,Meyer,Meyer,274560.0,0.0033, Meyer,"['<|begin_of_text|>', 'ĠMeyer']",2,Western Europe
+NL,5.0,5,NL-5,Van Dijk,Van Dijk,57944.0,0.0035, Van Dijk,"['<|begin_of_text|>', 'ĠVan', 'ĠD', 'ijk']",4,Western Europe
+NL,5.0,5,NL-5,Van Dyk,Van Dyk,57944.0,0.0035, Van Dyk,"['<|begin_of_text|>', 'ĠVan', 'ĠDy', 'k']",4,Western Europe
+AT,6.0,6,AT-6,Pichler,Pichler,24655.0,0.0028, Pichler,"['<|begin_of_text|>', 'ĠP', 'ich', 'ler']",4,Western Europe
+BE,6.0,6,BE-6,Willems,Willems,17747.0,, Willems,"['<|begin_of_text|>', 'ĠW', 'ille', 'ms']",4,Western Europe
+FR,6.0,6,FR-6,Richard,Richard,90689.0,, Richard,"['<|begin_of_text|>', 'ĠRichard']",2,Western Europe
+LU,6.0,6,LU-6,Thill,Thill,1027.0,, Thill,"['<|begin_of_text|>', 'ĠTh', 'ill']",3,Western Europe
+NL,6.0,6,NL-6,Bakker,Bakker,56864.0,0.0035, Bakker,"['<|begin_of_text|>', 'ĠBak', 'ker']",3,Western Europe
+AT,7.0,7,AT-7,Steiner,Steiner,24297.0,0.0027, Steiner,"['<|begin_of_text|>', 'ĠSte', 'iner']",3,Western Europe
+BE,7.0,7,BE-7,Claes,Claes,15798.0,, Claes,"['<|begin_of_text|>', 'ĠCla', 'es']",3,Western Europe
+FR,7.0,7,FR-7,Petit,Petit,88318.0,, Petit,"['<|begin_of_text|>', 'ĠPetit']",2,Western Europe
+LU,7.0,7,LU-7,Schmitz,Schmitz,939.0,, Schmitz,"['<|begin_of_text|>', 'ĠSch', 'mit', 'z']",4,Western Europe
+NL,7.0,7,NL-7,Janssen,Janssen,55394.0,0.0034, Janssen,"['<|begin_of_text|>', 'ĠJ', 'ans', 'sen']",4,Western Europe
+AT,8.0,8,AT-8,Moser,Moser,23948.0,0.0027, Moser,"['<|begin_of_text|>', 'ĠMos', 'er']",3,Western Europe
+BE,8.0,8,BE-8,Goossens,Goossens,15269.0,, Goossens,"['<|begin_of_text|>', 'ĠGo', 'oss', 'ens']",4,Western Europe
+FR,8.0,8,FR-8,Durand,Durand,84252.0,, Durand,"['<|begin_of_text|>', 'ĠDur', 'and']",3,Western Europe
+DE,8.0,8,DE-8,Schulz,Schulz,224640.0,0.0027, Schulz,"['<|begin_of_text|>', 'ĠSchul', 'z']",3,Western Europe
