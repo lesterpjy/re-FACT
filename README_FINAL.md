@@ -6,11 +6,11 @@ based on ["Detecting and ​Understanding Vulnerabilities​ in Language Models 
 
 ### Experiment 1
 
-- src/org_paper/reproduction.ipynb - notebook used to reproduce origial experiments
+- `src/org_paper/reproduction.ipynb` - notebook used to reproduce origial experiments
   
 ### Experiment 2
 
-- src/activation_patching/activation_patching_script.py --df_path src/activation_patching/final_toxicity_prompts_0.csv --batch_size 16 --dir_name src/activation_patching/final_toxicity_data_0 --wiki_names_path src/dataset_generation/wiki_last_name_master.csv --calculate_patches --image_output_path src/activation_patching/activation_patching.png  - runs activation patching using authors' method
+- `src/activation_patching/activation_patching_script.py --df_path src/activation_patching/final_toxicity_prompts_0.csv --batch_size 16 --dir_name src/activation_patching/final_toxicity_data_0 --wiki_names_path src/dataset_generation/wiki_last_name_master.csv --calculate_patches --image_output_path src/activation_patching/activation_patching.png`  - runs activation patching using authors' method
 
 - circuit identification with EAP/EAP-IG 
   - sif file must be generated with [dockerim2sif.job](https://github.com/lesterpjy/reFACT/blob/main/snellius_env/dockerim2sif.job) to convert our docker [image](https://hub.docker.com/r/lesterpjy10/refact-multiarch) on dockerhub to an Apptainer Image. 
@@ -21,23 +21,22 @@ based on ["Detecting and ​Understanding Vulnerabilities​ in Language Models 
 
 ### Experiment 3
 
-- src/org_paper/grad_experiment_acro.ipynb - notebook used to generate adversarial samples for authors' task
-- src/adv_sample/sample_generation.ipynb - notebook used to generate adversarial samples for our task
+- `src/org_paper/grad_experiment_acro.ipynb` - notebook used to generate adversarial samples for authors' task
+- `src/adv_sample/sample_generation.ipynb` - notebook used to generate adversarial samples for our task
 
 ### Experiment 4
 
-- src/adv_attack/vul_heads_detection.ipynb - notebook for creating results of vulnerable heads using authors' method 
+- `src/adv_attack/vul_heads_detection.ipynb` - notebook for creating results of vulnerable heads using authors' method 
 
 ### Experiment 5 
 
--s rc/dataset_generation/circuit_adv_data.ipynb - notebook for creating dataset for bias circuit from adversarial samples
+- `src/dataset_generation/circuit_adv_data.ipynb` - notebook for creating dataset for bias circuit from adversarial samples
 
-- src/bias_scale_results.ipynb - notebook about results of Experiment 5, scaling down the edges to mitigate the bias
+- `src/bias_scale_results.ipynb` - notebook about results of Experiment 5, scaling down the edges to mitigate the bias
 
 ### Others
 
-<<<<<<< HEAD
-- src/plots.ipynb - notebook for additional plots for the paper
+- `src/plots.ipynb` - notebook for additional plots for the paper
 
 
 ## Docker reproducibility management
@@ -138,6 +137,4 @@ Since `src`, `scripts`, and `configs` directories are mounted in real-time from 
      Memory Utilized: 2.41 MB
      Memory Efficiency: 0.01% of 31.25 GB
      ``` 
-=======
--src/plots.ipynb - notebook for additional plots for the paper
->>>>>>> 5a8f41e23e199ec2714b04a8083957dd072a23b4
+
