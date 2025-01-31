@@ -173,7 +173,7 @@ cython_debug/
 # local directories
 
 /work/*
-!work/visualize_circuits/*
+!work/visualize_circuits/
 cache/
 
 # apptainer
