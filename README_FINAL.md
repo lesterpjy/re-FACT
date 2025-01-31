@@ -1,6 +1,5 @@
-# My Paper Title
-
-This repository is the official implementation of [My Paper Title]
+# Interpreting Model Vulnerabilities Through Circuits: A Reproducibility Study in Fairness 
+based on ["Detecting and ​Understanding Vulnerabilities​ in Language Models via MI"](https://arxiv.org/pdf/2407.19842)
 
 
 Notebooks location and usage:
