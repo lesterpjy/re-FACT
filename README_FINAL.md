@@ -1,19 +1,23 @@
-# My Paper Title
-
-This repository is the official implementation of [My Paper Title]
+# Interpreting Model Vulnerabilities Through Circuits: A Reproducibility Study in Fairness 
+based on ["Detecting and ​Understanding Vulnerabilities​ in Language Models via MI"](https://arxiv.org/pdf/2407.19842)
 
 
 ## Notebooks locations and Usage
 
 ### Experiment 1
 
+- src/org_paper/reproduction.ipynb - notebook used to reproduce origial experiments
+  
 ### Experiment 2
+
+- src/activation_patching/activation_patching_script.py --df_path src/activation_patching/final_toxicity_prompts_0.csv --batch_size 16 --dir_name src/activation_patching/final_toxicity_data_0 --wiki_names_path src/dataset_generation/wiki_last_name_master.csv --calculate_patches --image_output_path src/activation_patching/activation_patching.png  - runs activation patching using authors' method
 
 - circuit identification with EAP/EAP-IG 
   - sif file must be generated with [dockerim2sif.job](https://github.com/lesterpjy/reFACT/blob/main/snellius_env/dockerim2sif.job) to convert our docker [image](https://hub.docker.com/r/lesterpjy10/refact-multiarch) on dockerhub to an Apptainer Image. 
   - `snellius_env/run_get_circuit_toxicity.job` runs `python /local/scripts/get_circuit.py --config_path ../configs/llama3_config_toxicity.py` with the Apptainer image to get the toxicity circuits (`work/visualize_circuits/toxicity_combined.csv`)
   -  `snellius_env/run_get_circuit_adv_bias.job` runs `python /local/scripts/get_circuit.py --config_path ../configs/llama3_config_adv_bias.py` with the Apptainer image to get the name bias circuits (`work/visualize_circuits/full_adv_bias.csv`)
   - `work/visualize_circuits/visualize.ipynb` converts the csv files containing the EAP scores and the saved computation graphs in json into visualizations for the paper. It also performs the egde pruning for generating the graphs used in Experiment 5 for bias mitigation. Necessary files are self-contained in `work/visualize_circuits`.
+
 
 ### Experiment 3
 
@@ -32,6 +36,7 @@ This repository is the official implementation of [My Paper Title]
 
 ### Others
 
+<<<<<<< HEAD
 - src/plots.ipynb - notebook for additional plots for the paper
 
 
@@ -133,3 +138,6 @@ Since `src`, `scripts`, and `configs` directories are mounted in real-time from 
      Memory Utilized: 2.41 MB
      Memory Efficiency: 0.01% of 31.25 GB
      ``` 
+=======
+-src/plots.ipynb - notebook for additional plots for the paper
+>>>>>>> 5a8f41e23e199ec2714b04a8083957dd072a23b4
