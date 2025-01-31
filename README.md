@@ -143,16 +143,3 @@ Since `src`, `scripts`, and `configs` directories are mounted in real-time from 
      Memory Efficiency: 0.01% of 31.25 GB
      ``` 
 
-
-Create alias
-```
-alias drun="docker run --rm -it -v $(pwd)/data:/local/data \
-			 -v $(pwd)/cache:/local/cache -v $(pwd)/work:/local/work --gpus all"
-alias dtest="docker run --rm -it -v $(pwd)/data:/local/data \
-                         -v $(pwd)/cache:/local/cache \
-                         -v $(pwd)/work:/local/work \
-                         -v $(pwd)/src:/local/src \
-                         -v $(pwd)/scripts:/local/scripts \
-                         -v $(pwd)/configs:/local/configs \
-                         --gpus all"
-```
