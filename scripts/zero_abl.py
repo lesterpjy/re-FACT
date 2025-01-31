@@ -1,16 +1,40 @@
+import os
 import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import torch
 import pandas as pd
 import pickle
 import numpy as np
 
-from src.graph import Graph, Node, Edge, load_graph_from_json
+from src.graph import Graph, Node, Edge, load_graph_from_json, InputNode, LogitNode, AttentionNode, MLPNode
 from transformer_lens import HookedTransformer
 from huggingface_hub import login
 from loguru import logger
+import argparse
+
 
 login(token="")
 
+parser = argparse.ArgumentParser(description="Get circuit configuration")
+parser.add_argument(
+    "--graph_name",
+    type=str,
+    default="",
+    help="name of graph file",
+)
+parser.add_argument(
+    "--scale",
+    type=float,
+    default=1.0,
+)
+parser.add_argument(
+    "--split",
+    type=int,
+    default=0,
+)
+args = parser.parse_args()
+logger.info(f"read args: graph name ({args.graph_name}), scale ({args.scale}), datasplit ({args.split})")
 
 class Config:
     model_name = "meta-llama/Llama-3.2-1B-Instruct"
@@ -18,8 +42,9 @@ class Config:
     data_dir = "../data"
     work_dir = "../work"
     debug = False
-    graph_name = "graph_0.json"
-
+    graph_name = args.graph_name 
+    scale = args.scale 
+    split = args.split
 
 config = Config()
 
@@ -134,24 +159,25 @@ def compute_logit_diff_2(
 
 # TODO: change path
 dfs = pd.read_csv(
-    f"{config.data_dir}/circuit_identification_data/final_toxicity_prompts_0.csv"
+    f"{config.data_dir}/circuit_identification_data/final_toxicity_prompts_{config.split}.csv"
 )
-logeer.info("Loaded data")
+logger.info("Loaded data")
 logger.info("loaded data lengths is: ", len(dfs))
 
 batch_size = 2
 threshold_logit = -0.63
 
 logger.info("Loaded data")
-
 model = HookedTransformer.from_pretrained(
-    "meta-llama/Llama-3.2-1B-Instruct",
-    center_unembed=True,
-    center_writing_weights=True,
+    "meta-llama/Llama-3.2-1B-Instruct",    
+    center_writing_weights=False,
+    center_unembed=False,
     fold_ln=True,
-    # default_prepend_bos = False
-    # refactor_factored_attn_matrices=True
 )
+model.cfg.use_split_qkv_input = True
+model.cfg.use_attn_result = True
+model.cfg.use_hook_mlp_in = True
+
 
 logger.info("Loaded model")
 
@@ -205,9 +231,7 @@ def make_input_construction_hook(node: Node, qkv=None):
 
             if edge.in_graph:
 
-                activations[edge.index] -= mixed_fwd_cache[parent.out_hook][
-                    parent.index
-                ]
+                activations[edge.index] -= config.scale*(mixed_fwd_cache[parent.out_hook][parent.index])
 
         return activations
 
@@ -256,7 +280,7 @@ for i in range(0, len(prompts), batch_size):
 
         results.append(r)
 
-with open(f"results_abl_{config.graph_name}.pkl", "wb") as f:
+with open(f"results_abl_{config.graph_name}_scaleby{config.scale}_split{config.split}.pkl", "wb") as f:
     pickle.dump(results, f)
 
 logger.info("Finished inference")
