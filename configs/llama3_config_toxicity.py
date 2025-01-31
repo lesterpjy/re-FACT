@@ -11,7 +11,7 @@ CONFIG = {
     "batch_size": 2,
     "from_generated_graphs": False,
     "process_data": False,
-    "run": ["evaluate"],
+    "run": ["baseline", "graph", "evaluate"],
 }
 
 # You can also set a default device here if desired
