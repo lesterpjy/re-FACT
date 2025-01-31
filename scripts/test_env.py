@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import sys
 import torch
 import torchvision
@@ -14,6 +13,7 @@ import jupyterlab
 import matplotlib
 import seaborn
 import ipywidgets
+import transformer_lens
 
 # Try to get version from importlib.metadata
 try:
@@ -21,9 +21,9 @@ try:
     tqdm_version = importlib.metadata.version("tqdm")
 except (ImportError, importlib.metadata.PackageNotFoundError):
     tqdm_version = "unknown"
-
 def main():
     print("---- Package Versions ----")
+    print(f"transformer lens version: {transformer_lens.version}")
     print(f"Python version: {sys.version}")
     print(f"PyTorch version: {torch.__version__}")
     print(f"Torchvision version: {torchvision.__version__}")
@@ -39,7 +39,6 @@ def main():
     print(f"Seaborn version: {seaborn.__version__}")
     print(f"ipywidgets version: {ipywidgets.__version__}")
     print("---- End of Versions ----\n")
-
     # Check CUDA availability
     gpu_available = torch.cuda.is_available()
     print(f"CUDA GPU Available: {gpu_available}")
@@ -49,7 +48,6 @@ def main():
         print(f"Using GPU: {gpu_name}")
     else:
         print("Running on CPU only.")
-
     # Simple forward pass on a random tensor
     print("\n---- Running a tiny sanity-check forward pass with PyTorch ----")
     model = torch.nn.Linear(10, 5)  # just a small linear model
@@ -58,9 +56,7 @@ def main():
     print("Input shape:", data.shape)
     print("Output shape:", output.shape)
     print("Output:", output)
-
     print("\nEnvironment functional.")
 
 if __name__ == "__main__":
     main()
-
