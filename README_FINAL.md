@@ -9,6 +9,8 @@ Notebooks location and usage:
 
 ### Experiment 2
 
+- src/activation_patching/activation_patching_script.py --df_path src/activation_patching/final_toxicity_prompts_0.csv --batch_size 16 --dir_name src/activation_patching/final_toxicity_data_0 --wiki_names_path src/dataset_generation/wiki_last_name_master.csv --calculate_patches --image_output_path src/activation_patching/activation_patching.png  - runs activation patching using authors' method
+
 ### Experiment 3
 
 -src/org_paper/grad_experiment_acro.ipynb - notebook used to generate adversarial samples for authors' task
